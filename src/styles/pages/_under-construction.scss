@@ -1,0 +1,689 @@
+/* =========================================================
+   UNDER CONSTRUCTION PAGE
+========================================================= */
+
+.under-construction {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("/src/assets/construction-bg.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  color: #ffffff;
+
+  box-sizing: border-box;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
+
+.under-construction__overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.28) 45%,
+      rgba(0, 0, 0, 0.48) 100%
+    );
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.under-construction__content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1000px;
+
+  padding: 50px 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 75px;
+}
+
+
+.countdown__item {
+  width: 130px;
+  height: 118px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(10, 15, 20, 0.78);
+
+  border-radius: 8px;
+
+  backdrop-filter: blur(5px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.25);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.countdown__number {
+  color: #ffd000;
+
+  font-size: 52px;
+  font-weight: 800;
+
+  line-height: 1;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+.countdown__label {
+  margin-top: 10px;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+}
+
+
+.countdown__separator {
+  margin: 0 10px;
+
+  color: #ffffff;
+
+  font-size: 38px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   CONSTRUCTION BANNER
+========================================================= */
+
+.construction-banner {
+  position: relative;
+
+  width: 720px;
+  height: 270px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transform: rotate(-6deg);
+
+  margin-bottom: 35px;
+}
+
+
+/* =========================================================
+   MAIN BLACK TITLE
+========================================================= */
+
+.construction-banner__title {
+  position: relative;
+
+  z-index: 2;
+
+  width: 690px;
+  min-height: 125px;
+
+  padding: 22px 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #050505;
+
+  color: #ffd000;
+
+  font-size: 46px;
+  font-weight: 900;
+  font-style: italic;
+
+  line-height: 1.05;
+  letter-spacing: -1px;
+
+  text-align: center;
+
+  transform: skewX(-4deg);
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   UNDER CONSTRUCTION RIBBON
+========================================================= */
+
+.construction-banner__subtitle {
+  position: relative;
+
+  z-index: 3;
+
+  width: 420px;
+  min-height: 72px;
+
+  margin-top: -2px;
+  margin-left: 70px;
+
+  padding: 10px 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-size: 25px;
+  font-weight: 900;
+  font-style: italic;
+
+  line-height: 1;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   DECORATIVE LINES
+========================================================= */
+
+.construction-banner__line {
+  position: absolute;
+
+  height: 3px;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* ---------- Top ---------- */
+
+.construction-banner__line--top-1 {
+  width: 370px;
+
+  top: 35px;
+  left: 65px;
+
+  background: #ffffff;
+}
+
+
+.construction-banner__line--top-2 {
+  width: 380px;
+
+  top: 22px;
+  right: 25px;
+
+  background: #ffd000;
+}
+
+
+/* ---------- Bottom ---------- */
+
+.construction-banner__line--bottom-1 {
+  width: 330px;
+
+  bottom: 37px;
+  left: 45px;
+
+  background: #ffd000;
+}
+
+
+.construction-banner__line--bottom-2 {
+  width: 285px;
+
+  bottom: 22px;
+  right: 75px;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.under-construction__description {
+  margin: 0;
+
+  max-width: 700px;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  line-height: 1.55;
+
+  text-align: center;
+
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================================
+   NOTIFY BUTTON
+========================================================= */
+
+.under-construction__button {
+  margin-top: 40px;
+
+  min-width: 250px;
+  height: 68px;
+
+  padding: 0 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #ffd000;
+
+  color: #111111;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.under-construction__button:hover {
+  transform: translateY(-3px);
+
+  background: #ffe044;
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+.under-construction__button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   BUTTON ICON
+========================================================= */
+
+.under-construction__button-icon {
+  width: 50px;
+  height: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .under-construction__content {
+    padding: 35px 18px;
+  }
+
+
+  /* Countdown */
+
+  .countdown {
+    margin-bottom: 55px;
+  }
+
+
+  .countdown__item {
+    width: 90px;
+    height: 90px;
+
+    border-radius: 7px;
+  }
+
+
+  .countdown__number {
+    font-size: 36px;
+  }
+
+
+  .countdown__label {
+    margin-top: 7px;
+
+    font-size: 9px;
+  }
+
+
+  .countdown__separator {
+    margin: 0 5px;
+
+    font-size: 28px;
+  }
+
+
+  /* Construction */
+
+  .construction-banner {
+    width: 650px;
+    height: 240px;
+
+    transform: rotate(-6deg) scale(0.85);
+
+    // margin-top: -10px;
+    // margin-bottom: 5px;
+  }
+
+
+  .construction-banner__title {
+    width: 650px;
+
+    min-height: 115px;
+
+    font-size: 40px;
+  }
+
+
+  .construction-banner__subtitle {
+    width: 380px;
+
+    min-height: 65px;
+
+    margin-left: 60px;
+
+    font-size: 22px;
+  }
+
+
+  /* Description */
+
+  .under-construction__description {
+    font-size: 16px;
+  }
+
+
+  /* Button */
+
+  .under-construction__button {
+    height: 62px;
+
+    min-width: 220px;
+
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .under-construction {
+    min-height: 100svh;
+
+    background-position: 62% center;
+  }
+
+
+  .under-construction__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.42) 0%,
+        rgba(0, 0, 0, 0.35) 50%,
+        rgba(0, 0, 0, 0.58) 100%
+      );
+  }
+
+
+  .under-construction__content {
+    padding: 25px 14px;
+  }
+
+
+  /* =====================================
+     Countdown
+  ===================================== */
+
+  .countdown {
+    width: 100%;
+
+    margin-bottom: 45px;
+  }
+
+
+  .countdown__item {
+    width: 62px;
+    height: 70px;
+
+    border-radius: 6px;
+  }
+
+
+  .countdown__number {
+    font-size: 26px;
+  }
+
+
+  .countdown__label {
+    margin-top: 6px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.8px;
+  }
+
+
+  .countdown__separator {
+    margin: 0 2px;
+
+    font-size: 21px;
+  }
+
+
+  /* =====================================
+     Construction Banner
+  ===================================== */
+
+  .construction-banner {
+    width: 720px;
+    height: 220px;
+
+    transform:
+      rotate(-6deg)
+      scale(0.53);
+
+    // margin-top: -35px;
+    // margin-bottom: -75px;
+
+    flex-shrink: 0;
+  }
+
+
+  .construction-banner__title {
+    width: 690px;
+
+    min-height: 125px;
+
+    padding: 20px 30px;
+
+    font-size: 45px;
+
+    line-height: 1.05;
+  }
+
+
+  .construction-banner__subtitle {
+    width: 420px;
+
+    min-height: 72px;
+
+    margin-left: 70px;
+
+    font-size: 25px;
+  }
+
+
+  /* =====================================
+     Description
+  ===================================== */
+
+  .under-construction__description {
+    max-width: 340px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+
+  .under-construction__description br {
+    display: none;
+  }
+
+
+  /* =====================================
+     Button
+  ===================================== */
+
+  .under-construction__button {
+    min-width: 190px;
+
+    height: 56px;
+
+    margin-top: 30px;
+
+    padding: 0 25px;
+
+    font-size: 14px;
+  }
+
+
+  .under-construction__button-icon {
+    width: 30px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .countdown__item {
+    width: 55px;
+    height: 64px;
+  }
+
+
+  .countdown__number {
+    font-size: 23px;
+  }
+
+
+  .countdown__label {
+    font-size: 6px;
+  }
+
+
+  .countdown__separator {
+    font-size: 18px;
+  }
+
+
+  .construction-banner {
+    transform:
+      rotate(-6deg)
+      scale(0.46);
+
+    // margin-top: -45px;
+    // margin-bottom: -90px;
+  }
+
+
+  .under-construction__description {
+    font-size: 13px;
+  }
+}

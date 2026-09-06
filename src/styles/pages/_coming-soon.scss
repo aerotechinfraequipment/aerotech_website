@@ -14,6 +14,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.coming-soon__heading {
+  margin: 0 0 20px;
+
+  color: #111;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: capitalize;
+}
 .coming-soon {
   min-height: 100vh;
   width: 100%;
@@ -206,5 +216,82 @@ body {
   .coming-soon__button {
     width: 180px;
     height: 58px;
+  }
+}
+/* =========================================
+   Countdown Timer
+========================================= */
+
+.coming-soon__timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  color: #111;
+}
+
+.timer__item {
+  min-width: 75px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer__number {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.timer__label {
+  margin-top: 7px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.timer__separator {
+  margin: 0 8px 17px;
+
+  font-size: 32px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 480px) {
+  .coming-soon__timer {
+    margin-bottom: 15px;
+  }
+
+  .timer__item {
+    min-width: 55px;
+  }
+
+  .timer__number {
+    font-size: 25px;
+  }
+
+  .timer__label {
+    margin-top: 5px;
+
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+
+  .timer__separator {
+    margin: 0 2px 13px;
+
+    font-size: 21px;
   }
 }
