@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* ════════════════════════════════════════════════════
+   THEME CONFIG — Change values here to update the
+   entire site (Home, Equipment, Products, etc.)
+   ════════════════════════════════════════════════════ */
+:root {
+
+  /* ─── Typography ────────────────────────────────── */
+  --font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  /* ─── Primary Dark Colors ───────────────────────── */
+  --ink:              #11151c;   /* page dark bg, primary dark */
+  --ink-soft:         #1a1f2b;   /* slightly lighter dark */
+  --ink-border:       rgba(255,255,255,0.10); /* borders on dark bg */
+
+  /* ─── Accent / Brand Colors ─────────────────────── */
+  --accent:           #f59e0b;   /* primary brand color (amber) */
+  --accent-hover:     #d97706;   /* accent on hover */
+  --accent-muted:     #b45309;   /* accent for text hover states */
+  --accent-foreground:#11151c;   /* text on accent background */
+
+  /* ─── Text Colors ───────────────────────────────── */
+  --foreground:       #11151c;   /* primary body text */
+  --muted-foreground: #64748b;   /* secondary/muted text */
+  --steel:            #94a3b8;   /* text on dark backgrounds */
+  --primary-foreground: #ffffff; /* text on dark/primary backgrounds */
+
+  /* ─── Surface Colors ────────────────────────────── */
+  --background:       #ffffff;   /* page background */
+  --secondary:        #f8f9fa;   /* section alternate background */
+  --card:             #ffffff;   /* card / form background */
+
+  /* ─── Borders & Inputs ──────────────────────────── */
+  --border:           #e5e7eb;
+  --input:            #d1d5db;
+
+  /* ─── Functional ────────────────────────────────── */
+  --emerald:          #10b981;   /* available status */
+  --emerald-text:     #059669;   /* available text */
+  --whatsapp:         #25D366;
+  --whatsapp-hover:   #1eb857;
+  --primary:          var(--ink);
+
+  /* ─── Shadows ───────────────────────────────────── */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:  0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg:  0 10px 15px -3px rgba(0,0,0,0.1);
+  --shadow-xl:  0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+
+  /* ─── Transitions ───────────────────────────────── */
+  --transition:      all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+
+  /* ─── Layout ────────────────────────────────────── */
+  --max-w: 1280px;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--foreground);
+  background-color: var(--background);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+ul, ol { list-style: none; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button { cursor: pointer; }
+
+/* ─── Container ─── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+@media (min-width: 1024px) { .container { padding: 0 2rem; } }
+

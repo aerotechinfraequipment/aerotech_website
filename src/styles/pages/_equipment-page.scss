@@ -1,0 +1,80 @@
+/* ═══════════════════════════════════════════════
+   PAGE HERO — shared dark hero banner used on
+   Equipment Rental, Products, and future pages
+   ═══════════════════════════════════════════════ */
+.page-hero {
+  padding: 4rem 0;
+
+  @media (min-width: 768px) { padding: 6rem 0; }
+}
+
+.page-hero--dark {
+  background: var(--ink);
+
+  .section-header__title { color: var(--primary-foreground); }
+  .section-header__desc  { color: var(--steel); }
+}
+
+/* ═══════════════════════════════════════════════
+   FILTER PILLS — category toggle buttons
+   (used on Equipment Rental page)
+   ═══════════════════════════════════════════════ */
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.filter-pill {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent-hover);
+  }
+
+  &--active {
+    background: var(--accent);
+    color: var(--accent-foreground);
+    border-color: var(--accent);
+
+    &:hover {
+      background: var(--accent-hover);
+      color: var(--accent-foreground);
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   EQUIPMENT RENTAL PAGE
+   ═══════════════════════════════════════════════ */
+.equipment-page {
+  padding: 3.5rem 0;
+  background: var(--background);
+
+  @media (min-width: 768px) { padding: 5rem 0; }
+}
+
+.equipment-page__grid {
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: 640px)  { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1024px) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.equipment-page__empty {
+  text-align: center;
+  padding: 3rem 0;
+  color: var(--muted-foreground);
+  font-size: 1rem;
+}

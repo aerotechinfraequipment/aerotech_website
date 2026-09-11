@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════════════
+   ABOUT PAGE
+   ═══════════════════════════════════════════════ */
+
+/* ─── Hero Banner ─── */
+.about-hero {
+  padding: 4rem 0 6rem;
+  background: var(--ink);
+
+  @media (min-width: 768px) { padding: 6rem 0 8rem; }
+}
+
+/* ─── Who We Are ─── */
+.about-who {
+  padding: 3.5rem 0;
+  background: var(--background);
+
+  @media (min-width: 768px) { padding: 5rem 0; }
+}
+
+.about-who__grid {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+
+  @media (min-width: 1024px) { grid-template-columns: 1fr 1fr; }
+}
+
+.about-who__content {
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+    text-wrap: balance;
+  }
+  
+  p {
+    margin-top: 1.25rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+}
+
+.about-who__image {
+  img {
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+/* ─── Values ─── */
+.about-values {
+  padding: 3.5rem 0;
+  background: var(--secondary);
+
+  @media (min-width: 768px) { padding: 5rem 0; }
+}
+
+.about-values__grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+
+  @media (min-width: 640px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1024px) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.value-card {
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+
+  &__num {
+    display: block;
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  &__title {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--foreground);
+  }
+
+  &__desc {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+}
+
+/* ─── Visit Us ─── */
+.about-visit {
+  padding: 3.5rem 0;
+  background: var(--background);
+
+  @media (min-width: 768px) { padding: 5rem 0; }
+}
+
+.about-visit__grid {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+
+  @media (min-width: 1024px) { grid-template-columns: 1fr 1fr; }
+}
+
+.about-visit__image {
+  order: 2;
+  
+  @media (min-width: 1024px) { order: 1; }
+  
+  img {
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+.about-visit__content {
+  order: 1;
+  
+  @media (min-width: 1024px) { order: 2; }
+  
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+    text-wrap: balance;
+  }
+  
+  p {
+    margin-top: 1.25rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+  
+  a.font-bold {
+    font-weight: 700;
+    color: var(--foreground);
+    &:hover { color: var(--accent-muted); }
+  }
+  
+  .btn {
+    margin-top: 2rem;
+  }
+}

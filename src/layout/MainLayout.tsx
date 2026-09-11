@@ -1,17 +1,16 @@
-// import Header from "../components/layout/Header";
-// @ts-ignore
-// import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="mainlayout">
-      {/* <Header /> */}
+      <Header />
 
       <main className="main-content">
         {children}
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
