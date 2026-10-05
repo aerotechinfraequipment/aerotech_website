@@ -1,4 +1,3 @@
-// import heroImg from "../../assets/hero-boom-lift.jpg"
 import heroBgVideo from "../../assets/hero_bg.mp4"
 import Button from "../ui/Button";
 

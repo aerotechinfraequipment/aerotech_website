@@ -1,26 +1,32 @@
 import { useState, useMemo } from "react";
 import SectionHeader from "../components/ui/SectionHeader";
 import EquipmentCard from "../components/ui/EquipmentCard";
-import { equipmentData } from "../data/equipment";
+import { equipments } from "../data/equipment/list";
 
-// Derive unique categories from data
 const ALL = "All";
-const getCategories = () => {
-  const cats = new Set(equipmentData.map((e) => e.category));
-  return [ALL, ...Array.from(cats)];
-};
 
 const EquipmentRental = () => {
+  const [activeBrand, setActiveBrand] = useState(ALL);
   const [activeCategory, setActiveCategory] = useState(ALL);
-  const categories = useMemo(() => getCategories(), []);
 
-  const filtered = useMemo(
-    () =>
-      activeCategory === ALL
-        ? equipmentData
-        : equipmentData.filter((e) => e.category === activeCategory),
-    [activeCategory]
-  );
+  // Derive unique sorted brands and categories from data
+  const brands = useMemo(() => {
+    const set = new Set(equipments.map((e) => e.brand));
+    return [ALL, ...Array.from(set).sort()];
+  }, []);
+
+  const categories = useMemo(() => {
+    const set = new Set(equipments.map((e) => e.category_formated));
+    return [ALL, ...Array.from(set).sort()];
+  }, []);
+
+  const filtered = useMemo(() => {
+    return equipments.filter((e) => {
+      const brandMatch = activeBrand === ALL || e.brand === activeBrand;
+      const catMatch = activeCategory === ALL || e.category_formated === activeCategory;
+      return brandMatch && catMatch;
+    });
+  }, [activeBrand, activeCategory]);
 
   return (
     <>
@@ -40,24 +46,49 @@ const EquipmentRental = () => {
       <section className="equipment-page" aria-label="Rental fleet catalogue">
         <div className="container">
 
-          {/* Category filter pills */}
-          <div
-            className="filter-pills"
-            role="group"
-            aria-label="Filter by category"
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                className={`filter-pill${activeCategory === cat ? " filter-pill--active" : ""}`}
-                aria-pressed={activeCategory === cat}
-                onClick={() => setActiveCategory(cat)}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Filter bar */}
+          <div className="eq-filters">
+            {/* Brand filter */}
+            <div className="eq-filters__group">
+              <span className="eq-filters__label">Brand</span>
+              <div className="filter-pills" role="group" aria-label="Filter by brand">
+                {brands.map((brand) => (
+                  <button
+                    key={brand}
+                    type="button"
+                    className={`filter-pill${activeBrand === brand ? " filter-pill--active" : ""}`}
+                    aria-pressed={activeBrand === brand}
+                    onClick={() => setActiveBrand(brand)}
+                  >
+                    {brand}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Category filter */}
+            <div className="eq-filters__group">
+              <span className="eq-filters__label">Category</span>
+              <div className="filter-pills" role="group" aria-label="Filter by category">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    className={`filter-pill${activeCategory === cat ? " filter-pill--active" : ""}`}
+                    aria-pressed={activeCategory === cat}
+                    onClick={() => setActiveCategory(cat)}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
+
+          {/* Result count */}
+          <p className="eq-result-count">
+            Showing <strong>{filtered.length}</strong> machine{filtered.length !== 1 ? "s" : ""}
+          </p>
 
           {/* Equipment grid */}
           {filtered.length > 0 ? (
@@ -67,7 +98,7 @@ const EquipmentRental = () => {
               ))}
             </div>
           ) : (
-            <p className="equipment-page__empty">No equipment found for this category.</p>
+            <p className="equipment-page__empty">No equipment found for the selected filters.</p>
           )}
         </div>
       </section>

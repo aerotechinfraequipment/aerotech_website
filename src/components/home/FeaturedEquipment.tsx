@@ -1,10 +1,10 @@
 import SectionHeader from "../ui/SectionHeader";
 import EquipmentCard from "../ui/EquipmentCard";
-import { equipmentData } from "../../data/equipment";
+import { equipments } from "../../data/equipment/list";
+
+const featured = equipments.filter((e) => e.can_show_in_home);
 
 const FeaturedEquipment = () => {
-  const featured = equipmentData.slice(0, 3);
-
   return (
     <section className="featured-equipment">
       <div className="container">

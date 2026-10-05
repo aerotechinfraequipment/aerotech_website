@@ -1,0 +1,313 @@
+/* ═══════════════════════════════════════════════
+   EQUIPMENT DETAIL PAGE
+   ═══════════════════════════════════════════════ */
+
+/* ── Breadcrumb ─────────────────────────────────── */
+.eq-detail-breadcrumb {
+  background: var(--secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  list-style: none;
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    color: var(--muted-foreground);
+    font-weight: 500;
+    transition: color 0.15s ease;
+
+    &:hover { color: var(--accent-muted); }
+  }
+
+  li[aria-current="page"] {
+    color: var(--foreground);
+    font-weight: 700;
+  }
+}
+
+/* ── Main section ──────────────────────────────── */
+.eq-detail {
+  padding: 3rem 0 4rem;
+  background: var(--background);
+
+  @media (min-width: 768px) { padding: 4rem 0 6rem; }
+}
+
+.eq-detail__grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* ── Image panel ───────────────────────────────── */
+.eq-detail__image-panel {
+  position: sticky;
+  top: 5rem;
+}
+
+.eq-detail__img-wrap {
+  position: relative;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.eq-detail__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 2rem;
+  transition: transform 0.4s ease;
+
+  &:hover { transform: scale(1.03); }
+}
+
+/* Availability badge */
+.eq-detail__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(8px);
+
+  &--available {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--emerald-text);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  &--rented {
+    background: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+  }
+}
+
+.eq-detail__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  .eq-detail__badge--available & { background: var(--emerald); }
+  .eq-detail__badge--rented &    { background: #ef4444; }
+}
+
+/* ── Info panel ────────────────────────────────── */
+.eq-detail__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Brand · Category row */
+.eq-detail__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.eq-detail__brand {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-foreground);
+  background: var(--accent);
+  padding: 0.2rem 0.65rem;
+  border-radius: 0.375rem;
+}
+
+.eq-detail__sep {
+  color: var(--muted-foreground);
+  font-size: 1rem;
+}
+
+.eq-detail__cat {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Equipment name — h1 */
+.eq-detail__name {
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Rental type */
+.eq-detail__rental-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  width: fit-content;
+}
+
+.eq-detail__rental-icon {
+  font-size: 0.9rem;
+}
+
+/* Divider */
+.eq-detail__divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* Section title */
+.eq-detail__section-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+}
+
+/* Description */
+.eq-detail__desc {
+  p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--muted-foreground);
+  }
+}
+
+/* Models */
+.eq-detail__model-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.eq-detail__model-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.eq-detail__model-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* CTAs */
+.eq-detail__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  .btn { flex: 1; min-width: 8rem; }
+}
+
+
+/* Back link */
+.eq-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  transition: color 0.15s ease;
+
+  &:hover { color: var(--foreground); }
+}
+
+/* ── Info strip ────────────────────────────────── */
+.eq-detail-strip {
+  background: var(--ink);
+  padding: 3rem 0;
+
+  @media (min-width: 768px) { padding: 4rem 0; }
+}
+
+.eq-detail-strip__grid {
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: 640px)  { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1024px) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.eq-detail-strip__card {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--ink-border);
+  background: var(--ink-soft);
+  transition: border-color 0.2s ease;
+
+  &:hover { border-color: var(--accent); }
+}
+
+.eq-detail-strip__icon {
+  font-size: 1.75rem;
+  display: block;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.eq-detail-strip__card {
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-foreground);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--steel);
+  }
+}

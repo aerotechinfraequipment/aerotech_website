@@ -3,11 +3,11 @@ import MainLayout from "./layout/MainLayout";
 
 import Home from "./pages/Home";
 import EquipmentRental from "./pages/EquipmentRental";
+import EquipmentDetail from "./pages/EquipmentDetail";
 import Products from "./pages/Products";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-// import ComingSoon from "./pages/ComingSoon"; 
-// import UnderConstruction from "./pages/UnderConstruction";
+
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/equipment" element={<EquipmentRental />} />
+          <Route path="/equipment/:id" element={<EquipmentDetail />} />
           <Route path="/products" element={<Products />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

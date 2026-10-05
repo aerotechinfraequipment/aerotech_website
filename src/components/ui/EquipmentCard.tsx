@@ -1,48 +1,70 @@
-import { Link } from "react-router-dom";
-import Button from "./Button";
-import type { Equipment } from "../../data/equipment";
+import { useNavigate } from "react-router-dom";
+import type { Equipment } from "../../data/equipment/list";
 
 interface EquipmentCardProps {
   item: Equipment;
 }
 
 const EquipmentCard = ({ item }: EquipmentCardProps) => {
+  const navigate = useNavigate();
   const isAvailable = item.status === "available";
 
   return (
-    <article className="equipment-card">
-      <Link
-        to={`/equipment/${item.slug}`}
-        className="equipment-card__image"
-        aria-label={`View ${item.name}`}
-      >
-        <img src={item.image} alt={item.name} loading="lazy" />
-        <div className="equipment-card__badge">
-          <span
-            className={`badge ${isAvailable ? "badge--available" : "badge--rented"}`}
-          >
-            <span className="badge__dot" />
-            <span>{isAvailable ? "Available" : "Currently Rented"}</span>
-          </span>
-        </div>
-      </Link>
+    <article
+      className="eq-card"
+      onClick={() => navigate(`/equipment/${item.id}`)}
+      role="link"
+      tabIndex={0}
+      aria-label={`View details for ${item.name}`}
+      onKeyDown={(e) => e.key === "Enter" && navigate(`/equipment/${item.id}`)}
+    >
+      {/* Image */}
+      <div className="eq-card__img-wrap">
+        <img src={item.image} alt={item.name} loading="lazy" className="eq-card__img" />
+        <span className={`eq-card__badge ${isAvailable ? "eq-card__badge--available" : "eq-card__badge--rented"}`}>
+          <span className="eq-card__badge-dot" />
+          {isAvailable ? "Available" : "Rented"}
+        </span>
+      </div>
 
-      <div className="equipment-card__body">
-        <p className="equipment-card__category">{item.category}</p>
-        <h3 className="equipment-card__name">
-          <Link to={`/equipment/${item.slug}`}>{item.name}</Link>
-        </h3>
-        <p className="equipment-card__desc">{item.description}</p>
-        <p className="equipment-card__rental-type">{item.rentalType}</p>
-        <div className="equipment-card__actions">
-          <Button variant="dark" to={`/equipment/${item.slug}`}>View Equipment</Button>
-          <Button
-            variant="accent"
-            href={`https://wa.me/919791890636?text=${encodeURIComponent(`Hello AeroTech, I am interested in renting ${item.name}. Please share availability and rental pricing.`)}`}
-            external
-          >
-            Get Quote
-          </Button>
+      {/* Body */}
+      <div className="eq-card__body">
+        {/* Brand */}
+        <span className="eq-card__brand">{item.brand}</span>
+
+        {/* Name */}
+        <h3 className="eq-card__name">{item.name}</h3>
+
+        {/* Category */}
+        <p className="eq-card__category">{item.category_formated}</p>
+
+        {/* Models */}
+        {item.models?.length > 0 && (
+          <div className="eq-card__models">
+            {item.models.map((m) => (
+              <span key={m} className="eq-card__model-tag">{m}</span>
+            ))}
+          </div>
+        )}
+
+        {/* Footer CTAs */}
+        <div className="eq-card__footer">
+          <div className="eq-card__actions">
+            <span className="eq-card__btn eq-card__btn--view">
+              View Equipment
+            </span>
+            <a
+              href={`https://wa.me/919791890636?text=${encodeURIComponent(
+                `Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and pricing.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="eq-card__btn eq-card__btn--quote"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Get Quote
+            </a>
+          </div>
         </div>
       </div>
     </article>
