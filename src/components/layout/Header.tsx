@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "Equipment Rental", to: "/equipment" },
   { label: "Products", to: "/products" },
+  { label: "Steel Products", to: "/steel-products" },
   // { label: "Industries", to: "/industries" },
   // { label: "Projects", to: "/projects" },
   // { label: "Brands", to: "/brands" },
