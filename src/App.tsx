@@ -1,28 +1,68 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 
-import Home from "./pages/Home";
-import EquipmentRental from "./pages/EquipmentRental";
-import EquipmentDetail from "./pages/EquipmentDetail";
-import Products from "./pages/Products";
-import SteelProducts from "./pages/SteelProducts";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+// Code-split pages on route demand
+const Home = lazy(() => import("./pages/Home"));
+const EquipmentRental = lazy(() => import("./pages/EquipmentRental"));
+const EquipmentDetail = lazy(() => import("./pages/EquipmentDetail"));
+const Products = lazy(() => import("./pages/Products"));
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const SteelProducts = lazy(() => import("./pages/SteelProducts"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
 
+// Automatically scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+// Accessible loading fallback
+function PageFallback() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "50vh",
+        color: "var(--muted-foreground)",
+        fontSize: "1rem",
+        fontWeight: 600,
+      }}
+      role="status"
+      aria-live="polite"
+    >
+      <span>Loading AeroTech…</span>
+    </div>
+  );
+}
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <MainLayout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/equipment" element={<EquipmentRental />} />
-          <Route path="/equipment/:id" element={<EquipmentDetail />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/steel-products" element={<SteelProducts />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Suspense fallback={<PageFallback />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/equipment" element={<EquipmentRental />} />
+            <Route path="/equipment/:id" element={<EquipmentDetail />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:slug" element={<ProductDetail />} />
+            <Route path="/steel-products" element={<SteelProducts />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* Catch-all fallback */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
       </MainLayout>
     </BrowserRouter>
   );

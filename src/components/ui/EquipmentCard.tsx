@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type { Equipment } from "../../data/equipment/list";
 
 interface EquipmentCardProps {
@@ -8,24 +8,41 @@ interface EquipmentCardProps {
 const EquipmentCard = ({ item }: EquipmentCardProps) => {
   const navigate = useNavigate();
   const isAvailable = item.status === "available";
+  const detailPath = `/equipment/${item.id}`;
 
   return (
     <article
       className="eq-card"
-      onClick={() => navigate(`/equipment/${item.id}`)}
-      role="link"
+      onClick={() => navigate(detailPath)}
       tabIndex={0}
       aria-label={`View details for ${item.name}`}
-      onKeyDown={(e) => e.key === "Enter" && navigate(`/equipment/${item.id}`)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") navigate(detailPath);
+      }}
     >
       {/* Image */}
-      <div className="eq-card__img-wrap">
-        <img src={item.image} alt={item.name} loading="lazy" className="eq-card__img" />
-        <span className={`eq-card__badge ${isAvailable ? "eq-card__badge--available" : "eq-card__badge--rented"}`}>
+      <Link
+        to={detailPath}
+        className="eq-card__img-wrap"
+        tabIndex={-1}
+        aria-hidden="true"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={item.image}
+          alt={`${item.brand} ${item.name} rental equipment`}
+          loading="lazy"
+          className="eq-card__img"
+        />
+        <span
+          className={`eq-card__badge ${
+            isAvailable ? "eq-card__badge--available" : "eq-card__badge--rented"
+          }`}
+        >
           <span className="eq-card__badge-dot" />
           {isAvailable ? "Available" : "Rented"}
         </span>
-      </div>
+      </Link>
 
       {/* Body */}
       <div className="eq-card__body">
@@ -33,7 +50,15 @@ const EquipmentCard = ({ item }: EquipmentCardProps) => {
         <span className="eq-card__brand">{item.brand}</span>
 
         {/* Name */}
-        <h3 className="eq-card__name">{item.name}</h3>
+        <h3 className="eq-card__name">
+          <Link
+            to={detailPath}
+            onClick={(e) => e.stopPropagation()}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            {item.name}
+          </Link>
+        </h3>
 
         {/* Category */}
         <p className="eq-card__category">{item.category_formated}</p>
@@ -50,9 +75,13 @@ const EquipmentCard = ({ item }: EquipmentCardProps) => {
         {/* Footer CTAs */}
         <div className="eq-card__footer">
           <div className="eq-card__actions">
-            <span className="eq-card__btn eq-card__btn--view">
+            <Link
+              to={detailPath}
+              className="eq-card__btn eq-card__btn--view"
+              onClick={(e) => e.stopPropagation()}
+            >
               View Equipment
-            </span>
+            </Link>
             <a
               href={`https://wa.me/919791890636?text=${encodeURIComponent(
                 `Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and pricing.`

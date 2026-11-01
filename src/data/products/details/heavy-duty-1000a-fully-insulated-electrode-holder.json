@@ -1,0 +1,59 @@
+{
+  "id": "heavy-duty-1000a-fully-insulated-electrode-holder",
+  "slug": "heavy-duty-1000a-fully-insulated-electrode-holder",
+  "name": "Heavy Duty 1000A Fully Insulated Welding Electrode Holder",
+  "brand": "Classic Arc",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "Electrode Holders",
+  "shortDescription": "High-capacity 1000 Amp welding tong with forged brass jaws, heat-resistant DMC insulation handle, and heavy-duty spring for intense SMAW stick welding.",
+  "overview": "Engineered for high-amperage shielded metal arc welding (SMAW/MMA), this 1000 Amp fully insulated electrode holder delivers superior electrical conductivity and maximum operator safety under high-heat working conditions. Constructed with heavy forged copper-brass alloy jaws, it maintains low contact resistance and accepts electrode rods up to 10 mm in diameter. The ergonomically contoured handle is manufactured from high-impact, heat-resistant Dough Moulding Compound (DMC) with reinforced fiberglass insulation, preventing heat buildup and dielectric breakdown during multi-pass heavy fabrication.",
+  "keyFeatures": [
+    "Heavy-duty 1000A current capacity for continuous high-amperage structural welding",
+    "Forged copper-brass alloy jaws for optimum current transfer and minimal resistance heating",
+    "Multi-position grooved jaws holding electrodes securely at 45°, 90°, and 180° angles",
+    "High-impact, flame-retardant DMC fiberglass insulation resists spatter and heat",
+    "Heavy-gauge compression spring provides ultra-firm electrode clamping pressure",
+    "Recessed hex-head cable connection with brass ferrule for cables up to 95 sq mm",
+    "Ergonomic handle geometry prevents hand fatigue during prolonged production runs"
+  ],
+  "specifications": {
+    "Current Rating": "1000 Amp @ 60% Duty Cycle / 800 Amp @ 100%",
+    "Supported Electrode Diameters": "2.5 mm – 10.0 mm",
+    "Cable Capacity": "50 mm² – 95 mm²",
+    "Body Material": "Forged Copper-Brass Alloy",
+    "Insulation Material": "Fiberglass Reinforced DMC Compound",
+    "Connection Type": "Hex Socket Screw with Brass Pressure Plate",
+    "Length": "Approx. 290 mm",
+    "Weight": "Approx. 780 g",
+    "Standard Compliance": "EN 60974-11 / IS 2641"
+  },
+  "applications": [
+    "Shipbuilding and offshore rig welding",
+    "Heavy structural steel erection and pipe racks",
+    "Mining equipment repair and hardfacing",
+    "Pressure vessel multi-pass root and cap passes"
+  ],
+  "packageContents": [
+    "1x 1000A Fully Insulated Electrode Holder",
+    "1x Allen Key (Hex Wrench)",
+    "1x Copper Connection Ferrule Shim"
+  ],
+  "sourceUrl": "https://www.amazon.in/Welding-Electrode-Holder-Products-Industrial/dp/B0F87SG1YF",
+  "images": [
+    "/images/products/heavy-duty-1000a-fully-insulated-electrode-holder.jpg"
+  ],
+  "thumbnail": "/images/products/heavy-duty-1000a-fully-insulated-electrode-holder.jpg",
+  "inStock": true,
+  "featured": false,
+  "image": "/images/products/heavy-duty-1000a-fully-insulated-electrode-holder.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/61r5cE7w3DL._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/61r5cE7w3DL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/61F1Wk+qfPL._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/heavy-duty-1000a-fully-insulated-electrode-holder",
+  "specsSummary": "Current Rating: 1000 Amp @ 60% Duty Cycle / 800 Amp @ 100% | Supported Electrode Diameters: 2.5 mm – 10.0 mm",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in Heavy Duty 1000A Fully Insulated Welding Electrode Holder (Brand: Classic Arc). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20Heavy%20Duty%201000A%20Fully%20Insulated%20Welding%20Electrode%20Holder%20%28Brand%3A%20Classic%20Arc%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

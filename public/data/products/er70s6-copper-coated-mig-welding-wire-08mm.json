@@ -1,0 +1,57 @@
+{
+  "id": "er70s6-copper-coated-mig-welding-wire-08mm",
+  "slug": "er70s6-copper-coated-mig-welding-wire-08mm",
+  "name": "AWS ER70S-6 Copper Coated Mild Steel MIG Welding Wire (0.8mm, 15 kg)",
+  "brand": "WeldMaster",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "Welding Wire",
+  "shortDescription": "Precision layer-wound 0.8mm copper-coated solid MIG wire with high deoxidizer levels for clean, high-speed, porosity-free welding on structural mild steel.",
+  "overview": "AWS A5.18 ER70S-6 is a premium copper-coated carbon steel solid wire formulated for both semi-automatic and robotic GMAW (MIG/MAG) welding. Containing balanced additions of manganese and silicon as deoxidizers, it delivers outstanding weld puddle fluidity and performs reliably even on steel surfaces with light rust, mill scale, or oil film. The continuous, micro-thin copper coating guarantees superior electrical conductivity, low contact-tip wear, and long-term corrosion protection during storage. Precision layer winding ensures steady, slip-free feeding through torch liners at wire feed speeds up to 25 m/min.",
+  "keyFeatures": [
+    "AWS A5.18 ER70S-6 / EN ISO 14341-A G 42 4 M21 3Si1 classification",
+    "Precision layer wound on sturdy plastic spool for tangle-free feed consistency",
+    "Micro-thin electrolytic copper plating ensures smooth electrical pick-up and tip longevity",
+    "High silicon and manganese content ensures superior deoxidation and porosity-free beads",
+    "Ultra-low spatter levels minimizing post-weld cleanup and anti-spatter spray usage",
+    "Excellent impact toughness at sub-zero temperatures down to -30°C",
+    "Radiographic quality weld deposits suitable for certified structural inspections"
+  ],
+  "specifications": {
+    "Wire Diameter": "0.8 mm",
+    "Spool Weight": "15 kg Net Spool",
+    "Spool Type": "Standard Plastic Rim Spool (300 mm OD)",
+    "Shielding Gas": "100% CO2 or Ar + 15-25% CO2 Mixture",
+    "Tensile Strength": "500 – 640 MPa",
+    "Yield Strength": ">= 420 MPa",
+    "Elongation": ">= 22%",
+    "Charpy V-Notch Impact": ">= 47 J @ -30°C",
+    "Chemical Analysis": "C: 0.08%, Mn: 1.50%, Si: 0.90%, S: 0.015%, P: 0.015%"
+  },
+  "applications": [
+    "Structural steel framing and PEB warehouse structures",
+    "Automotive chassis, brackets, and sheet panels",
+    "Pressure vessels, gas cylinders, and boilers",
+    "General steel pipe fabrication and agricultural implements"
+  ],
+  "packageContents": [
+    "1x 15 kg Spool of 0.8mm ER70S-6 Copper Coated MIG Welding Wire"
+  ],
+  "sourceUrl": "https://www.amazon.in/Mig-Welding-Wire-0-8mm-Diameter-Weight/dp/B0FJLX87JQ",
+  "images": [
+    "/images/products/er70s6-copper-coated-mig-welding-wire-08mm.jpg"
+  ],
+  "thumbnail": "/images/products/er70s6-copper-coated-mig-welding-wire-08mm.jpg",
+  "inStock": true,
+  "featured": true,
+  "image": "/images/products/er70s6-copper-coated-mig-welding-wire-08mm.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/61N+p+3R7uL._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/61N+p+3R7uL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/71pP3W2R7uL._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/er70s6-copper-coated-mig-welding-wire-08mm",
+  "specsSummary": "Wire Diameter: 0.8 mm | Spool Weight: 15 kg Net Spool",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in AWS ER70S-6 Copper Coated Mild Steel MIG Welding Wire (0.8mm, 15 kg) (Brand: WeldMaster). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20AWS%20ER70S-6%20Copper%20Coated%20Mild%20Steel%20MIG%20Welding%20Wire%20%280.8mm%2C%2015%20kg%29%20%28Brand%3A%20WeldMaster%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

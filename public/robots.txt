@@ -1,0 +1,9 @@
+# Robots.txt for AeroTech Infra Equipment
+# https://aerotechinfra.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://aerotechinfra.com/sitemap.xml
+

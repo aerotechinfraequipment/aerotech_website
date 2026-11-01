@@ -6,15 +6,32 @@ interface ProductCardProps {
   item: Product;
 }
 
+const PLACEHOLDER = "/images/product-placeholder.png";
+
 const ProductCard = ({ item }: ProductCardProps) => {
+  // Determine product image path: prefer explicit image, or convention /images/products/<slug>.jpg
+  const imageSrc = item.image || item.thumbnail || `/images/products/${item.slug}.jpg`;
+
   return (
     <article className="product-card">
       <Link
         to={`/products/${item.slug}`}
         className="product-card__image"
-        aria-label={`View ${item.name}`}
+        aria-label={`View ${item.name} details`}
+        style={{ display: "block", overflow: "hidden", background: "#ffffff" }}
       >
-        <img src={item.image} alt={item.name} loading="lazy" />
+        <img
+          src={imageSrc}
+          alt={`${item.name} by ${item.brand}`}
+          loading="lazy"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.src.includes("product-placeholder.png")) {
+              target.src = PLACEHOLDER;
+            }
+          }}
+          style={{ width: "100%", height: "100%", objectFit: "contain", padding: "0.75rem" }}
+        />
       </Link>
 
       <div className="product-card__body">
@@ -27,13 +44,6 @@ const ProductCard = ({ item }: ProductCardProps) => {
         </h3>
         <div className="product-card__actions">
           <Button variant="dark" to={`/products/${item.slug}`}>View Product</Button>
-          <Button
-            variant="outline-dark"
-            href={`https://wa.me/919791890636?text=${encodeURIComponent(`Hello AeroTech, I am interested in ${item.name}. Please share price and availability.`)}`}
-            external
-          >
-            Enquire Now
-          </Button>
         </div>
       </div>
     </article>

@@ -1,12 +1,38 @@
 import { useState, useMemo } from "react";
 import SectionHeader from "../components/ui/SectionHeader";
 import ProductCard from "../components/ui/ProductCard";
+import SEO from "../components/seo/SEO";
 import {
   productsData,
   productCategories,
   productBrands,
   productTypes,
 } from "../data/products";
+
+const productsListSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Industrial Products & Hardware Catalogue",
+  "description": "Genuine industrial tools, welding equipment, fasteners, paints, and safety equipment from ESAB, Bosch, DeWalt, Taparia, Stanley, and 3M.",
+  "url": "https://aerotechinfra.com/products",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aerotechinfra.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Industrial Products",
+        "item": "https://aerotechinfra.com/products"
+      }
+    ]
+  }
+};
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -38,14 +64,22 @@ const Products = () => {
 
   return (
     <>
+      <SEO
+        title="Industrial Products & Hardware Catalogue | Power Tools, Welding & Safety"
+        description="Shop genuine industrial products and hardware in Sriperumbudur & Chennai. Bosch, ESAB, Taparia, Stanley, Berger, Asian Paints, and 3M. Prompt dispatch and GST invoicing."
+        canonical="/products"
+        keywords="industrial products Sriperumbudur, welding equipment Chennai, power tools, safety PPE, Bosch power tools, Taparia tools, ESAB welding, industrial supply Tamil Nadu"
+        schema={productsListSchema}
+      />
+
       {/* ── Hero Banner ───────────────────────────────── */}
       <section className="page-hero page-hero--dark" aria-label="Products catalogue">
         <div className="container">
           <SectionHeader
-            subtitle="Product Catalogue"
             title="Industrial products & hardware"
             description="Genuine products from leading brands — available to businesses and walk-in customers. Search or filter to find what you need."
             theme="dark"
+            as="h1"
           />
         </div>
       </section>

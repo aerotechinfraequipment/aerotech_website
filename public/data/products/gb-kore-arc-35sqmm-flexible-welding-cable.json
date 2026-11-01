@@ -1,0 +1,57 @@
+{
+  "id": "gb-kore-arc-35sqmm-flexible-welding-cable",
+  "slug": "gb-kore-arc-35sqmm-flexible-welding-cable",
+  "name": "GB KORE ARC 35 sq mm Flexible Pure Copper Welding Cable",
+  "brand": "GB Kore Arc",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "Welding Cables",
+  "shortDescription": "Heavy-duty 35 sq mm flexible electrolytic pure copper welding cable with double-sheathed HOFR (Heat, Oil & Flame Retardant) elastomeric rubber insulation.",
+  "overview": "GB KORE ARC 35 sq mm welding cable is engineered to meet the demanding requirements of manual and automated arc welding rigs, power generators, and high-frequency inverter systems. Fabricated from ultra-fine Class 6 annealed electrolytic copper strands, it offers unparalleled flexibility and high thermal overload tolerance, drastically minimizing voltage drop over long operational runs. The dual-extruded outer jacket is composed of high-grade HOFR (Heat, Oil & Flame Retardant) synthetic rubber, resisting ozone, sparks, diesel fuel, machine oils, and dragging over jagged metal edges.",
+  "keyFeatures": [
+    "100% Electrolytic grade annealed bare copper conductor (Class 6 multi-strand)",
+    "35 sq mm cross-sectional area supporting continuous welding currents up to 400A",
+    "HOFR (Heat, Oil, and Flame Retardant) elastomeric rubber protective sheath",
+    "Exceptional flexibility allowing tight bends without conductor kink or fatigue",
+    "Operational temperature rating spanning -30°C to +90°C",
+    "Resistant to hot weld spatter, ozone, mechanical abrasion, and weathering",
+    "Conforms to IS 9857 and BS 638 standards for industrial welding power delivery"
+  ],
+  "specifications": {
+    "Conductor Area": "35 sq mm",
+    "Conductor Material": "100% Annealed Electrolytic Copper",
+    "Current Carrying Capacity (60% Duty)": "400 A",
+    "Current Carrying Capacity (100% Duty)": "310 A",
+    "Voltage Rating": "100 V AC / 600 V DC",
+    "Operating Temperature": "-30°C to +90°C",
+    "Insulation Type": "Double Layer HOFR Synthetic Elastomer",
+    "Outer Diameter": "Approx. 13.5 mm",
+    "Standard": "IS 9857 / IEC 60245-6"
+  },
+  "applications": [
+    "Connecting power sources to electrode holders and earth clamps",
+    "MIG, TIG, and submerged arc welding machines",
+    "Heavy fabrication yards, shipyards, and construction sites",
+    "Temporary heavy power feed in harsh industrial environments"
+  ],
+  "packageContents": [
+    "1x Coil of GB KORE ARC 35 sq mm Flexible Copper Welding Cable"
+  ],
+  "sourceUrl": "https://www.amazon.in/GB-KORE-ARC-Resistant-Flexible/dp/B0FJSCSNRH",
+  "images": [
+    "/images/products/gb-kore-arc-35sqmm-flexible-welding-cable.jpg"
+  ],
+  "thumbnail": "/images/products/gb-kore-arc-35sqmm-flexible-welding-cable.jpg",
+  "inStock": true,
+  "featured": false,
+  "image": "/images/products/gb-kore-arc-35sqmm-flexible-welding-cable.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/61N+zJ6o9vL._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/61N+zJ6o9vL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/71tQeJ4o9vL._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/gb-kore-arc-35sqmm-flexible-welding-cable",
+  "specsSummary": "Conductor Area: 35 sq mm | Conductor Material: 100% Annealed Electrolytic Copper",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in GB KORE ARC 35 sq mm Flexible Pure Copper Welding Cable (Brand: GB Kore Arc). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20GB%20KORE%20ARC%2035%20sq%20mm%20Flexible%20Pure%20Copper%20Welding%20Cable%20%28Brand%3A%20GB%20Kore%20Arc%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "label": "All Categories",
+    "slug": ""
+  },
+  {
+    "label": "Adhesives & Tapes",
+    "slug": "Adhesives & Tapes",
+    "categorySlug": "adhesives-tapes"
+  },
+  {
+    "label": "Chemicals & Sealants",
+    "slug": "Chemicals & Sealants",
+    "categorySlug": "chemicals-sealants"
+  },
+  {
+    "label": "Civil Products",
+    "slug": "Civil Products",
+    "categorySlug": "civil-products"
+  },
+  {
+    "label": "Cutting Wheels",
+    "slug": "Cutting Wheels",
+    "categorySlug": "cutting-wheels"
+  },
+  {
+    "label": "Engineering Products",
+    "slug": "Engineering Products",
+    "categorySlug": "engineering-products"
+  },
+  {
+    "label": "Hand Tools",
+    "slug": "Hand Tools",
+    "categorySlug": "hand-tools"
+  },
+  {
+    "label": "Paints & Finishing",
+    "slug": "Paints & Finishing",
+    "categorySlug": "paints-finishing"
+  },
+  {
+    "label": "Power Tools",
+    "slug": "Power Tools",
+    "categorySlug": "power-tools"
+  },
+  {
+    "label": "Safety Equipment",
+    "slug": "Safety Equipment",
+    "categorySlug": "safety-equipment"
+  },
+  {
+    "label": "Welding Equipment",
+    "slug": "Welding Equipment",
+    "categorySlug": "welding-equipment"
+  }
+]

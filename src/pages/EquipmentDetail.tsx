@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { equipments } from "../data/equipment/list";
 import Button from "../components/ui/Button";
+import SEO from "../components/seo/SEO";
 
 const EquipmentDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,8 +16,76 @@ const EquipmentDetail = () => {
     `Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and rental pricing.`
   );
 
+  const equipmentSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": `https://aerotechinfra.com/equipment/${item.id}#product`,
+        "name": item.name,
+        "description": item.description,
+        "image": item.image.startsWith("http") ? item.image : `https://aerotechinfra.com${item.image}`,
+        "brand": {
+          "@type": "Brand",
+          "name": item.brand
+        },
+        "category": item.category_formated,
+        "offers": {
+          "@type": "Offer",
+          "url": `https://aerotechinfra.com/equipment/${item.id}`,
+          "priceCurrency": "INR",
+          "price": "0.00",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "priceType": "https://schema.org/RentalPriceSpecification",
+            "unitText": item.rentalType || "Day/Month"
+          },
+          "availability": isAvailable
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+          "seller": {
+            "@type": "Organization",
+            "name": "AeroTech Infra Equipment Private Limited"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://aerotechinfra.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Equipment Rental",
+            "item": "https://aerotechinfra.com/equipment"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": item.name,
+            "item": `https://aerotechinfra.com/equipment/${item.id}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
+      <SEO
+        title={`${item.name} Rental (${item.brand}) | Daily & Monthly Hire`}
+        description={`Rent ${item.brand} ${item.name} in Sriperumbudur & Chennai, Tamil Nadu. ${item.description.slice(0, 150)}... Site-ready with full technical support.`}
+        canonical={`/equipment/${item.id}`}
+        keywords={`${item.name}, ${item.brand} rental, ${item.category_formated} hire, construction equipment rental Tamil Nadu`}
+        ogType="product"
+        schema={equipmentSchema}
+      />
+
       {/* ── Breadcrumb ──────────────────────────────── */}
       <div className="eq-detail-breadcrumb">
         <div className="container">
@@ -41,7 +110,7 @@ const EquipmentDetail = () => {
             <div className="eq-detail__img-wrap">
               <img
                 src={item.image}
-                alt={item.name}
+                alt={`${item.brand} ${item.name} - Rental Equipment`}
                 className="eq-detail__img"
               />
               {/* Availability badge */}

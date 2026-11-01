@@ -1,9 +1,35 @@
 import { useState, useMemo } from "react";
 import SectionHeader from "../components/ui/SectionHeader";
 import EquipmentCard from "../components/ui/EquipmentCard";
+import SEO from "../components/seo/SEO";
 import { equipments } from "../data/equipment/list";
 
 const ALL = "All";
+
+const equipmentListSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Construction Equipment Rental Fleet",
+  "description": "Inspected, site-ready boom lifts, scissor lifts, excavators, and cranes for daily, weekly, and monthly hire across Tamil Nadu.",
+  "url": "https://aerotechinfra.com/equipment",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aerotechinfra.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Equipment Rental",
+        "item": "https://aerotechinfra.com/equipment"
+      }
+    ]
+  }
+};
 
 const EquipmentRental = () => {
   const [activeBrand, setActiveBrand] = useState(ALL);
@@ -30,14 +56,22 @@ const EquipmentRental = () => {
 
   return (
     <>
+      <SEO
+        title="Construction Equipment Rental Fleet | Boom Lifts, Cranes & Scissor Lifts"
+        description="Browse AeroTech's heavy equipment rental fleet in Sriperumbudur & Chennai. Genie & JLG boom lifts, rough terrain scissor lifts, SANY excavators and all-terrain cranes."
+        canonical="/equipment"
+        keywords="equipment rental fleet, boom lift rental Tamil Nadu, scissor lift hire Chennai, Genie boom lift, JLG articulated lift, SANY crane rental, excavator rental"
+        schema={equipmentListSchema}
+      />
+
       {/* ── Hero Banner ───────────────────────────────── */}
       <section className="page-hero page-hero--dark" aria-label="Equipment Rental">
         <div className="container">
           <SectionHeader
-            subtitle="Equipment Rental"
             title="Our rental fleet"
             description="Every machine is inspected, maintained and ready for productive work on your site. Daily and monthly rental plans available."
             theme="dark"
+            as="h1"
           />
         </div>
       </section>

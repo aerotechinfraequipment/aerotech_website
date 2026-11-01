@@ -8,7 +8,6 @@ const Brands = () => {
     <section className="brands-section">
       <div className="container">
         <SectionHeader
-          subtitle="Brands We Carry"
           title="Genuine products from leading manufacturers"
           align="center"
         />

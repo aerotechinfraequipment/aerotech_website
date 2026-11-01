@@ -1,0 +1,57 @@
+{
+  "id": "3m-securefit-5000lrx-non-ventilated-hard-hat",
+  "slug": "3m-securefit-5000lrx-non-ventilated-hard-hat",
+  "name": "3M SecureFit 5000LRX Non-Ventilated Ratchet Hard Hat Safety Helmet",
+  "brand": "3M",
+  "category": "Safety Equipment",
+  "categorySlug": "safety-equipment",
+  "type": "Safety Helmets",
+  "shortDescription": "Premium dielectric Class G and E hard hat with 3M Pressure Diffusion ratchet suspension and UVicator solar radiation degradation sensor.",
+  "overview": "The 3M SecureFit 5000LRX safety helmet introduces game-changing ergonomic comfort and dielectric electrical protection for utility linemen, maintenance electricians, and heavy industrial workers. Utilizing patented 3M Pressure Diffusion Technology, the suspension flexes to naturally conform to the wearer's forehead, reducing forehead contact pressure by up to 20% compared to conventional suspensions. Non-ventilated and rated Class G and E for dielectric insulation up to 20,000 Volts, it also features the proprietary 3M UVicator sensor disc, which turns from red to white when UV exposure has compromised shell integrity.",
+  "keyFeatures": [
+    "Patented 3M Pressure Diffusion Technology reduces forehead pressure points by 20%",
+    "Non-ventilated dielectric design rated Class G and E for high voltage protection (up to 20 kV)",
+    "Integrated 3M UVicator sensor visually indicates when UV radiation requires helmet replacement",
+    "Smooth 4-point ratchet suspension sits low on the nape for exceptional stability when bending",
+    "Reversible suspension allows wearing helmet backwards in tight spaces or with face shields",
+    "Accessory slots accept 3M Peltor earmuffs, communication headsets, and face shields",
+    "Conforms to ANSI/ISEA Z89.1 Type 1 and CSA Z94.1 standards"
+  ],
+  "specifications": {
+    "Dielectric Rating": "ANSI/ISEA Z89.1 Class G and E (Tested to 20,000 V)",
+    "Type": "Type 1 (Top Impact Protection)",
+    "Suspension": "4-Point Ratchet with Pressure Diffusion Technology",
+    "Ventilation": "Non-Ventilated (Solid Shell)",
+    "Sensor Feature": "3M UVicator UV Radiation Life Indicator",
+    "Shell Material": "High Density Polyethylene (HDPE)",
+    "Color": "White / High Visibility"
+  },
+  "applications": [
+    "High-voltage electrical substation and line maintenance",
+    "Chemical processing and petrochemical refinery towers",
+    "Commercial industrial construction and crane lifting zones",
+    "Telecom tower and wind turbine maintenance"
+  ],
+  "packageContents": [
+    "1x 3M SecureFit 5000LRX Non-Ventilated Hard Hat",
+    "1x Pressure Diffusion 4-Point Ratchet Suspension",
+    "1x Premium Washable Sweatband"
+  ],
+  "sourceUrl": "https://www.amazon.in/5000LRX-Industrial-Non-Ventilated-suspension-Certified/dp/B0FXSCHB1M",
+  "images": [
+    "/images/products/3m-securefit-5000lrx-non-ventilated-hard-hat.jpg"
+  ],
+  "thumbnail": "/images/products/3m-securefit-5000lrx-non-ventilated-hard-hat.jpg",
+  "inStock": true,
+  "featured": false,
+  "image": "/images/products/3m-securefit-5000lrx-non-ventilated-hard-hat.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/61Nf+2P+WVL._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/61Nf+2P+WVL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/61U+8i7Z6RL._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/3m-securefit-5000lrx-non-ventilated-hard-hat",
+  "specsSummary": "Dielectric Rating: ANSI/ISEA Z89.1 Class G and E (Tested to 20,000 V) | Type: Type 1 (Top Impact Protection)",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in 3M SecureFit 5000LRX Non-Ventilated Ratchet Hard Hat Safety Helmet (Brand: 3M). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%203M%20SecureFit%205000LRX%20Non-Ventilated%20Ratchet%20Hard%20Hat%20Safety%20Helmet%20%28Brand%3A%203M%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

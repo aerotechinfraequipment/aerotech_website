@@ -1,12 +1,12 @@
 // Layout
-@import "./layout/header";
-@import "./layout/footer";
+@use "./layout/header" as *;
+@use "./layout/footer" as *;
 
 // Pages
-@import "./pages/home";
-@import "./pages/equipment-page";
-@import "./pages/equipment-detail";
-@import "./pages/products-page";
-@import "./pages/steel-products-page";
-@import "./pages/about-page";
-@import "./pages/contact-page";
+@use "./pages/home" as *;
+@use "./pages/equipment-page" as *;
+@use "./pages/equipment-detail" as *;
+@use "./pages/products-page" as *;
+@use "./pages/steel-products-page" as *;
+@use "./pages/about-page" as *;
+@use "./pages/contact-page" as *;

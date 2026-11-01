@@ -1,0 +1,60 @@
+{
+  "id": "euro-connector-mig-welding-torch-mb24kd",
+  "slug": "euro-connector-mig-welding-torch-mb24kd",
+  "name": "Binzel Style MB 24KD Euro Connection MIG Welding Torch (3 Meter)",
+  "brand": "Parweld",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "MIG Torches",
+  "shortDescription": "Ergonomic 250A gas-cooled MIG/MAG welding torch with universal Euro central connection, high-flex coaxial cable package, and ball-joint strain relief.",
+  "overview": "The MB 24KD style MIG welding torch is the international industry standard for high-amperage gas metal arc welding on mild steel, stainless steel, and aluminium. Featuring a universal Euro central connector with spring-loaded contact pins, this torch connects seamlessly to virtually all modern MIG/MAG power sources. The ergonomic handle incorporates anti-slip rubber inserts, a responsive micro-switch trigger, and a ball-joint cable articulation that drastically reduces wrist fatigue during extended welding sessions. Engineered with heavy-duty brass front-end consumables and a high-efficiency coaxial power-gas cable, it delivers stable shielding gas flow and cool operation up to 250A.",
+  "keyFeatures": [
+    "Universal Euro central adapter compatible with ESAB, Kemppi, Miller, and all standard machines",
+    "Rated 250A CO2 and 220A Mixed Gas (Ar/CO2) @ 60% duty cycle",
+    "Optimal torch cooling design extending front-end consumable life",
+    "Ergonomic handle with soft grip inserts and ball-joint pivot for maximum agility",
+    "Heavy-duty steel spring strain relief on both machine and handle ends",
+    "Includes heavy brass gas nozzle, M6 contact tip holder, and gas diffuser",
+    "High-tensile insulated coaxial cable withstands heavy drag and spatter"
+  ],
+  "specifications": {
+    "Cooling Type": "Air / Gas Cooled",
+    "Current Rating (CO2)": "250 A @ 60% Duty Cycle",
+    "Current Rating (Mixed Gas)": "220 A @ 60% Duty Cycle",
+    "Supported Wire Diameters": "0.8 mm – 1.2 mm",
+    "Cable Length": "3 Meters",
+    "Connection": "Standard Euro Central Adapter",
+    "Trigger Type": "Micro-switch Momentary Trigger",
+    "Compliance": "EN 60974-7"
+  },
+  "applications": [
+    "Medium to heavy sheet metal fabrication",
+    "Automotive manufacturing and roll cage welding",
+    "Steel structural assembly and tank manufacturing",
+    "Production line manual MIG/MAG operations"
+  ],
+  "packageContents": [
+    "1x MB 24KD MIG Torch (3m with Euro Connector)",
+    "1x Conical Gas Nozzle",
+    "1x Contact Tip (0.8mm)",
+    "1x Tip Holder with Gas Diffuser",
+    "1x Steel Wire Liner"
+  ],
+  "sourceUrl": "https://www.amazon.in/Welding-Connection-European-Machine-Equipment/dp/B0B1YHQ7DM",
+  "images": [
+    "/images/products/euro-connector-mig-welding-torch-mb24kd.jpg"
+  ],
+  "thumbnail": "/images/products/euro-connector-mig-welding-torch-mb24kd.jpg",
+  "inStock": true,
+  "featured": false,
+  "image": "/images/products/euro-connector-mig-welding-torch-mb24kd.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/61Nf+2P+WVL._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/61Nf+2P+WVL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/61U+8i7Z6RL._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/euro-connector-mig-welding-torch-mb24kd",
+  "specsSummary": "Cooling Type: Air / Gas Cooled | Current Rating (CO2): 250 A @ 60% Duty Cycle",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in Binzel Style MB 24KD Euro Connection MIG Welding Torch (3 Meter) (Brand: Parweld). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20Binzel%20Style%20MB%2024KD%20Euro%20Connection%20MIG%20Welding%20Torch%20%283%20Meter%29%20%28Brand%3A%20Parweld%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

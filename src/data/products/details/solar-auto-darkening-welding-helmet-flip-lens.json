@@ -1,0 +1,62 @@
+{
+  "id": "solar-auto-darkening-welding-helmet-flip-lens",
+  "slug": "solar-auto-darkening-welding-helmet-flip-lens",
+  "name": "Solar Auto-Darkening Welding Helmet with Flip Front Protective Lens",
+  "brand": "Toolify",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "Welding Helmets",
+  "shortDescription": "Solar-assisted variable shade (DIN 9-13) auto-darkening welding hood with dual arc sensors, external grind mode, and 4-point ergonomic ratchet headgear.",
+  "overview": "Providing comprehensive optical protection for professional welders, this solar-powered auto-darkening welding helmet seamlessly switches from clear shade DIN 4 to dark shade DIN 9-13 within 1/25,000th of a second upon arc ignition. Constructed from ultra-tough, high-impact polyamide nylon, the lightweight shell shields the face, neck, and ears from direct radiation, radiant heat, and molten spatter. It features high optical clarity ratings (1/1/1/2) for accurate weld pool inspection, an external dial for stepless shade adjustment, and an independent grind function allowing continuous eye protection during post-weld grinding.",
+  "keyFeatures": [
+    "Ultra-fast switching speed under 1/25,000 second from light to dark",
+    "Variable shade selection from DIN 9 to DIN 13 with external sensitivity dial",
+    "Dual high-sensitivity arc sensors for instantaneous arc detection in MMA, MIG, and TIG",
+    "Clear shade DIN 4 in non-welding state for effortless setup and alignment",
+    "External grinding switch locks lens in shade 4 for grinding safety",
+    "Solar cells backed by replaceable long-life CR2032 lithium battery",
+    "Ergonomic 4-point multi-adjustable ratchet headgear with plush moisture-wicking sweatband",
+    "High impact resistant nylon shell meeting EN 175 B and ANSI Z87.1"
+  ],
+  "specifications": {
+    "Viewing Area": "92 mm x 42 mm",
+    "Filter Cartridge Size": "110 mm x 90 mm x 9 mm",
+    "Light State Shade": "DIN 4",
+    "Dark State Shade": "DIN 9 – DIN 13 (Stepless External Knob)",
+    "Switching Time": "< 1/25,000 s (0.00004 s)",
+    "Delay Time": "0.1 s – 1.0 s (Adjustable)",
+    "Sensitivity": "Stepless Adjustable",
+    "UV/IR Protection": "Up to DIN 16 Permanent",
+    "Optical Clarity": "1/1/1/2",
+    "Weight": "Approx. 470 g"
+  },
+  "applications": [
+    "SMAW / Stick Arc Welding",
+    "GMAW / MIG & MAG Welding",
+    "GTAW / TIG Welding (> 10 Amps)",
+    "Plasma arc cutting, gouging, and angle grinding"
+  ],
+  "packageContents": [
+    "1x Auto-Darkening Welding Helmet with Ratchet Headband",
+    "2x Spare Outer Clear Polycarbonate Protective Lenses",
+    "1x Spare Inner Clear Lens",
+    "1x User Instruction Manual"
+  ],
+  "sourceUrl": "https://www.amazon.in/Welding-Helmet-Darkening-Glass-Protective/dp/B0HGLRZ4VC",
+  "images": [
+    "/images/products/solar-auto-darkening-welding-helmet-flip-lens.jpg"
+  ],
+  "thumbnail": "/images/products/solar-auto-darkening-welding-helmet-flip-lens.jpg",
+  "inStock": true,
+  "featured": true,
+  "image": "/images/products/solar-auto-darkening-welding-helmet-flip-lens.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/61s8zW7W9PL._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/61s8zW7W9PL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/71u9s8qVp8L._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/solar-auto-darkening-welding-helmet-flip-lens",
+  "specsSummary": "Viewing Area: 92 mm x 42 mm | Filter Cartridge Size: 110 mm x 90 mm x 9 mm",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in Solar Auto-Darkening Welding Helmet with Flip Front Protective Lens (Brand: Toolify). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20Solar%20Auto-Darkening%20Welding%20Helmet%20with%20Flip%20Front%20Protective%20Lens%20%28Brand%3A%20Toolify%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

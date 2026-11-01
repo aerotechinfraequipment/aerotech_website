@@ -1,0 +1,59 @@
+{
+  "id": "superon-308l-stainless-steel-welding-electrodes",
+  "slug": "superon-308l-stainless-steel-welding-electrodes",
+  "name": "Superon Superstain 308L Stainless Steel Welding Electrodes (2.5mm x 350mm)",
+  "brand": "Superon",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "Welding Electrodes",
+  "shortDescription": "Extra-low carbon rutile-coated austenitic stainless steel electrodes (AWS E308L-16) designed for smooth, spatter-free welding of 18Cr-8Ni stainless steels like SS 304 and 304L.",
+  "overview": "Superon 308L is an ultra-pure, rutile-coated austenitic stainless steel electrode engineered for welding 19% Chromium - 9% Nickel steels (AISI 304, 304L, 308). With an extra-low carbon content (C <= 0.04%), it drastically minimizes chromium carbide precipitation at grain boundaries, providing exceptional resistance to intergranular corrosion. The specially formulated flux ensures instant arc restrike, soft arc characteristics, negligible spatter, and self-peeling slag that leaves a mirror-smooth radiographic-quality bead finish on both AC and DC+ polarity.",
+  "keyFeatures": [
+    "AWS A5.4 / ASME SFA 5.4 E308L-16 classification for austenitic stainless steel",
+    "Extra-low carbon formulation prevents intergranular carbide precipitation corrosion",
+    "Self-releasing slag requiring minimal post-weld grinding or chiseling",
+    "Exceptionally smooth arc with low spatter loss on both AC and DC+ currents",
+    "Fine-rippled, aesthetically brilliant bead appearance ideal for food & pharmaceutical standards",
+    "Controlled ferrite content (FN 4-8) ensures crack resistance during cooling",
+    "Vacuum-sealed moisture-resistant packaging ensures zero porosity on critical joints"
+  ],
+  "specifications": {
+    "Electrode Size": "2.5 mm Diameter x 350 mm Length",
+    "Classification": "AWS A5.4: E308L-16 / IS 5206: E19.9LR26",
+    "Current Range": "50 A – 85 A",
+    "Welding Polarity": "AC or DC+ (Reverse Polarity)",
+    "Tensile Strength": ">= 520 MPa",
+    "Elongation (L=4d)": ">= 35%",
+    "Yield Strength": ">= 350 MPa",
+    "Packaging": "2 kg / 5 kg Hermetically Sealed Box",
+    "Core Wire Chemistry": "19.5% Cr, 10.0% Ni, 0.03% C, 1.8% Mn"
+  },
+  "applications": [
+    "Dairy, brewery, and food processing plant equipment",
+    "Chemical, fertilizer, and petrochemical storage tanks",
+    "Architectural stainless steel railings and decorative fabrication",
+    "Hospital equipment and kitchen exhaust ductwork",
+    "SS 304, 304L, 301, 302, and 308 piping systems"
+  ],
+  "packageContents": [
+    "1x Box of Superon 308L 2.5mm x 350mm Welding Electrodes",
+    "Batch Test Certificate / Mill Inspection Data"
+  ],
+  "sourceUrl": "https://www.amazon.in/308L-SUPERON-2-5MM-X350MM-WELDING/dp/B0H5R2RKS4",
+  "images": [
+    "/images/products/superon-308l-stainless-steel-welding-electrodes.jpg"
+  ],
+  "thumbnail": "/images/products/superon-308l-stainless-steel-welding-electrodes.jpg",
+  "inStock": true,
+  "featured": true,
+  "image": "/images/products/superon-308l-stainless-steel-welding-electrodes.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/71u9s8qVp8L._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/71u9s8qVp8L._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/71-0pY8qfCL._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/superon-308l-stainless-steel-welding-electrodes",
+  "specsSummary": "Electrode Size: 2.5 mm Diameter x 350 mm Length | Classification: AWS A5.4: E308L-16 / IS 5206: E19.9LR26",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in Superon Superstain 308L Stainless Steel Welding Electrodes (2.5mm x 350mm) (Brand: Superon). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20Superon%20Superstain%20308L%20Stainless%20Steel%20Welding%20Electrodes%20%282.5mm%20x%20350mm%29%20%28Brand%3A%20Superon%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

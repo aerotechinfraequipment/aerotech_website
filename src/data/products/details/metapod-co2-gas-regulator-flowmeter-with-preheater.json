@@ -1,0 +1,58 @@
+{
+  "id": "metapod-co2-gas-regulator-flowmeter-with-preheater",
+  "slug": "metapod-co2-gas-regulator-flowmeter-with-preheater",
+  "name": "METAPOD CO2 Gas Regulator Flowmeter with 220V Electric Preheater",
+  "brand": "METAPOD",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "Gas Regulators",
+  "shortDescription": "Heavy forged brass CO2 gas pressure regulator featuring integrated 220V electric heating jacket and precision polycarbonate flowmeter column (0-25 L/min).",
+  "overview": "The METAPOD heated CO2 gas regulator and flowmeter is an essential control device for high-duty MIG/MAG welding setups using 100% carbon dioxide shielding gas. Expanding high-pressure liquid CO2 causes severe thermodynamic refrigeration that typically freezes standard unheated regulators, blocking gas flow and causing catastrophic weld porosity. This unit features an internal 220V 190W heating element enclosed in a forged solid brass body that continuously warms the gas stream. The impact-resistant polycarbonate flowmeter tube allows ultra-accurate gas flow metering from 0 to 25 litres per minute.",
+  "keyFeatures": [
+    "Integrated 220V AC electric preheater prevents gas freeze-up and flow interruptions",
+    "Solid forged brass body with sintered bronze inlet filter for durability",
+    "Dual gauge configuration: High pressure cylinder gauge + precision vertical flowmeter",
+    "Accurate flow calibration from 0 to 25 L/min for optimal weld pool shielding",
+    "Thermal cutoff thermostat prevents overheating during standby periods",
+    "Heavy-duty brass knob for sensitive pressure and flow regulation",
+    "Standard CGA-320 / BSP 5/8\" bottle connector with leak-proof neoprene seal"
+  ],
+  "specifications": {
+    "Gas Type": "Carbon Dioxide (CO2) / Argon-CO2 Mix",
+    "Inlet Pressure (Max)": "15 MPa (150 Bar / 2175 PSI)",
+    "Flowmeter Range": "0 – 25 L/min",
+    "Preheater Voltage": "220 V – 240 V AC, 50 Hz",
+    "Heater Power": "190 W",
+    "Inlet Connection": "Standard CO2 Cylinder Thread (W21.8 / BSP 5/8\")",
+    "Outlet Connection": "8 mm (5/16\") Hose Nipple with Swivel Nut",
+    "Body Material": "Hot Forged Brass",
+    "Weight": "Approx. 1.2 kg"
+  },
+  "applications": [
+    "Continuous production MIG/MAG welding with 100% CO2 gas",
+    "Automated robotic welding cells operating at high duty cycles",
+    "Heavy structural fabrication workshops and outdoor pipe yards"
+  ],
+  "packageContents": [
+    "1x Heated CO2 Regulator with Integrated Flowmeter",
+    "1x Power Cable with Indian 3-Pin Plug (1.5m)",
+    "1x Spare Neoprene Sealing Washer"
+  ],
+  "sourceUrl": "https://www.amazon.in/METAPOD-Regulator-Flowmeter-Preheater-Compatible/dp/B0FKBVLKC1",
+  "images": [
+    "/images/products/metapod-co2-gas-regulator-flowmeter-with-preheater.jpg"
+  ],
+  "thumbnail": "/images/products/metapod-co2-gas-regulator-flowmeter-with-preheater.jpg",
+  "inStock": true,
+  "featured": false,
+  "image": "/images/products/metapod-co2-gas-regulator-flowmeter-with-preheater.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/61mZkP7W9PL._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/61mZkP7W9PL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/71u9s8qVp8L._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/metapod-co2-gas-regulator-flowmeter-with-preheater",
+  "specsSummary": "Gas Type: Carbon Dioxide (CO2) / Argon-CO2 Mix | Inlet Pressure (Max): 15 MPa (150 Bar / 2175 PSI)",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in METAPOD CO2 Gas Regulator Flowmeter with 220V Electric Preheater (Brand: METAPOD). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20METAPOD%20CO2%20Gas%20Regulator%20Flowmeter%20with%20220V%20Electric%20Preheater%20%28Brand%3A%20METAPOD%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

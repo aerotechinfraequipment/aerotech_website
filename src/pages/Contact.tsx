@@ -2,18 +2,66 @@ import SectionHeader from "../components/ui/SectionHeader";
 import Button from "../components/ui/Button";
 import ContactForm from "../components/forms/ContactForm";
 import QuoteForm from "../components/forms/QuoteForm";
+import SEO from "../components/seo/SEO";
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact AeroTech Infra Equipment",
+  "description": "Get in touch with AeroTech Infra Equipment for equipment rental quotes, industrial supply orders, or site visits in Sriperumbudur, Tamil Nadu.",
+  "url": "https://aerotechinfra.com/contact",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "AeroTech Infra Equipment Private Limited",
+    "telephone": "+919791890636",
+    "email": "aerotech2003@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "SF No.135/4G2, Chennai Salai, Thirumangalam",
+      "addressLocality": "Sriperumbudur",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "602106",
+      "addressCountry": "IN"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aerotechinfra.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://aerotechinfra.com/contact"
+      }
+    ]
+  }
+};
 
 const Contact = () => {
   return (
     <>
+      <SEO
+        title="Contact Us & Request Equipment Rental Quote | AeroTech Sriperumbudur"
+        description="Contact AeroTech Infra Equipment in Sriperumbudur, Tamil Nadu. Call +91 97918 90636 or submit an enquiry for daily/monthly equipment rental or industrial supply quotes."
+        canonical="/contact"
+        keywords="contact AeroTech, rental quote Sriperumbudur, equipment hire contact Chennai, industrial equipment enquiry Tamil Nadu"
+        schema={contactSchema}
+      />
+
       {/* Hero Section */}
       <section className="contact-hero">
         <div className="container">
           <SectionHeader
-            subtitle="Contact"
             title="Talk to our team"
             description="Rental quote, product enquiry or a visit to our counter — reach us whichever way suits you."
             theme="dark"
+            as="h1"
           />
         </div>
       </section>
@@ -91,6 +139,7 @@ const Contact = () => {
               title="AeroTech Infra Equipment location map — Sriperumbudur"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin allow-popups"
             ></iframe>
           </div>
         </div>

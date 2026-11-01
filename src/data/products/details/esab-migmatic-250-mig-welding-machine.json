@@ -1,0 +1,68 @@
+{
+  "id": "esab-migmatic-250-mig-welding-machine",
+  "slug": "esab-migmatic-250-mig-welding-machine",
+  "name": "ESAB Migmatic 250 Three-Phase MIG/MAG Welding Machine",
+  "brand": "ESAB",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "MIG Welding Machines",
+  "shortDescription": "Industrial 250A 3-phase MIG/MAG welding machine with separate wire feeder, 10-step voltage control, and dual digital meters for medium-to-heavy structural fabrication.",
+  "overview": "The ESAB Migmatic 250 is an industry-standard three-phase MIG/MAG welding system engineered for high-duty fabrication, automotive chassis production, and structural engineering workshops. Powered by a heavy-duty copper-wound step transformer delivering up to 250A @ 60% duty cycle, this machine delivers an exceptionally stable, low-spatter arc on mild steel, stainless steel, and aluminium. It includes a rugged external 2-roll wire feeder unit with a 5-meter interconnection cable, giving the operator maximum reach across large assemblies. Built-in spot and stitch welding timers, 2T/4T trigger latching, and digital parameter displays ensure high process repeatability and ease of use.",
+  "keyFeatures": [
+    "Three-phase 415V power source delivering 40A to 250A output current",
+    "60% duty cycle at maximum 250A and 100% duty cycle at 190A continuous rating",
+    "Separate lightweight 2-roll wire feeder with stepless speed control (1.5 - 22 m/min)",
+    "10-step single knob voltage selector for precise arc voltage optimization",
+    "Integrated Spot Welding and Stitch Welding modes with 2T/4T latching controls",
+    "Dual digital Volt and Ampere meters for exact parameter compliance",
+    "Heavy-duty forced air cooling with automatic thermal overload protection",
+    "Industrial undercarriage with heavy rubber wheels and rear gas cylinder rack"
+  ],
+  "specifications": {
+    "Mains Supply": "415 V ± 10%, 3-Phase, 50/60 Hz",
+    "Welding Current Range": "40 A – 250 A",
+    "Duty Cycle @ 60%": "250 A / 26.5 V",
+    "Duty Cycle @ 100%": "190 A / 23.5 V",
+    "Open Circuit Voltage (OCV)": "16 V – 34 V",
+    "Voltage Control Steps": "10 Steps",
+    "Wire Feed Speed": "1.5 – 22 m/min",
+    "Supported Wire Diameters": "0.8 mm – 1.2 mm (Solid Mild Steel / SS)",
+    "Protection Class": "IP 21",
+    "Insulation Class": "H",
+    "Dimensions (L x W x H)": "620 mm x 390 mm x 580 mm",
+    "Weight": "Approx. 78 kg",
+    "Standard Compliance": "EN 60974-1 / IEC 60974-5"
+  },
+  "applications": [
+    "Structural steel fabrication and PEB warehouses",
+    "Automotive chassis, tipper, and bus body fabrication",
+    "Storage tanks, pressure pipes, and heavy steel furniture",
+    "Agricultural machinery repair and plant maintenance"
+  ],
+  "packageContents": [
+    "ESAB Migmatic 250 Power Source",
+    "External 2-Roll Wire Feeder Unit",
+    "5-meter Interconnection Cable Assembly",
+    "ESAB PSF 250 MIG Torch (3m Euro Connection)",
+    "3-meter Earth Return Cable with 300A Ground Clamp",
+    "Drive Rolls (0.8 / 1.0 / 1.2 mm)",
+    "Operator Instruction Manual"
+  ],
+  "sourceUrl": "https://www.justdial.com/jdmart/Delhi/Three-Phase-Esab-Migmatic-250-Mig-Welding-Machine-Automation-Grade-Automatic/pid-2219798201/011PK024188",
+  "images": [
+    "/images/products/esab-migmatic-250-mig-welding-machine.jpg"
+  ],
+  "thumbnail": "/images/products/esab-migmatic-250-mig-welding-machine.jpg",
+  "inStock": true,
+  "featured": true,
+  "image": "/images/products/esab-migmatic-250-mig-welding-machine.jpg",
+  "externalThumbnail": "https://5.imimg.com/data5/SELLER/Default/2023/1/RP/TQ/QO/3604082/esab-migmatic-250-mig-welding-machine-500x500.jpg",
+  "externalImages": [
+    "https://5.imimg.com/data5/SELLER/Default/2023/1/RP/TQ/QO/3604082/esab-migmatic-250-mig-welding-machine-500x500.jpg",
+    "https://pioneerpowertools.in/wp-content/uploads/2021/06/esab-migmatic-250.jpg"
+  ],
+  "detailUrl": "/products/esab-migmatic-250-mig-welding-machine",
+  "specsSummary": "Mains Supply: 415 V ± 10%, 3-Phase, 50/60 Hz | Welding Current Range: 40 A – 250 A",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in ESAB Migmatic 250 Three-Phase MIG/MAG Welding Machine (Brand: ESAB). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20ESAB%20Migmatic%20250%20Three-Phase%20MIG/MAG%20Welding%20Machine%20%28Brand%3A%20ESAB%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo/logo.png"
-
+import logo from "../../assets/logo/logo.png";
 
 const Footer = () => {
   return (
@@ -9,14 +8,9 @@ const Footer = () => {
         {/* Brand column */}
         <div className="site-footer__brand">
           <Link to="/" className="site-footer__logo" aria-label="AeroTech Infra Equipment — home">
-            {/* <span className="site-footer__logo-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2 3 10v12h6v-7h6v7h6V10L12 2zm0 2.8 7 6V20h-2v-7H7v7H5v-9.2l7-6z" />
-              </svg>
-            </span> */}
-          <span className="site-header__logo-icon" aria-hidden="true">
-            <img src={logo} alt="AeroTech Infra Equipment" />
-          </span>
+            <span className="site-header__logo-icon" aria-hidden="true">
+              <img src={logo} alt="AeroTech Infra Equipment logo" />
+            </span>
             <span className="site-footer__logo-text">
               <span className="site-footer__logo-main">AEROTECH</span>
               <span className="site-footer__logo-sub">Infra Equipment</span>
@@ -26,14 +20,16 @@ const Footer = () => {
             Construction equipment rental and industrial hardware solutions for demanding projects across Tamil Nadu.
           </p>
           <div className="site-footer__social">
-            <a href="#" aria-label="Facebook" className="site-footer__social-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.6-.1-1.4-.2-2.2-.2-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7h3z" /></svg>
-            </a>
-            <a href="#" aria-label="Instagram" className="site-footer__social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" /></svg>
-            </a>
-            <a href="#" aria-label="LinkedIn" className="site-footer__social-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5v12H3.44v-12h3.5zM5.2 3a2 2 0 1 1 0 4.1 2 2 0 0 1 0-4.1zM10.6 8.5h3.4v1.6h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.8h-3.5v-6.03c0-1.44-.03-3.3-2-3.3-2 0-2.31 1.57-2.31 3.19v6.14h-3.5v-12z" /></svg>
+            <a
+              href="https://wa.me/919791890636"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="site-footer__social-link"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.55 0 8.25 3.7 8.25 8.24 0 2.2-.86 4.28-2.42 5.84a8.19 8.19 0 0 1-5.83 2.41c-1.46 0-2.89-.39-4.14-1.13l-.3-.18-3.08.81.82-3-.2-.31a8.214 8.214 0 0 1-1.26-4.44c0-4.54 3.7-8.24 8.25-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.21-.17-.46-.29" />
+              </svg>
             </a>
           </div>
         </div>
@@ -42,24 +38,24 @@ const Footer = () => {
         <nav aria-label="Equipment rental links">
           <h3 className="site-footer__heading">Equipment Rental</h3>
           <ul className="site-footer__links">
-            <li><Link to="/equipment/boom-lift">Boom Lift</Link></li>
-            <li><Link to="/equipment/articulating-boom-lift">Articulating Boom Lift</Link></li>
-            <li><Link to="/equipment/scissor-lift">Scissor Lift</Link></li>
-            <li><Link to="/equipment/excavator">Excavator</Link></li>
-            <li><Link to="/equipment/sany-crane">SANY Crane</Link></li>
+            <li><Link to="/equipment">All Rental Fleet</Link></li>
+            <li><Link to="/equipment">Boom Lifts (Telescopic &amp; Articulating)</Link></li>
+            <li><Link to="/equipment">Scissor Lifts (Rough Terrain)</Link></li>
+            <li><Link to="/equipment">Excavators &amp; Earthmoving</Link></li>
+            <li><Link to="/equipment">All-Terrain &amp; Truck Cranes</Link></li>
           </ul>
         </nav>
 
         {/* Product links */}
         <nav aria-label="Product links">
-          <h3 className="site-footer__heading">Products</h3>
+          <h3 className="site-footer__heading">Products &amp; Materials</h3>
           <ul className="site-footer__links">
-            <li><Link to="/products?category=pneumatic">Pneumatic Products</Link></li>
-            <li><Link to="/products?category=power-tools">Power Tools</Link></li>
-            <li><Link to="/products?category=welding">Welding Equipment</Link></li>
-            <li><Link to="/products?category=valves-fittings">Valves &amp; Fittings</Link></li>
-            <li><Link to="/products?category=measuring-instruments">Measuring Instruments</Link></li>
-            <li><Link to="/products?category=compressors">Compressors</Link></li>
+            <li><Link to="/products">All Industrial Products</Link></li>
+            <li><Link to="/products">Welding Equipment &amp; Electrodes</Link></li>
+            <li><Link to="/products">Power Tools &amp; Cut-Off Wheels</Link></li>
+            <li><Link to="/products">Safety &amp; PPE Equipment</Link></li>
+            <li><Link to="/steel-products">Steel Pipes, Channels &amp; Beams</Link></li>
+            <li><Link to="/steel-products">Roofing Sheets &amp; Mesh</Link></li>
           </ul>
         </nav>
 
@@ -67,11 +63,11 @@ const Footer = () => {
         <nav aria-label="Company links">
           <h3 className="site-footer__heading">Company</h3>
           <ul className="site-footer__links">
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/industries">Industries</Link></li>
-            <li><Link to="/projects">Projects</Link></li>
-            <li><Link to="/brands">Brands</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/about">About AeroTech</Link></li>
+            <li><Link to="/equipment">Rental Services</Link></li>
+            <li><Link to="/products">Product Sales</Link></li>
+            <li><Link to="/contact">Contact &amp; Enquiry</Link></li>
+            <li><Link to="/contact#quote">Get a Quote</Link></li>
           </ul>
         </nav>
 
@@ -85,7 +81,8 @@ const Footer = () => {
             <li>
               <a href="mailto:aerotech2003@gmail.com">aerotech2003@gmail.com</a>
             </li>
-            <li>Sriperumbudur, Tamil Nadu</li>
+            <li>SF No.135/4G2, Chennai Salai, Thirumangalam, Sriperumbudur, Tamil Nadu 602 106</li>
+            <li style={{ fontSize: "0.8rem", color: "var(--steel)" }}>GSTIN: 33ABFCA6529D1ZY</li>
           </ul>
         </div>
       </div>
@@ -93,10 +90,10 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="site-footer__bottom">
         <div className="container site-footer__bottom-inner">
-          <p>&copy; {new Date().getFullYear()} AeroTech Infra Equipment Pvt Ltd. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} AeroTech Infra Equipment Private Limited. All rights reserved.</p>
           <div className="site-footer__legal">
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Service</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </div>
         </div>
       </div>

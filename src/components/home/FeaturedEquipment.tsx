@@ -9,7 +9,6 @@ const FeaturedEquipment = () => {
     <section className="featured-equipment">
       <div className="container">
         <SectionHeader
-          subtitle="Rental Fleet"
           title="Featured equipment for rent"
           description="Every machine is inspected and maintained to be productive from day one on your site."
           linkText="View all equipment →"

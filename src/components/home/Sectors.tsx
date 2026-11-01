@@ -9,7 +9,6 @@ const Sectors = () => {
     <section className="sectors">
       <div className="container">
         <SectionHeader
-          subtitle="Industries"
           title="Serving projects across sectors"
           description="From construction sites to factory floors, our equipment and products support the industries that build and maintain Tamil Nadu."
         />

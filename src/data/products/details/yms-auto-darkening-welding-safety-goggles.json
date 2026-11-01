@@ -1,0 +1,60 @@
+{
+  "id": "yms-auto-darkening-welding-safety-goggles",
+  "slug": "yms-auto-darkening-welding-safety-goggles",
+  "name": "YMS Auto-Darkening Welding Safety Goggles with Adjustable Strap",
+  "brand": "YMS",
+  "category": "Welding Equipment",
+  "categorySlug": "welding-equipment",
+  "type": "Welding Goggles",
+  "shortDescription": "Compact lightweight auto-darkening eye protection goggles (DIN 3 to DIN 11) with dual solar sensors, ideal for confined space welding and gas cutting.",
+  "overview": "The YMS Auto-Darkening Welding Goggles provide a streamlined, lightweight alternative to bulky full-face welding helmets when working in restricted spaces, under vehicle chassis, or performing gas welding and plasma cutting. Featuring an intelligent auto-darkening liquid crystal filter, the goggles transition automatically from a transparent shade DIN 3 to dark shade DIN 11 in less than 5/10,000th of a second upon sensing arc light. The soft elastomeric body contours comfortably to the facial profile, and integrated indirect air ventilation ports prevent interior fogging while keeping out flying sparks.",
+  "keyFeatures": [
+    "Compact low-profile form factor ideal for tight overhead and crawl-space welding",
+    "Rapid auto-darkening transition from shade DIN 3 to DIN 11 in 0.5 milliseconds",
+    "Dual solar cells assist integrated lithium battery for completely autonomous operation",
+    "UV/IR radiation shielding up to DIN 15 throughout entire welding cycle",
+    "Soft flexible PVC goggle frame with adjustable elastic headband for a leak-proof seal",
+    "Indirect anti-fog ventilation channels stop lens condensation during humid shifts",
+    "Can be paired easily with earmuffs, hard hats, and half-mask respirators"
+  ],
+  "specifications": {
+    "Lens Type": "Auto-Darkening Liquid Crystal Filter",
+    "Light Shade": "DIN 3",
+    "Dark Shade": "DIN 11",
+    "Switching Time": "5/10,000 s",
+    "Recovery Time": "0.2 s",
+    "Power Source": "Solar Cells + Built-in Lithium Button Battery",
+    "Operating Temperature": "-10°C to +65°C",
+    "Weight": "Approx. 120 g",
+    "Standard": "EN 175 / ANSI Z87.1"
+  },
+  "applications": [
+    "Oxy-acetylene gas welding and brazing",
+    "Plasma arc cutting and carbon arc torch work",
+    "Automotive undercarriage exhaust repair",
+    "Tack welding and confined space pipe inspections"
+  ],
+  "packageContents": [
+    "1x YMS Auto-Darkening Welding Goggles",
+    "1x Adjustable Elastic Headband",
+    "2x Protective Clear Face Shields",
+    "1x Protective Storage Case"
+  ],
+  "sourceUrl": "https://www.amazon.in/YMS-Darkening-Welding-Protection-Adjustable/dp/B0HK49BSNN",
+  "images": [
+    "/images/products/yms-auto-darkening-welding-safety-goggles.jpg"
+  ],
+  "thumbnail": "/images/products/yms-auto-darkening-welding-safety-goggles.jpg",
+  "inStock": true,
+  "featured": false,
+  "image": "/images/products/yms-auto-darkening-welding-safety-goggles.jpg",
+  "externalThumbnail": "https://m.media-amazon.com/images/I/61N+p+3R7uL._SL1500_.jpg",
+  "externalImages": [
+    "https://m.media-amazon.com/images/I/61N+p+3R7uL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/71u9s8qVp8L._SL1500_.jpg"
+  ],
+  "detailUrl": "/products/yms-auto-darkening-welding-safety-goggles",
+  "specsSummary": "Lens Type: Auto-Darkening Liquid Crystal Filter | Light Shade: DIN 3",
+  "enquiryWhatsappMessage": "Hello AeroTech, I am interested in YMS Auto-Darkening Welding Safety Goggles with Adjustable Strap (Brand: YMS). Please share current pricing and availability.",
+  "enquiryWhatsappUrl": "https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20am%20interested%20in%20YMS%20Auto-Darkening%20Welding%20Safety%20Goggles%20with%20Adjustable%20Strap%20%28Brand%3A%20YMS%29.%20Please%20share%20current%20pricing%20and%20availability."
+}

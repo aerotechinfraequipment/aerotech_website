@@ -12,7 +12,6 @@ const ReliabilitySupport = () => {
     <section className="reliability">
       <div className="container">
         <SectionHeader
-          subtitle="Why AeroTech"
           title="Built on reliability and support"
           description="We combine dependable machines, genuine products and responsive service so your work never stops."
           theme="dark"

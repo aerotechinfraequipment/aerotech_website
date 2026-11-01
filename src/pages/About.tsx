@@ -1,21 +1,69 @@
 import SectionHeader from "../components/ui/SectionHeader";
 import Button from "../components/ui/Button";
+import SEO from "../components/seo/SEO";
 
 // Images
 import companyImg from "../assets/company.jpg";
 import teamImg from "../assets/about-team.jpg";
 
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About AeroTech Infra Equipment Private Limited",
+  "description": "Learn about AeroTech Infra Equipment — your trusted partner for heavy construction equipment rental and industrial hardware in Sriperumbudur, Tamil Nadu.",
+  "url": "https://aerotechinfra.com/about",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "AeroTech Infra Equipment Private Limited",
+    "telephone": "+919791890636",
+    "email": "aerotech2003@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "SF No.135/4G2, Chennai Salai, Thirumangalam",
+      "addressLocality": "Sriperumbudur",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "602106",
+      "addressCountry": "IN"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aerotechinfra.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://aerotechinfra.com/about"
+      }
+    ]
+  }
+};
+
 const About = () => {
   return (
     <>
+      <SEO
+        title="About Us | AeroTech Infra Equipment Sriperumbudur"
+        description="Learn about AeroTech Infra Equipment Private Limited. Based in Sriperumbudur, Tamil Nadu, we provide heavy equipment rental and genuine industrial supplies across South India."
+        canonical="/about"
+        keywords="about AeroTech, equipment rental company Sriperumbudur, industrial supplies Tamil Nadu, machinery rental Chennai"
+        schema={aboutSchema}
+      />
+
       {/* Hero Section */}
       <section className="about-hero">
         <div className="container">
           <SectionHeader
-            subtitle="About Us"
             title="Equipment and supply, under one roof"
             description="AeroTech Infra Equipment Private Limited brings together two essentials for any project — dependable rental machinery and a complete industrial products counter."
             theme="dark"
+            as="h1"
           />
         </div>
       </section>
@@ -55,7 +103,6 @@ const About = () => {
       <section className="about-values">
         <div className="container">
           <SectionHeader
-            subtitle="Our Values"
             title="How we work"
             description="Four principles guide every rental and every sale."
           />

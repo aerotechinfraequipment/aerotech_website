@@ -8,7 +8,6 @@ const ContactSection = () => {
         {/* Left info column */}
         <div className="contact-section__info">
           <SectionHeader
-            subtitle="Get a Quote"
             title="Tell us what your project needs"
             description="Share your equipment or product requirements and our team will respond with availability and pricing."
             theme="dark"

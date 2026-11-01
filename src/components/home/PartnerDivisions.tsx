@@ -8,7 +8,6 @@ const PartnerDivisions = () => {
     <section className="divisions">
       <div className="container">
         <SectionHeader
-          subtitle="Two Divisions"
           title="One partner for equipment and supply"
           description="Choose how you want to work with us — rent the machines that keep your project moving, or source the industrial products your team needs."
         />

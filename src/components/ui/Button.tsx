@@ -24,6 +24,17 @@ const variantClasses: Record<ButtonVariant, string> = {
   ghost: "btn btn--ghost",
 };
 
+/**
+ * Validates that an href does not execute arbitrary script
+ */
+function isSafeHref(href: string): boolean {
+  const trimmed = href.trim().toLowerCase();
+  if (trimmed.startsWith("javascript:") || trimmed.startsWith("vbscript:") || trimmed.startsWith("data:text/html")) {
+    return false;
+  }
+  return true;
+}
+
 const Button = ({
   children,
   variant = "accent",
@@ -42,11 +53,18 @@ const Button = ({
   }
 
   if (href) {
+    if (!isSafeHref(href)) {
+      console.warn("Blocked potentially unsafe href:", href);
+      return <button type="button" className={cls}>{children}</button>;
+    }
+
+    const isExternal = external || href.startsWith("http://") || href.startsWith("https://");
+
     return (
       <a
         href={href}
         className={cls}
-        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
         {children}
       </a>

@@ -16,7 +16,6 @@ const HeroSection = () => {
 
       <div className="container hero__inner">
         <div className="hero__content">
-          <p className="hero__subtitle">Sriperumbudur · Tamil Nadu</p>
           <h1 className="hero__title">
             Industrial Equipment Solutions for Demanding Projects
           </h1>
