@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo/logo.png";
+import logo from "../../assets/logo/logo.webp";
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="site-footer__brand">
           <Link to="/" className="site-footer__logo" aria-label="AeroTech Infra Equipment — home">
             <span className="site-header__logo-icon" aria-hidden="true">
-              <img src={logo} alt="AeroTech Infra Equipment logo" width={500} height={500} />
+              <img src={logo} alt="" width={36} height={36} decoding="async" />
             </span>
             <span className="site-footer__logo-text">
               <span className="site-footer__logo-main">AEROTECH</span>

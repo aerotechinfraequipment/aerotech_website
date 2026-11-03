@@ -39,7 +39,7 @@ function PageFallback() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "50vh",
+        minHeight: "100dvh",
         color: "var(--muted-foreground)",
         fontSize: "1rem",
         fontWeight: 600,

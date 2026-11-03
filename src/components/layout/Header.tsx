@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import Button from "../ui/Button";
-import logo from "../../assets/logo/logo.png"
+import logo from "../../assets/logo/logo.webp"
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -30,7 +30,7 @@ const Header = () => {
         {/* Logo */}
         <Link to="/" className="site-header__logo" aria-label="AeroTech Infra Equipment — home">
           <span className="site-header__logo-icon" aria-hidden="true">
-            <img src={logo} alt="AeroTech Infra Equipment" width={500} height={500} />
+            <img src={logo} alt="" width={36} height={36} decoding="async" />
           </span>
           <span className="site-header__logo-text">
             <span className="site-header__logo-main">AEROTECH</span>

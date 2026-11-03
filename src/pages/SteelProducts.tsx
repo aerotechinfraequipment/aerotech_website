@@ -6,16 +6,26 @@ import Button from "../components/ui/Button";
 import SEO from "../components/seo/SEO";
 
 // ── Images ──────────────────────────────────────────────────
-import squarePipeImg from "../assets/steel-square-pipe.jpg";
-import roundPipeImg from "../assets/steel-round-pipe.jpg";
-import channelImg from "../assets/steel-channel.jpg";
-import iBeamImg from "../assets/steel-i-beam.jpg";
-import flatBarImg from "../assets/steel-flat-bar.jpg";
-import angleImg from "../assets/steel-angle.jpg";
-import roofingImg from "../assets/steel-roofing.jpg";
-import weldMeshImg from "../assets/steel-weld-mesh.jpg";
-import chainLinkImg from "../assets/steel-chain-link.jpg";
-import squareBarImg from "../assets/steel-square-bar.jpg";
+import squarePipeImg from "../assets/steel/square-pipe-960.webp";
+import squarePipeSm from "../assets/steel/square-pipe-480.webp";
+import roundPipeImg from "../assets/steel/round-pipe-960.webp";
+import roundPipeSm from "../assets/steel/round-pipe-480.webp";
+import channelImg from "../assets/steel/channel-960.webp";
+import channelSm from "../assets/steel/channel-480.webp";
+import iBeamImg from "../assets/steel/i-beam-960.webp";
+import iBeamSm from "../assets/steel/i-beam-480.webp";
+import flatBarImg from "../assets/steel/flat-bar-960.webp";
+import flatBarSm from "../assets/steel/flat-bar-480.webp";
+import angleImg from "../assets/steel/angle-960.webp";
+import angleSm from "../assets/steel/angle-480.webp";
+import roofingImg from "../assets/steel/roofing-960.webp";
+import roofingSm from "../assets/steel/roofing-480.webp";
+import weldMeshImg from "../assets/steel/weld-mesh-960.webp";
+import weldMeshSm from "../assets/steel/weld-mesh-480.webp";
+import chainLinkImg from "../assets/steel/chain-link-960.webp";
+import chainLinkSm from "../assets/steel/chain-link-480.webp";
+import squareBarImg from "../assets/steel/square-bar-960.webp";
+import squareBarSm from "../assets/steel/square-bar-480.webp";
 
 // ── Data ─────────────────────────────────────────────────────
 type SteelFamily = "all" | "pipes-tubes" | "structural" | "roofing-mesh";
@@ -27,6 +37,7 @@ interface SteelProduct {
   familyLabel: string;
   description: string;
   image: string;
+  imageSm: string;
   waMsg: string;
 }
 
@@ -38,6 +49,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Pipes & Tubes",
     description: "Square hollow sections for fabrication and structural frameworks.",
     image: squarePipeImg,
+    imageSm: squarePipeSm,
     waMsg: "Square Pipe (SHS)",
   },
   {
@@ -47,6 +59,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Pipes & Tubes",
     description: "Round steel pipes for fabrication and general construction requirements.",
     image: roundPipeImg,
+    imageSm: roundPipeSm,
     waMsg: "Round Pipe",
   },
   {
@@ -56,6 +69,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Structural Sections",
     description: "Open channel sections for frames, supports and steel fabrication.",
     image: channelImg,
+    imageSm: channelSm,
     waMsg: "Channel",
   },
   {
@@ -65,6 +79,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Structural Sections",
     description: "I-profile steel sections for structural construction and fabrication.",
     image: iBeamImg,
+    imageSm: iBeamSm,
     waMsg: "I-Beam",
   },
   {
@@ -74,6 +89,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Structural Sections",
     description: "Flat steel sections for versatile workshop and site fabrication.",
     image: flatBarImg,
+    imageSm: flatBarSm,
     waMsg: "Flat Bar",
   },
   {
@@ -83,6 +99,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Structural Sections",
     description: "L-shaped steel angles for framing, bracing and fabrication.",
     image: angleImg,
+    imageSm: angleSm,
     waMsg: "Angle",
   },
   {
@@ -92,6 +109,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Structural Sections",
     description: "Solid square steel bars for general fabrication and metalworking.",
     image: squareBarImg,
+    imageSm: squareBarSm,
     waMsg: "Square Bar",
   },
   {
@@ -101,6 +119,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Roofing & Mesh",
     description: "Profiled roofing sheets for commercial, industrial and residential projects.",
     image: roofingImg,
+    imageSm: roofingSm,
     waMsg: "Roofing Sheet",
   },
   {
@@ -110,6 +129,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Roofing & Mesh",
     description: "Welded wire mesh for enclosures, partitions and fencing applications.",
     image: weldMeshImg,
+    imageSm: weldMeshSm,
     waMsg: "Weld Mesh",
   },
   {
@@ -119,6 +139,7 @@ const STEEL_PRODUCTS: SteelProduct[] = [
     familyLabel: "Roofing & Mesh",
     description: "Diamond-pattern chain link mesh for perimeter fencing and enclosures.",
     image: chainLinkImg,
+    imageSm: chainLinkSm,
     waMsg: "Chain Link Mesh",
   },
 ];
@@ -275,15 +296,19 @@ const SteelProducts = () => {
           {/* 3-column product grid */}
           {filtered.length > 0 ? (
             <div className="catalogue-grid">
-              {filtered.map((p) => (
+              {filtered.map((p, index) => (
                 <article key={p.id} className="product-card">
                   <div className="product-card__image product-card__image--cover">
                     <img
-                      src={p.image}
+                      src={p.imageSm}
+                      srcSet={`${p.imageSm} 480w, ${p.image} 960w`}
+                      sizes="(min-width: 1200px) calc((min(100vw, 1280px) - 4rem - 4.5rem) / 4), (min-width: 1024px) calc((min(100vw, 1280px) - 4rem - 2.5rem) / 3), (min-width: 768px) calc((100vw - 3rem - 2.5rem) / 3), (min-width: 640px) calc((100vw - 3rem - 0.625rem) / 2), calc((100vw - 2rem - 0.625rem) / 2)"
                       alt={`${p.name} - ${p.familyLabel}`}
-                      width={1024}
-                      height={1024}
-                      loading="lazy"
+                      width={480}
+                      height={480}
+                      loading={index < 4 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      decoding={index === 0 ? "sync" : "async"}
                     />
                   </div>
 
