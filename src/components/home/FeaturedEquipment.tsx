@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
 import SectionHeader from "../ui/SectionHeader";
 import EquipmentCard from "../ui/EquipmentCard";
+import { featuredEquipments } from "../../data/equipment/featured";
 import { equipments } from "../../data/equipment/list";
 
-const featured = equipments.filter((e) => e.can_show_in_home);
+const extra = equipments.find((item) => item.id === "genie-scissor-lift-gs5390rt");
+const featured = extra ? [...featuredEquipments, extra] : featuredEquipments;
 
 const FeaturedEquipment = () => {
   return (
@@ -11,13 +14,14 @@ const FeaturedEquipment = () => {
         <SectionHeader
           title="Featured equipment for rent"
           description="Every machine is inspected and maintained to be productive from day one on your site."
-          linkText="View all equipment →"
-          linkTo="/equipment"
         />
-        <div className="featured-equipment__grid">
+        <div className="catalogue-grid">
           {featured.map((item) => (
             <EquipmentCard key={item.id} item={item} />
           ))}
+        </div>
+        <div className="section-end-link">
+          <Link to="/equipment">View all equipment →</Link>
         </div>
       </div>
     </section>

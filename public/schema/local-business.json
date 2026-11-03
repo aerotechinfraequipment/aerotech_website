@@ -1,0 +1,70 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "AeroTech Infra Equipment Private Limited",
+  "image": "https://aerotechinfra.com/og-image.png",
+  "logo": "https://aerotechinfra.com/android-chrome-512x512.png",
+  "@id": "https://aerotechinfra.com/#organization",
+  "url": "https://aerotechinfra.com",
+  "telephone": "+919791890636",
+  "email": "aerotech2003@gmail.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "SF No.135/4G2, Chennai Salai, Thirumangalam",
+    "addressLocality": "Sriperumbudur",
+    "addressRegion": "Tamil Nadu",
+    "postalCode": "602106",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 12.9675,
+    "longitude": 79.9406
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "08:30",
+      "closes": "19:00"
+    }
+  ],
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Tamil Nadu"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Rental & Sales Fleet",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Heavy Equipment Rental",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Boom Lift Rental" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Scissor Lift Rental" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Excavator Rental" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "All-Terrain Crane Rental" } }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Industrial Supplies & Hardware",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Welding Equipment & Consumables" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Power Tools & Cutting Wheels" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Structural Steel Sections" } }
+        ]
+      }
+    ]
+  },
+  "sameAs": []
+}

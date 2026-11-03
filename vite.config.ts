@@ -9,6 +9,7 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] })
   ],
   build: {
+    manifest: true,
     target: 'es2020',
     minify: true,
     cssMinify: true,

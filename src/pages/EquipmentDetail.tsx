@@ -1,16 +1,22 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import "../styles/pages/_equipment-detail.scss";
 import { equipments } from "../data/equipment/list";
 import Button from "../components/ui/Button";
+import EquipmentCard from "../components/ui/EquipmentCard";
 import SEO from "../components/seo/SEO";
+import NotFound from "./NotFound";
 
 const EquipmentDetail = () => {
   const { id } = useParams<{ id: string }>();
   const item = equipments.find((e) => e.id === id);
 
   // 404 fallback — redirect to equipment list
-  if (!item) return <Navigate to="/equipment" replace />;
+  if (!item) return <NotFound />;
 
   const isAvailable = item.status === "available";
+  const similar = equipments
+    .filter((e) => e.id !== item.id && e.category === item.category)
+    .slice(0, 4);
 
   const whatsappMsg = encodeURIComponent(
     `Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and rental pricing.`
@@ -20,33 +26,19 @@ const EquipmentDetail = () => {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Product",
-        "@id": `https://aerotechinfra.com/equipment/${item.id}#product`,
+        "@type": "Service",
+        "@id": `https://aerotechinfra.com/equipment/${item.id}#service`,
         "name": item.name,
         "description": item.description,
+        "serviceType": item.category_formated,
         "image": item.image.startsWith("http") ? item.image : `https://aerotechinfra.com${item.image}`,
-        "brand": {
-          "@type": "Brand",
-          "name": item.brand
+        "url": `https://aerotechinfra.com/equipment/${item.id}`,
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Tamil Nadu"
         },
-        "category": item.category_formated,
-        "offers": {
-          "@type": "Offer",
-          "url": `https://aerotechinfra.com/equipment/${item.id}`,
-          "priceCurrency": "INR",
-          "price": "0.00",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "priceType": "https://schema.org/RentalPriceSpecification",
-            "unitText": item.rentalType || "Day/Month"
-          },
-          "availability": isAvailable
-            ? "https://schema.org/InStock"
-            : "https://schema.org/OutOfStock",
-          "seller": {
-            "@type": "Organization",
-            "name": "AeroTech Infra Equipment Private Limited"
-          }
+        "provider": {
+          "@id": "https://aerotechinfra.com/#organization"
         }
       },
       {
@@ -81,8 +73,8 @@ const EquipmentDetail = () => {
         title={`${item.name} Rental (${item.brand}) | Daily & Monthly Hire`}
         description={`Rent ${item.brand} ${item.name} in Sriperumbudur & Chennai, Tamil Nadu. ${item.description.slice(0, 150)}... Site-ready with full technical support.`}
         canonical={`/equipment/${item.id}`}
-        keywords={`${item.name}, ${item.brand} rental, ${item.category_formated} hire, construction equipment rental Tamil Nadu`}
-        ogType="product"
+        ogImage={item.image}
+        ogImageAlt={`${item.brand} ${item.name}`}
         schema={equipmentSchema}
       />
 
@@ -112,6 +104,8 @@ const EquipmentDetail = () => {
                 src={item.image}
                 alt={`${item.brand} ${item.name} - Rental Equipment`}
                 className="eq-detail__img"
+                width={1200}
+                height={900}
               />
               {/* Availability badge */}
               <span
@@ -193,6 +187,32 @@ const EquipmentDetail = () => {
           </div>
         </div>
       </section>
+
+      {similar.length > 0 && (
+        <section className="similar-section" aria-label="Similar equipment">
+          <div className="container">
+            <div className="similar-section__head">
+              <div>
+                <h2 className="similar-section__title">Similar equipment</h2>
+                <p className="similar-section__desc">
+                  More {item.category_formated.toLowerCase()} machines from the same category.
+                </p>
+              </div>
+              <Link
+                to={`/equipment?category=${encodeURIComponent(item.category_formated)}`}
+                className="similar-section__link"
+              >
+                View all
+              </Link>
+            </div>
+            <div className="catalogue-grid">
+              {similar.map((machine) => (
+                <EquipmentCard key={machine.id} item={machine} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Info cards strip ────────────────────────── */}
       <section className="eq-detail-strip">

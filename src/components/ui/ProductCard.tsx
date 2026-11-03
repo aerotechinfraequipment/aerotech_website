@@ -18,11 +18,12 @@ const ProductCard = ({ item }: ProductCardProps) => {
         to={`/products/${item.slug}`}
         className="product-card__image"
         aria-label={`View ${item.name} details`}
-        style={{ display: "block", overflow: "hidden", background: "#ffffff" }}
       >
         <img
           src={imageSrc}
           alt={`${item.name} by ${item.brand}`}
+          width={850}
+          height={850}
           loading="lazy"
           onError={(e) => {
             const target = e.currentTarget;
@@ -30,7 +31,6 @@ const ProductCard = ({ item }: ProductCardProps) => {
               target.src = PLACEHOLDER;
             }
           }}
-          style={{ width: "100%", height: "100%", objectFit: "contain", padding: "0.75rem" }}
         />
       </Link>
 

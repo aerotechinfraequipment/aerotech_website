@@ -1,4 +1,6 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import "../styles/pages/_equipment-page.scss";
 import SectionHeader from "../components/ui/SectionHeader";
 import EquipmentCard from "../components/ui/EquipmentCard";
 import SEO from "../components/seo/SEO";
@@ -32,8 +34,16 @@ const equipmentListSchema = {
 };
 
 const EquipmentRental = () => {
-  const [activeBrand, setActiveBrand] = useState(ALL);
-  const [activeCategory, setActiveCategory] = useState(ALL);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeBrand = searchParams.get("brand") || ALL;
+  const activeCategory = searchParams.get("category") || ALL;
+
+  const setFilter = (key: "brand" | "category", value: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (value === ALL) next.delete(key);
+    else next.set(key, value);
+    setSearchParams(next, { replace: true });
+  };
 
   // Derive unique sorted brands and categories from data
   const brands = useMemo(() => {
@@ -60,9 +70,20 @@ const EquipmentRental = () => {
         title="Construction Equipment Rental Fleet | Boom Lifts, Cranes & Scissor Lifts"
         description="Browse AeroTech's heavy equipment rental fleet in Sriperumbudur & Chennai. Genie & JLG boom lifts, rough terrain scissor lifts, SANY excavators and all-terrain cranes."
         canonical="/equipment"
-        keywords="equipment rental fleet, boom lift rental Tamil Nadu, scissor lift hire Chennai, Genie boom lift, JLG articulated lift, SANY crane rental, excavator rental"
         schema={equipmentListSchema}
       />
+
+      <div className="eq-detail-breadcrumb">
+        <div className="container">
+          <nav aria-label="Breadcrumb">
+            <ol className="breadcrumb">
+              <li><Link to="/">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page">Equipment Rental</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
 
       {/* ── Hero Banner ───────────────────────────────── */}
       <section className="page-hero page-hero--dark" aria-label="Equipment Rental">
@@ -92,7 +113,7 @@ const EquipmentRental = () => {
                     type="button"
                     className={`filter-pill${activeBrand === brand ? " filter-pill--active" : ""}`}
                     aria-pressed={activeBrand === brand}
-                    onClick={() => setActiveBrand(brand)}
+                    onClick={() => setFilter("brand", brand)}
                   >
                     {brand}
                   </button>
@@ -110,7 +131,7 @@ const EquipmentRental = () => {
                     type="button"
                     className={`filter-pill${activeCategory === cat ? " filter-pill--active" : ""}`}
                     aria-pressed={activeCategory === cat}
-                    onClick={() => setActiveCategory(cat)}
+                    onClick={() => setFilter("category", cat)}
                   >
                     {cat}
                   </button>
@@ -126,7 +147,7 @@ const EquipmentRental = () => {
 
           {/* Equipment grid */}
           {filtered.length > 0 ? (
-            <div className="equipment-page__grid">
+            <div className="catalogue-grid">
               {filtered.map((item) => (
                 <EquipmentCard key={item.id} item={item} />
               ))}

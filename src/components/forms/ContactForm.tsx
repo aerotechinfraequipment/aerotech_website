@@ -49,7 +49,6 @@ const ContactForm = () => {
       }
     }
 
-    // Safely trigger WhatsApp enquiry without leaking PII in URL parameters
     const text = encodeURIComponent(
       `Hello AeroTech,\n*Name:* ${trimmedName}\n*Phone:* ${trimmedPhone}${
         trimmedEmail ? `\n*Email:* ${trimmedEmail}` : ""

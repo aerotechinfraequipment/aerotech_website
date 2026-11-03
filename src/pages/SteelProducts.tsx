@@ -1,4 +1,6 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
+import "../styles/pages/_products-page.scss";
 import SectionHeader from "../components/ui/SectionHeader";
 import Button from "../components/ui/Button";
 import SEO from "../components/seo/SEO";
@@ -163,8 +165,19 @@ const steelSchema = {
 
 // ── Component ─────────────────────────────────────────────────
 const SteelProducts = () => {
-  const [search, setSearch] = useState("");
-  const [family, setFamily] = useState<SteelFamily>("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("q") ?? "";
+  const familyParam = searchParams.get("family") ?? "all";
+  const family: SteelFamily = FAMILIES.some((f) => f.value === familyParam)
+    ? (familyParam as SteelFamily)
+    : "all";
+
+  const setParam = (key: string, value: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (!value || (key === "family" && value === "all")) next.delete(key);
+    else next.set(key, value);
+    setSearchParams(next, { replace: true });
+  };
 
   const filtered = useMemo(() => {
     return STEEL_PRODUCTS.filter((p) => {
@@ -179,10 +192,7 @@ const SteelProducts = () => {
 
   const hasFilters = search || family !== "all";
 
-  const clearFilters = () => {
-    setSearch("");
-    setFamily("all");
-  };
+  const clearFilters = () => setSearchParams({}, { replace: true });
 
   return (
     <>
@@ -190,7 +200,6 @@ const SteelProducts = () => {
         title="Structural Steel, Pipes, Roofing & Mesh Supply | AeroTech"
         description="Source structural steel, square & round pipes, channels, I-beams, angles, roofing sheets, and chain link mesh from AeroTech in Sriperumbudur, Tamil Nadu."
         canonical="/steel-products"
-        keywords="steel products Sriperumbudur, square pipes Tamil Nadu, I-beams Chennai, roofing sheets, weld mesh, chain link fence, structural steel supplier"
         schema={steelSchema}
       />
 
@@ -211,10 +220,7 @@ const SteelProducts = () => {
         <div className="container">
 
           {/* Filter bar — search + category only (2-col) */}
-          <div
-            className="products-page__filters"
-            style={{ gridTemplateColumns: "1fr 1fr" }}
-          >
+          <div className="products-page__filters products-page__filters--duo">
             {/* Search */}
             <div className="products-page__filter-field">
               <label htmlFor="s-search" className="products-page__filter-label">
@@ -226,7 +232,7 @@ const SteelProducts = () => {
                 placeholder="Search steel products…"
                 className="products-page__filter-input"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => setParam("q", e.target.value)}
               />
             </div>
 
@@ -239,7 +245,7 @@ const SteelProducts = () => {
                 id="s-family"
                 className="products-page__filter-input"
                 value={family}
-                onChange={(e) => setFamily(e.target.value as SteelFamily)}
+                onChange={(e) => setParam("family", e.target.value)}
               >
                 {FAMILIES.map((f) => (
                   <option key={f.value} value={f.value}>
@@ -268,35 +274,26 @@ const SteelProducts = () => {
 
           {/* 3-column product grid */}
           {filtered.length > 0 ? (
-            <div
-              className="products-page__grid"
-              style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
-            >
+            <div className="catalogue-grid">
               {filtered.map((p) => (
                 <article key={p.id} className="product-card">
-                  {/* Image */}
-                  <div
-                    className="product-card__image"
-                    style={{ display: "block", overflow: "hidden" }}
-                  >
+                  <div className="product-card__image product-card__image--cover">
                     <img
                       src={p.image}
                       alt={`${p.name} - ${p.familyLabel}`}
+                      width={1024}
+                      height={1024}
                       loading="lazy"
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
                   </div>
 
-                  {/* Body */}
                   <div className="product-card__body">
                     <div className="product-card__meta">
                       <span className="product-card__brand">{p.familyLabel}</span>
                       <span className="product-card__category">Steel</span>
                     </div>
                     <h3 className="product-card__name">{p.name}</h3>
-                    <p style={{ fontSize: "0.875rem", color: "var(--muted-foreground)", margin: "0 0 0.75rem" }}>
-                      {p.description}
-                    </p>
+                    <p className="product-card__excerpt">{p.description}</p>
                     <div className="product-card__actions">
                       <Button variant="dark" href={waLink(p.waMsg)} external>
                         Enquire Now

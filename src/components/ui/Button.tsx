@@ -54,7 +54,9 @@ const Button = ({
 
   if (href) {
     if (!isSafeHref(href)) {
-      console.warn("Blocked potentially unsafe href:", href);
+      if (import.meta.env.DEV) {
+        console.warn("Blocked potentially unsafe href:", href);
+      }
       return <button type="button" className={cls}>{children}</button>;
     }
 

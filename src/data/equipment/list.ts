@@ -1,7 +1,6 @@
 import s40TelescopicBoomLift from '../../assets/images/S-40 Telescopic Boom Lift.jpg';
 import s45TelescopicBoomLift from '../../assets/images/S-45 Telescopic Boom Lift.jpg';
 import s60TelescopicBoomLift from '../../assets/images/S-60 Telescopic Boom Lift.jpg';
-import s65TelescopicBoomLift from '../../assets/images/S-65 Telescopic Boom Lift.jpg';
 import s80TelescopicBoomLift from '../../assets/images/S-80 Telescopic Boom Lift.jpg';
 import s85TelescopicBoomLift from '../../assets/images/S-85 Telescopic Boom Lift.jpg';
 import sx125XCTelescopicBoomLift from '../../assets/images/SX-125 XC Telescopic Boom Lift.jpg';
@@ -11,31 +10,28 @@ import lift600SJTelescopicBoomLift from '../../assets/images/600SJ Telescopic Bo
 import lift860SJTelescopicBoomLift from '../../assets/images/860SJ Telescopic Boom Lift.webp';
 import lift1200SJTelescopicBoomLift from '../../assets/images/1200SJ Telescopic Boom Lift.webp';
 import lift1350SJPTelescopicBoomLift from '../../assets/images/1350SJP Telescopic Boom Lift.webp';
-import z3020ArticulatedBoomLift from '../../assets/images/Z-30:20 Articulated Boom Lift.jpg';
-import z3422ArticulatedBoomLift from '../../assets/images/Z-34:22 Articulated Boom Lift.jpg';
+import z3020ArticulatedBoomLift from '../../assets/images/Z-30-20 Articulated Boom Lift.jpg';
+import z3422ArticulatedBoomLift from '../../assets/images/Z-34-22 Articulated Boom Lift.jpg';
 import z45ArticulatedBoomLift from '../../assets/images/Z-45 Articulated Boom Lift.jpg';
 import z60ArticulatedBoomLift from '../../assets/images/Z-60 Articulated Boom Lift.jpg';
-import z6240ArticulatedBoomLift from '../../assets/images/Z-62:40 Articulated Boom Lift.jpg';
-import z8060ArticulatedBoomLift from '../../assets/images/Z-80:60 Articulated Boom Lift.jpg';
-import zx13570ArticulatedBoomLift from '../../assets/images/ZX-135:70 Articulated Boom Lift.jpg';
+import z6240ArticulatedBoomLift from '../../assets/images/Z-62-40 Articulated Boom Lift.jpg';
+import z8060ArticulatedBoomLift from '../../assets/images/Z-80-60 Articulated Boom Lift.jpg';
+import zx13570ArticulatedBoomLift from '../../assets/images/ZX-135-70 Articulated Boom Lift.jpg';
 import lift450AJArticulatedBoomLift from '../../assets/images/450AJ Articulated Boom Lift.webp';
 import lift520AJArticulatedBoomLift from '../../assets/images/520AJ Articulated Boom Lift.webp';
-import lift600AJArticulatedBoomLift from '../../assets/images/600AJ Articulated Boom Lift.webp';
 import lift800AJArticulatedBoomLift from '../../assets/images/800AJ Articulated Boom Lift.webp';
 import lift1250AJPArticulatedBoomLift from '../../assets/images/1250AJP Articulated Boom Lift.webp';
 import gs2669RTScissorLift from '../../assets/images/GS-2669 RT Rough Terrain Scissor Lift.jpg';
 import gs3369RTScissorLift from '../../assets/images/GS-3369 RT Rough Terrain Scissor Lift.jpg';
-import gs4069RTScissorLift from '../../assets/images/GS-4069 RT Rough Terrain Scissor Lift.jpg';
 import gs5390RTScissorLift from '../../assets/images/GS-5390 RT Rough Terrain Scissor Lift.jpg';
-import sy870HExcavator from '../../assets/images/SY870H Large excavator.webp';
 import sy980HExcavator from '../../assets/images/SY980H Large Excavator.webp';
-import stc250T5TruckCrane from '../../assets/images/STC250T5 25T Truck Crane.webp';
 import sac600EAllTerrainCrane from '../../assets/images/SAC600E Euro V 60T All-terrain Crane.jpg';
 import sac1200EAllTerrainCrane from '../../assets/images/SAC1200E 120T All-terrain Crane.webp';
 import sac1600T7AllTerrainCrane from '../../assets/images/SAC1600T7 160T All-terrain Crane.webp';
 import sac2000T8AllTerrainCrane from '../../assets/images/SAC2000T8 200T All-terrain Crane.webp';
 import sac2500C88AllTerrainCrane from '../../assets/images/SAC2500C8-8 250T All-terrain Crane.webp';
 import sac3000T88AllTerrainCrane from '../../assets/images/SAC3000T8-8 300t All-terrain Crane.webp';
+import { featuredEquipment } from "./featured";
 
 export interface Equipment {
     id: string,
@@ -88,19 +84,7 @@ export const equipments: Equipment[] = [
     status: 'available',
     models: ['S-60 DC', 'S-60 FE', 'S-60 J']
   },
-  {
-    id: 'genie-boom-lift-s65',
-    name: "S-65 Telescopic Boom Lift",
-    image: s65TelescopicBoomLift,
-    brand: 'Genie',
-    category: 'boom-lift',
-    category_formated: 'Boom Lift',
-    description: 'Genie® S®-65 telescopic boom lift can perform a wider range of heavier lift tasks on construction and industrial jobsites thanks to their dual lift capacity and offer innovative features to help increase jobsite efficiency.',
-    rentalType: 'Daily, Weekly & Monthly Rental',
-    status: 'available',
-    models: ['S-65 XC', 'S-65 TraX', 'S-65 HF'],
-    can_show_in_home: true
-  },
+  featuredEquipment('genie-boom-lift-s65'),
   {
     id: 'genie-boom-lift-s80',
     name: "S-80 Telescopic Boom Lift",
@@ -320,19 +304,7 @@ export const equipments: Equipment[] = [
     status: 'available',
     models: []
   },
-  {
-    id: 'jlg-articulated-boom-lift-600aj', 
-    name: "600AJ Articulated Boom Lift",
-    image: lift600AJArticulatedBoomLift,
-    brand: 'JLG',
-    category: 'articulated-boom-lift',
-    category_formated: 'Articulated Boom Lift',
-    description: 'The 600 Series features a narrow chassis option for access to confined areas and the industry\'s best work envelope. A standard oscillating axle and optional four-wheel drive give you outstanding drive performance on rough terrain.',
-    rentalType: 'Daily, Weekly & Monthly Rental',
-    status: 'available',
-    models: [],
-    can_show_in_home: true
-  },
+  featuredEquipment('jlg-articulated-boom-lift-600aj'),
   {
     id: 'jlg-articulated-boom-lift-800aj', 
     name: "800AJ Articulated Boom Lift",
@@ -383,19 +355,7 @@ export const equipments: Equipment[] = [
     status: 'available',
     models: ['GS-3369 RT']
   },
-  {
-    id: 'genie-scissor-lift-gs4069rt',
-    name: 'GS-4069 RT Rough Terrain Scissor Lift',
-    image: gs4069RTScissorLift,
-    brand: 'Genie',
-    category: 'scissor-lift',
-    category_formated: 'Scissor Lift',
-    description: 'The Genie® GS™-4069 RT rough terrain scissor lift is the only 40 ft full-drive-height unit in its class, offering up to 40% gradeability. Its four-wheel drive and active oscillating axle make it ideal for the most demanding outdoor construction sites.',
-    rentalType: 'Daily, Weekly & Monthly Rental',
-    status: 'available',
-    models: ['GS-4069 RT', 'GS-4069 DC'],
-    can_show_in_home: true
-  },
+  featuredEquipment('genie-scissor-lift-gs4069rt'),
   {
     id: 'genie-scissor-lift-gs5390rt',
     name: 'GS-5390 RT Rough Terrain Scissor Lift',
@@ -409,19 +369,7 @@ export const equipments: Equipment[] = [
     models: ['GS-5390 RT']
   },
   // Excavator
-  {
-    id: 'sany-excavator-sy870h',
-    name: 'SY870H Large excavator',
-    image: sy870HExcavator,
-    brand: 'Sany',
-    category: 'excavator',
-    category_formated: 'Excavator',
-    description: 'More than 20 kinds of optional working devices, good engine protection with a multi-stage reinforced fuel filter system. Much more convenient maintenance operation, durable oil and filters to reach more extended maintenance period and 50% less expense. The longest designed lifetime can reach 25000 hours, 30% longer than previous models. Adopt optimized engine, pump, and valve matching technology to improve energy transfer efficiency, lower fuel consumption, and achieve higher efficiency.',
-    rentalType: 'Daily, Weekly & Monthly Rental',
-    status: 'available',
-    models: [],
-    can_show_in_home: true
-  },
+  featuredEquipment('sany-excavator-sy870h'),
   {
     id: 'sany-excavator-sy980h',
     name: 'SY980H Large Excavator',
@@ -435,19 +383,7 @@ export const equipments: Equipment[] = [
     models: []
   },
   // Crane
-  {
-    id: 'sany-crane-stc250t5',
-    name: 'STC250T5 25T Truck Crane',
-    image: stc250T5TruckCrane,
-    brand: 'Sany',
-    category: 'crane',
-    category_formated: 'Crane',
-    description: 'More than 20 kinds of optional working devices, good engine protection with a multi-stage reinforced fuel filter system. The longest designed lifetime can reach 25000 hours, 30% longer than previous models. Much more convenient maintenance operation, durable oil and filters to reach more extended maintenance period and 50% less expense. Adopt optimized engine, pump, and valve matching technology to improve energy transfer efficiency, lower fuel consumption, and achieve higher efficiency.',
-    rentalType: 'Daily, Weekly & Monthly Rental',
-    status: 'available',
-    models: [],
-    can_show_in_home: true
-  },
+  featuredEquipment('sany-crane-stc250t5'),
   {
     id: 'sany-crane-sac600e',
     name: 'SAC600E Euro V 60T All-terrain Crane',

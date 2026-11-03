@@ -1,4 +1,6 @@
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import "../styles/pages/_products-page.scss";
 import SectionHeader from "../components/ui/SectionHeader";
 import ProductCard from "../components/ui/ProductCard";
 import SEO from "../components/seo/SEO";
@@ -35,10 +37,19 @@ const productsListSchema = {
 };
 
 const Products = () => {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
-  const [brand, setBrand] = useState("");
-  const [type, setType] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("q") ?? "";
+  const category = searchParams.get("category") ?? "";
+  const brand = searchParams.get("brand") ?? "";
+  const type = searchParams.get("type") ?? "";
+
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [draftSearch, setDraftSearch] = useState(search);
+  const [draftCategory, setDraftCategory] = useState(category);
+  const [draftBrand, setDraftBrand] = useState(brand);
+  const [draftType, setDraftType] = useState(type);
+
+  const activeFilterCount = [category, brand, type].filter(Boolean).length;
 
   const filtered = useMemo(() => {
     return productsData.filter((p) => {
@@ -55,11 +66,23 @@ const Products = () => {
 
   const hasFilters = search || category || brand || type;
 
+  const applyFilters = () => {
+    const next = new URLSearchParams();
+    if (draftSearch.trim()) next.set("q", draftSearch.trim());
+    if (draftCategory) next.set("category", draftCategory);
+    if (draftBrand) next.set("brand", draftBrand);
+    if (draftType) next.set("type", draftType);
+    setSearchParams(next, { replace: true });
+    setFiltersOpen(false);
+  };
+
   const clearFilters = () => {
-    setSearch("");
-    setCategory("");
-    setBrand("");
-    setType("");
+    setDraftSearch("");
+    setDraftCategory("");
+    setDraftBrand("");
+    setDraftType("");
+    setSearchParams({}, { replace: true });
+    setFiltersOpen(false);
   };
 
   return (
@@ -68,7 +91,6 @@ const Products = () => {
         title="Industrial Products & Hardware Catalogue | Power Tools, Welding & Safety"
         description="Shop genuine industrial products and hardware in Sriperumbudur & Chennai. Bosch, ESAB, Taparia, Stanley, Berger, Asian Paints, and 3M. Prompt dispatch and GST invoicing."
         canonical="/products"
-        keywords="industrial products Sriperumbudur, welding equipment Chennai, power tools, safety PPE, Bosch power tools, Taparia tools, ESAB welding, industrial supply Tamil Nadu"
         schema={productsListSchema}
       />
 
@@ -88,82 +110,84 @@ const Products = () => {
       <section className="products-page" aria-label="Products catalogue">
         <div className="container">
 
-          {/* 4-column filter bar */}
-          <div className="products-page__filters">
-            {/* Search */}
-            <div className="products-page__filter-field">
-              <label htmlFor="p-search" className="products-page__filter-label">
-                Search
-              </label>
-              <input
-                id="p-search"
-                type="search"
-                placeholder="Search products…"
-                className="products-page__filter-input"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
+          <form
+            className="catalogue-toolbar"
+            onSubmit={(e) => {
+              e.preventDefault();
+              applyFilters();
+            }}
+          >
+            <input
+              id="p-search"
+              type="search"
+              placeholder="Search products…"
+              className="products-page__filter-input catalogue-toolbar__search"
+              value={draftSearch}
+              onChange={(e) => setDraftSearch(e.target.value)}
+              aria-label="Search products"
+            />
+            <button
+              type="button"
+              className="catalogue-toolbar__toggle"
+              aria-expanded={filtersOpen}
+              onClick={() => setFiltersOpen((open) => !open)}
+            >
+              Filters
+              {activeFilterCount > 0 && (
+                <span className="catalogue-toolbar__count">{activeFilterCount}</span>
+              )}
+            </button>
+          </form>
 
-            {/* Category */}
-            <div className="products-page__filter-field">
-              <label htmlFor="p-category" className="products-page__filter-label">
-                Category
-              </label>
-              <select
-                id="p-category"
-                className="products-page__filter-input"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                {productCategories.map((cat) => (
-                  <option key={cat.slug} value={cat.slug}>
-                    {cat.label}
-                  </option>
-                ))}
-              </select>
+          {filtersOpen && (
+            <div className="catalogue-filters">
+              <div className="products-page__filter-field">
+                <label htmlFor="p-category" className="products-page__filter-label">Category</label>
+                <select
+                  id="p-category"
+                  className="products-page__filter-input"
+                  value={draftCategory}
+                  onChange={(e) => setDraftCategory(e.target.value)}
+                >
+                  {productCategories.map((cat) => (
+                    <option key={cat.slug || "all"} value={cat.slug}>{cat.label}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="products-page__filter-field">
+                <label htmlFor="p-brand" className="products-page__filter-label">Brand</label>
+                <select
+                  id="p-brand"
+                  className="products-page__filter-input"
+                  value={draftBrand}
+                  onChange={(e) => setDraftBrand(e.target.value)}
+                >
+                  <option value="">All brands</option>
+                  {productBrands.map((b) => (
+                    <option key={b} value={b}>{b}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="products-page__filter-field">
+                <label htmlFor="p-type" className="products-page__filter-label">Type</label>
+                <select
+                  id="p-type"
+                  className="products-page__filter-input"
+                  value={draftType}
+                  onChange={(e) => setDraftType(e.target.value)}
+                >
+                  <option value="">All types</option>
+                  {productTypes.map((t) => (
+                    <option key={t} value={t}>{t}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="catalogue-filters__actions">
+                <button type="button" className="btn btn--outline-dark" onClick={clearFilters}>Clear</button>
+                <button type="button" className="btn btn--accent" onClick={applyFilters}>Apply</button>
+              </div>
             </div>
-
-            {/* Brand */}
-            <div className="products-page__filter-field">
-              <label htmlFor="p-brand" className="products-page__filter-label">
-                Brand
-              </label>
-              <select
-                id="p-brand"
-                className="products-page__filter-input"
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-              >
-                <option value="">All brands</option>
-                {productBrands.map((b) => (
-                  <option key={b} value={b}>
-                    {b}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Type */}
-            <div className="products-page__filter-field">
-              <label htmlFor="p-type" className="products-page__filter-label">
-                Type
-              </label>
-              <select
-                id="p-type"
-                className="products-page__filter-input"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-              >
-                <option value="">All types</option>
-                {productTypes.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          )}
 
           {/* Active filter meta */}
           {hasFilters && (
@@ -183,7 +207,7 @@ const Products = () => {
 
           {/* Product grid */}
           {filtered.length > 0 ? (
-            <div className="products-page__grid">
+            <div className="catalogue-grid">
               {filtered.map((item) => (
                 <ProductCard key={item.id} item={item} />
               ))}

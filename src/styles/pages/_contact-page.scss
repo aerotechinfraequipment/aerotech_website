@@ -48,9 +48,12 @@
 
   p {
     margin-top: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 800;
     color: var(--foreground);
+    overflow-wrap: anywhere;
+
+    @media (min-width: 768px) { font-size: 1.5rem; }
   }
 
   &__actions {
@@ -91,6 +94,21 @@
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+
+#quote { scroll-margin-top: 5.5rem; }
+
+@media (max-width: 640px) {
+  .quote-form .btn,
+  .contact-info-card__actions {
+    width: 100%;
+  }
+
+  .contact-info-card__actions {
+    flex-direction: column;
+  }
+
+  .contact-info-card__actions .btn { width: 100%; }
 }
 
 .contact-form-panel {

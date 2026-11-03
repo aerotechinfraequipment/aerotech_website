@@ -1,46 +1,47 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import "../styles/pages/_equipment-detail.scss";
 import Button from "../components/ui/Button";
+import ProductCard from "../components/ui/ProductCard";
 import SEO from "../components/seo/SEO";
+import NotFound from "./NotFound";
+import { productsData } from "../data/products";
+import { getProductDetail, isValidProductSlug } from "../data/products/index";
 import type { ProductDetail as ProductDetailType } from "../data/products/index";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [product, setProduct] = useState<ProductDetailType | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [missingSlug, setMissingSlug] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string>("");
+  const slugValid = Boolean(slug && isValidProductSlug(slug));
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || !isValidProductSlug(slug)) return;
     let ignore = false;
 
-    // Sanitize slug parameter to prevent directory traversal or malformed requests
-    const cleanSlug = slug.replace(/[^a-zA-Z0-9_-]/g, "");
-
-    // Fetch detail json from public directory
-    fetch(`/data/products/${cleanSlug}.json`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Product not found");
-        return res.json();
-      })
-      .then((data: ProductDetailType) => {
-        if (ignore) return;
-        setProduct(data);
-        setActiveImage(data.image || data.thumbnail || `/images/products/${cleanSlug}.jpg`);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (ignore) return;
-        console.error("Failed to load product detail:", err);
-        setLoading(false);
-      });
+    getProductDetail(slug).then((data) => {
+      if (ignore) return;
+      if (!data) {
+        setMissingSlug(slug);
+        setProduct(null);
+        return;
+      }
+      setMissingSlug(null);
+      setProduct(data);
+      setActiveImage(data.image || data.thumbnail || `/images/products/${slug}.jpg`);
+    });
 
     return () => {
       ignore = true;
     };
   }, [slug]);
 
-  if (loading) {
+  if (!slugValid || missingSlug === slug) {
+    return <NotFound />;
+  }
+
+  if (!product || product.slug !== slug) {
     return (
       <div className="container" style={{ padding: "6rem 0", textAlign: "center" }}>
         <p style={{ fontSize: "1.2rem", color: "var(--muted-foreground)" }}>
@@ -50,15 +51,15 @@ const ProductDetail = () => {
     );
   }
 
-  if (!product) {
-    return <Navigate to="/products" replace />;
-  }
-
   const currentDisplayImage =
     activeImage ||
     product.image ||
     product.thumbnail ||
     `/images/products/${product.slug}.jpg`;
+
+  const similar = productsData
+    .filter((item) => item.slug !== product.slug && item.category === product.category)
+    .slice(0, 4);
 
   const whatsappMsg = encodeURIComponent(
     `Hello AeroTech, I am interested in ${product.name} (Brand: ${product.brand}). Please share pricing, availability, and technical documentation.`
@@ -79,26 +80,7 @@ const ProductDetail = () => {
           "@type": "Brand",
           "name": product.brand
         },
-        "category": product.category,
-        "offers": {
-          "@type": "Offer",
-          "url": `https://aerotechinfra.com/products/${product.slug}`,
-          "priceCurrency": "INR",
-          "price": "0.00",
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "priceCurrency": "INR",
-            "valueAddedTaxIncluded": true
-          },
-          "availability": product.inStock
-            ? "https://schema.org/InStock"
-            : "https://schema.org/OutOfStock",
-          "itemCondition": "https://schema.org/NewCondition",
-          "seller": {
-            "@type": "Organization",
-            "name": "AeroTech Infra Equipment Private Limited"
-          }
-        }
+        "category": product.category
       },
       {
         "@type": "BreadcrumbList",
@@ -132,9 +114,8 @@ const ProductDetail = () => {
         title={`${product.name} (${product.brand}) | Buy in Sriperumbudur & Chennai`}
         description={`${product.name} by ${product.brand}. ${product.shortDescription || product.overview.slice(0, 140)} Ready stock, prompt dispatch across Tamil Nadu.`}
         canonical={`/products/${product.slug}`}
-        keywords={`${product.name}, ${product.brand}, ${product.category}, ${product.type}, industrial hardware Tamil Nadu`}
-        ogType="product"
         ogImage={currentDisplayImage}
+        ogImageAlt={`${product.name} by ${product.brand}`}
         schema={productSchema}
       />
 
@@ -146,12 +127,6 @@ const ProductDetail = () => {
               <li><Link to="/">Home</Link></li>
               <li aria-hidden="true">/</li>
               <li><Link to="/products">Industrial Products</Link></li>
-              <li aria-hidden="true">/</li>
-              <li>
-                <Link to={`/products?category=${encodeURIComponent(product.category)}`}>
-                  {product.category}
-                </Link>
-              </li>
               <li aria-hidden="true">/</li>
               <li aria-current="page">{product.name}</li>
             </ol>
@@ -165,12 +140,13 @@ const ProductDetail = () => {
 
           {/* ── Left: Images Panel ──────────────────── */}
           <div className="eq-detail__image-panel">
-            <div className="eq-detail__img-wrap" style={{ background: "#ffffff", padding: "1.5rem", borderRadius: "0.75rem", textAlign: "center", border: "1px solid var(--border)" }}>
+            <div className="eq-detail__img-wrap">
               <img
                 src={currentDisplayImage}
                 alt={`${product.name} - ${product.brand}`}
                 className="eq-detail__img"
-                style={{ objectFit: "contain", maxHeight: "380px", width: "100%" }}
+                width={850}
+                height={850}
                 onError={(e) => {
                   const target = e.currentTarget;
                   if (!target.src.includes("product-placeholder.png")) {
@@ -186,37 +162,20 @@ const ProductDetail = () => {
 
             {/* Gallery Thumbnails */}
             {product.images && product.images.length > 1 && (
-              <div
-                style={{
-                  display: "flex",
-                  gap: "0.75rem",
-                  marginTop: "1rem",
-                  overflowX: "auto",
-                }}
-              >
+              <div className="eq-detail__thumbs">
                 {product.images.map((imgUrl, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => setActiveImage(imgUrl)}
                     aria-label={`View ${product.name} image ${idx + 1}`}
-                    style={{
-                      border:
-                        currentDisplayImage === imgUrl
-                          ? "2px solid var(--accent)"
-                          : "1px solid var(--border)",
-                      borderRadius: "0.5rem",
-                      padding: "0.25rem",
-                      background: "#fff",
-                      cursor: "pointer",
-                      width: "64px",
-                      height: "64px",
-                      flexShrink: 0,
-                    }}
+                    className={`eq-detail__thumb${currentDisplayImage === imgUrl ? " is-active" : ""}`}
                   >
                     <img
                       src={imgUrl}
                       alt={`${product.name} thumbnail ${idx + 1}`}
+                      width={64}
+                      height={64}
                       style={{ width: "100%", height: "100%", objectFit: "contain" }}
                       onError={(e) => {
                         const target = e.currentTarget;
@@ -277,98 +236,57 @@ const ProductDetail = () => {
               </div>
             )}
 
-            {/* Technical Specifications Table */}
             {product.specifications && Object.keys(product.specifications).length > 0 && (
-              <div>
-                <h2 className="eq-detail__section-title">Detailed Specifications</h2>
-                <div
-                  style={{
-                    border: "1px solid var(--border)",
-                    borderRadius: "0.5rem",
-                    overflow: "hidden",
-                    fontSize: "0.85rem",
-                  }}
-                >
-                  <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
-                    <tbody>
-                      {Object.entries(product.specifications).map(([key, val], idx) => (
-                        <tr
-                          key={key}
-                          style={{
-                            background: idx % 2 === 0 ? "var(--secondary)" : "transparent",
-                            borderBottom: "1px solid var(--border)",
-                          }}
-                        >
-                          <th
-                            style={{
-                              padding: "0.6rem 0.85rem",
-                              width: "40%",
-                              fontWeight: 600,
-                              color: "var(--foreground)",
-                            }}
-                          >
-                            {key}
-                          </th>
-                          <td
-                            style={{
-                              padding: "0.6rem 0.85rem",
-                              color: "var(--muted-foreground)",
-                            }}
-                          >
-                            {val}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+              <details className="detail-accordion" open>
+                <summary className="detail-accordion__summary">Detailed Specifications</summary>
+                <div className="detail-accordion__body">
+                  <div className="eq-detail__specs">
+                    <table>
+                      <tbody>
+                        {Object.entries(product.specifications).map(([key, val]) => (
+                          <tr key={key}>
+                            <th>{key}</th>
+                            <td>{val}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
+              </details>
             )}
 
-            {/* Full Overview Description */}
-            <div className="eq-detail__desc">
-              <h2 className="eq-detail__section-title">Product Overview &amp; Build Quality</h2>
-              <p>{product.overview}</p>
-            </div>
+            <details className="detail-accordion">
+              <summary className="detail-accordion__summary">Product Overview &amp; Build Quality</summary>
+              <div className="detail-accordion__body eq-detail__desc">
+                <p>{product.overview}</p>
+              </div>
+            </details>
 
-            {/* Applications */}
             {product.applications && product.applications.length > 0 && (
-              <div>
-                <h2 className="eq-detail__section-title">Recommended Applications</h2>
-                <ul
-                  style={{
-                    listStyle: "disc",
-                    paddingLeft: "1.25rem",
-                    color: "var(--muted-foreground)",
-                    fontSize: "0.9rem",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {product.applications.map((app, idx) => (
-                    <li key={idx}>{app}</li>
-                  ))}
-                </ul>
-              </div>
+              <details className="detail-accordion">
+                <summary className="detail-accordion__summary">Recommended Applications</summary>
+                <div className="detail-accordion__body">
+                  <ul className="detail-accordion__list">
+                    {product.applications.map((app, idx) => (
+                      <li key={idx}>{app}</li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
             )}
 
-            {/* Package Contents */}
             {product.packageContents && product.packageContents.length > 0 && (
-              <div>
-                <h2 className="eq-detail__section-title">What's in the Box</h2>
-                <ul
-                  style={{
-                    listStyle: "circle",
-                    paddingLeft: "1.25rem",
-                    color: "var(--muted-foreground)",
-                    fontSize: "0.9rem",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {product.packageContents.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-              </div>
+              <details className="detail-accordion">
+                <summary className="detail-accordion__summary">What's in the Box</summary>
+                <div className="detail-accordion__body">
+                  <ul className="detail-accordion__list">
+                    {product.packageContents.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
             )}
 
             <hr className="eq-detail__divider" />
@@ -400,6 +318,32 @@ const ProductDetail = () => {
           </div>
         </div>
       </section>
+
+      {similar.length > 0 && (
+        <section className="similar-section" aria-label="Similar products">
+          <div className="container">
+            <div className="similar-section__head">
+              <div>
+                <h2 className="similar-section__title">Similar products</h2>
+                <p className="similar-section__desc">
+                  More {product.category.toLowerCase()} from the same category.
+                </p>
+              </div>
+              <Link
+                to={`/products?category=${encodeURIComponent(product.category)}`}
+                className="similar-section__link"
+              >
+                View all
+              </Link>
+            </div>
+            <div className="catalogue-grid">
+              {similar.map((item) => (
+                <ProductCard key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Trust Information Strip ─────────────────── */}
       <section className="eq-detail-strip">

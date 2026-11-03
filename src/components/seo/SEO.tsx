@@ -1,12 +1,12 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export interface SEOProps {
   title?: string;
   description?: string;
-  keywords?: string;
   canonical?: string;
-  ogType?: "website" | "article" | "product";
   ogImage?: string;
+  ogImageAlt?: string;
   noindex?: boolean;
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
@@ -15,7 +15,8 @@ const BASE_URL = "https://aerotechinfra.com";
 const DEFAULT_TITLE = "Construction Equipment Rental & Industrial Products | AeroTech Infra Equipment";
 const DEFAULT_DESC =
   "AeroTech Infra Equipment — boom lifts, scissor lifts, excavators, and cranes for daily or monthly rental, plus genuine pneumatics, power tools, steel, and industrial hardware in Sriperumbudur, Tamil Nadu.";
-const DEFAULT_OG_IMAGE = `${BASE_URL}/android-chrome-512x512.png`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
+const DEFAULT_OG_ALT = "AeroTech Infra Equipment";
 
 function setMetaTag(selector: string, attr: "name" | "property", key: string, content: string) {
   let element = document.querySelector(selector) as HTMLMetaElement | null;
@@ -25,6 +26,10 @@ function setMetaTag(selector: string, attr: "name" | "property", key: string, co
     document.head.appendChild(element);
   }
   element.setAttribute("content", content);
+}
+
+function removeMetaTag(selector: string) {
+  document.querySelector(selector)?.remove();
 }
 
 function setCanonicalTag(url: string) {
@@ -37,35 +42,50 @@ function setCanonicalTag(url: string) {
   link.setAttribute("href", url);
 }
 
+function toCanonical(path: string): string {
+  let pathname = path;
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    pathname = new URL(path).pathname;
+  } else {
+    pathname = path.split("?")[0].split("#")[0];
+  }
+  if (!pathname.startsWith("/")) pathname = `/${pathname}`;
+  if (pathname !== "/" && pathname.endsWith("/")) pathname = pathname.slice(0, -1);
+  return `${BASE_URL}${pathname}`;
+}
+
+function toAbsoluteAsset(src: string): string {
+  if (src.startsWith("http://") || src.startsWith("https://")) return src;
+  return `${BASE_URL}${src.startsWith("/") ? src : `/${src}`}`;
+}
+
 const SCHEMA_SCRIPT_ID = "dynamic-seo-schema";
 
-function setStructuredData(schema?: Record<string, unknown> | Array<Record<string, unknown>>) {
+function setStructuredData(schemaJson: string) {
   const existing = document.getElementById(SCHEMA_SCRIPT_ID);
-  if (existing) {
-    existing.remove();
-  }
-
-  if (!schema) return;
+  if (existing) existing.remove();
+  if (!schemaJson) return;
 
   const script = document.createElement("script");
   script.id = SCHEMA_SCRIPT_ID;
   script.type = "application/ld+json";
-  script.text = JSON.stringify(schema);
+  script.text = schemaJson;
   document.head.appendChild(script);
 }
 
 const SEO = ({
   title,
   description,
-  keywords,
   canonical,
-  ogType = "website",
   ogImage,
+  ogImageAlt,
   noindex = false,
   schema,
 }: SEOProps) => {
+  const { pathname } = useLocation();
+  const schemaJson = schema ? JSON.stringify(schema).replace(/</g, "\\u003c") : "";
+
   useEffect(() => {
-    // 1. Page Title
     const formattedTitle = title
       ? title.includes("AeroTech")
         ? title
@@ -73,56 +93,51 @@ const SEO = ({
       : DEFAULT_TITLE;
     document.title = formattedTitle;
 
-    // 2. Meta Description & Keywords
     const metaDesc = description || DEFAULT_DESC;
     setMetaTag('meta[name="description"]', "name", "description", metaDesc);
+    removeMetaTag('meta[name="keywords"]');
 
-    if (keywords) {
-      setMetaTag('meta[name="keywords"]', "name", "keywords", keywords);
-    }
-
-    // 3. Robots
     const robots = noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large";
     setMetaTag('meta[name="robots"]', "name", "robots", robots);
 
-    // 4. Canonical URL
-    const canonicalUrl = canonical
-      ? canonical.startsWith("http")
-        ? canonical
-        : `${BASE_URL}${canonical.startsWith("/") ? canonical : `/${canonical}`}`
-      : window.location.href;
-    setCanonicalTag(canonicalUrl);
+    const canonicalUrl = toCanonical(canonical || pathname);
+    if (noindex) {
+      document.querySelector('link[rel="canonical"]')?.remove();
+    } else {
+      setCanonicalTag(canonicalUrl);
+    }
 
-    // 5. OpenGraph
-    const finalOgImage = ogImage
-      ? ogImage.startsWith("http")
-        ? ogImage
-        : `${BASE_URL}${ogImage.startsWith("/") ? ogImage : `/${ogImage}`}`
-      : DEFAULT_OG_IMAGE;
+    const finalOgImage = ogImage ? toAbsoluteAsset(ogImage) : DEFAULT_OG_IMAGE;
+    const imageAlt = ogImageAlt || formattedTitle || DEFAULT_OG_ALT;
 
     setMetaTag('meta[property="og:title"]', "property", "og:title", formattedTitle);
     setMetaTag('meta[property="og:description"]', "property", "og:description", metaDesc);
     setMetaTag('meta[property="og:url"]', "property", "og:url", canonicalUrl);
-    setMetaTag('meta[property="og:type"]', "property", "og:type", ogType);
+    setMetaTag('meta[property="og:type"]', "property", "og:type", "website");
     setMetaTag('meta[property="og:image"]', "property", "og:image", finalOgImage);
+    setMetaTag('meta[property="og:image:alt"]', "property", "og:image:alt", imageAlt);
 
-    // 6. Twitter Card
+    if (finalOgImage === DEFAULT_OG_IMAGE) {
+      setMetaTag('meta[property="og:image:width"]', "property", "og:image:width", "1200");
+      setMetaTag('meta[property="og:image:height"]', "property", "og:image:height", "630");
+    } else {
+      removeMetaTag('meta[property="og:image:width"]');
+      removeMetaTag('meta[property="og:image:height"]');
+    }
+
     setMetaTag('meta[name="twitter:title"]', "name", "twitter:title", formattedTitle);
     setMetaTag('meta[name="twitter:description"]', "name", "twitter:description", metaDesc);
+    setMetaTag('meta[name="twitter:url"]', "name", "twitter:url", canonicalUrl);
     setMetaTag('meta[name="twitter:image"]', "name", "twitter:image", finalOgImage);
 
-    // 7. JSON-LD Schema
-    setStructuredData(schema);
+    setStructuredData(schemaJson);
 
     return () => {
-      // Clean up dynamic route schema on unmount
-      const s = document.getElementById(SCHEMA_SCRIPT_ID);
-      if (s) s.remove();
+      document.getElementById(SCHEMA_SCRIPT_ID)?.remove();
     };
-  }, [title, description, keywords, canonical, ogType, ogImage, noindex, schema]);
+  }, [title, description, canonical, ogImage, ogImageAlt, noindex, schemaJson, pathname]);
 
   return null;
 };
 
 export default SEO;
-

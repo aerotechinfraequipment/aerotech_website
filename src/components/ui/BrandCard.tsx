@@ -7,8 +7,11 @@ interface BrandCardProps {
 const BrandCard = ({ item }: BrandCardProps) => {
   return (
     <div className="brand-card">
-      <span className="brand-card__name">{item.name}</span>
-      <span className="brand-card__desc">{item.description}</span>
+      <img
+        className="brand-card__logo"
+        src={item.logo}
+        alt={`${item.name} logo`}
+      />
     </div>
   );
 };

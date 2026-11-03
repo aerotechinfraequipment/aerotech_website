@@ -1,40 +1,42 @@
-# aerotechinfraequipment - React + TypeScript + Vite
+# AeroTech Infra Equipment
 
-A modern e-commerce storefront built with React, TypeScript, and Vite. This template provides a minimal setup to get React working in Vite with HMR and ESLint rules.
+Marketing site for AeroTech Infra Equipment: construction equipment rental and industrial product supply in Sriperumbudur, Tamil Nadu. Built with React, TypeScript, and Vite.
 
-## About This Website
+## Routes
 
-aerotechinfraequipment is a responsive web application featuring:
-
-- **Home Page**: Welcome section with store introduction
-- **Products Page**: Showcase of available products
-- **About Page**: Information about the store
-- **Responsive Layout**: Mobile-first design with Bootstrap 5 integration
-- **Modern Styling**: SCSS with organized abstracts, base styles, and layouts
+- `/` — Home
+- `/equipment` — Rental fleet
+- `/equipment/:id` — Equipment detail
+- `/products` — Industrial products catalogue
+- `/products/:slug` — Product detail
+- `/steel-products` — Steel, roofing, and mesh
+- `/about` — About the company
+- `/contact` — Contact and quote forms
 
 ## Tech Stack
 
-- **Frontend Framework**: React 19.2.4 with TypeScript
-- **Build Tool**: Vite 8.0.1
-- **Routing**: React Router DOM 7.13.2
-- **Styling**: SCSS with Bootstrap 5.3.8
-- **Compiler**: React Compiler (enabled by default)
+- **Frontend**: React 19 with TypeScript
+- **Build**: Vite 8
+- **Routing**: React Router DOM 7
+- **Styling**: SCSS (no Bootstrap)
+- **Compiler**: React Compiler
 - **Linting**: ESLint with TypeScript support
 
 ## Project Structure
 
 ```
 src/
-├── components/layout/      # Reusable layout components (Header, Footer)
+├── components/             # Layout, home, forms, and UI
+├── data/                   # Equipment and product catalogue
 ├── layout/                 # Main layout wrapper
-├── pages/                  # Page components (Home, Products, About)
-├── styles/                 # SCSS styles with organized structure
-│   ├── abstracts/          # Variables and mixins
-│   ├── base/               # Reset, typography, globals
-│   ├── layout/             # Layout-specific styles
-│   └── pages/              # Page-specific styles
-├── App.tsx                 # Main app component with routing
+├── pages/                  # Route pages
+├── styles/                 # Shared and page SCSS
+├── App.tsx                 # Routes
 └── main.tsx                # React entry point
+public/
+├── data/products/          # Product detail JSON
+├── images/                 # Product and shared images
+└── schema/                 # LocalBusiness JSON-LD
 ```
 
 ## Getting Started

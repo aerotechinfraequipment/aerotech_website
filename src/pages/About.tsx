@@ -1,3 +1,4 @@
+import "../styles/pages/_about-page.scss";
 import SectionHeader from "../components/ui/SectionHeader";
 import Button from "../components/ui/Button";
 import SEO from "../components/seo/SEO";
@@ -13,18 +14,7 @@ const aboutSchema = {
   "description": "Learn about AeroTech Infra Equipment — your trusted partner for heavy construction equipment rental and industrial hardware in Sriperumbudur, Tamil Nadu.",
   "url": "https://aerotechinfra.com/about",
   "mainEntity": {
-    "@type": "LocalBusiness",
-    "name": "AeroTech Infra Equipment Private Limited",
-    "telephone": "+919791890636",
-    "email": "aerotech2003@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "SF No.135/4G2, Chennai Salai, Thirumangalam",
-      "addressLocality": "Sriperumbudur",
-      "addressRegion": "Tamil Nadu",
-      "postalCode": "602106",
-      "addressCountry": "IN"
-    }
+    "@id": "https://aerotechinfra.com/#organization"
   },
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -52,7 +42,6 @@ const About = () => {
         title="About Us | AeroTech Infra Equipment Sriperumbudur"
         description="Learn about AeroTech Infra Equipment Private Limited. Based in Sriperumbudur, Tamil Nadu, we provide heavy equipment rental and genuine industrial supplies across South India."
         canonical="/about"
-        keywords="about AeroTech, equipment rental company Sriperumbudur, industrial supplies Tamil Nadu, machinery rental Chennai"
         schema={aboutSchema}
       />
 

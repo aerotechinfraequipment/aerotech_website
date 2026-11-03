@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="site-footer__brand">
           <Link to="/" className="site-footer__logo" aria-label="AeroTech Infra Equipment — home">
             <span className="site-header__logo-icon" aria-hidden="true">
-              <img src={logo} alt="AeroTech Infra Equipment logo" />
+              <img src={logo} alt="AeroTech Infra Equipment logo" width={500} height={500} />
             </span>
             <span className="site-footer__logo-text">
               <span className="site-footer__logo-main">AEROTECH</span>

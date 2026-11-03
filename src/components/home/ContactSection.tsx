@@ -38,7 +38,7 @@ const ContactSection = () => {
         </div>
 
         {/* Right form column */}
-        <div className="contact-section__form-wrapper">
+        {/* <div className="contact-section__form-wrapper">
           <form className="quote-form" noValidate>
             <div className="quote-form__row">
               <div className="quote-form__field">
@@ -109,7 +109,7 @@ const ContactSection = () => {
               <Button type="submit" variant="accent">Request Rental Quote</Button>
             </div>
           </form>
-        </div>
+        </div> */}
       </div>
     </section>
   );

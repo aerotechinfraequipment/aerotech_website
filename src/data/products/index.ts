@@ -42,16 +42,22 @@ export const productCategories: CategoryItem[] = productsListJson.categories;
 export const productBrands: string[] = productsListJson.brands;
 export const productTypes: string[] = productsListJson.types;
 
-/**
- * Dynamically loads the full product detail JSON by slug.
- */
+const PRODUCT_SLUG = /^[a-z0-9-]+$/;
+
+export function isValidProductSlug(slug: string): boolean {
+  return PRODUCT_SLUG.test(slug);
+}
+
 export async function getProductDetail(slug: string): Promise<ProductDetail | null> {
+  if (!isValidProductSlug(slug)) return null;
   try {
     const response = await fetch(`/data/products/${slug}.json`);
     if (!response.ok) return null;
     return await response.json();
   } catch (error) {
-    console.error(`Failed to load product detail for ${slug}:`, error);
+    if (import.meta.env.DEV) {
+      console.error(`Failed to load product detail for ${slug}:`, error);
+    }
     return null;
   }
 }

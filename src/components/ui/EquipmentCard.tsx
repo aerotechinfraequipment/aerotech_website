@@ -31,6 +31,8 @@ const EquipmentCard = ({ item }: EquipmentCardProps) => {
         <img
           src={item.image}
           alt={`${item.brand} ${item.name} rental equipment`}
+          width={744}
+          height={1200}
           loading="lazy"
           className="eq-card__img"
         />
@@ -80,7 +82,8 @@ const EquipmentCard = ({ item }: EquipmentCardProps) => {
               className="eq-card__btn eq-card__btn--view"
               onClick={(e) => e.stopPropagation()}
             >
-              View Equipment
+              <span className="label-full">View Equipment</span>
+              <span className="label-short">Details</span>
             </Link>
             <a
               href={`https://wa.me/919791890636?text=${encodeURIComponent(
@@ -91,7 +94,8 @@ const EquipmentCard = ({ item }: EquipmentCardProps) => {
               className="eq-card__btn eq-card__btn--quote"
               onClick={(e) => e.stopPropagation()}
             >
-              Get Quote
+              <span className="label-full">Get Quote</span>
+              <span className="label-short">Quote</span>
             </a>
           </div>
         </div>
