@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 .reff
 .Equipments
-scripts
+scripts/catalog
