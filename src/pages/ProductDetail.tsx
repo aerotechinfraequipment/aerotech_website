@@ -7,6 +7,7 @@ import SEO from "../components/seo/SEO";
 import NotFound from "./NotFound";
 import ItemEnquiry from "../components/forms/ItemEnquiry";
 import { getProduct, isValidProductSlug, listProducts } from "../lib/catalog";
+import { clipMeta } from "../lib/meta";
 import type { Product, ProductDetailData } from "../lib/catalog";
 
 const ProductDetail = () => {
@@ -129,7 +130,7 @@ const ProductDetail = () => {
     <>
       <SEO
         title={`${product.name} (${product.brand}) | Buy in Sriperumbudur & Chennai`}
-        description={`${product.name} by ${product.brand}. ${product.shortDescription || product.overview.slice(0, 140)} Ready stock, prompt dispatch across Tamil Nadu.`}
+        description={clipMeta(`${product.brand} ${product.name}. ${product.shortDescription || product.overview} Available from AeroTech in Tamil Nadu.`)}
         canonical={`/products/${product.slug}`}
         ogImage={currentDisplayImage}
         ogImageAlt={`${product.name} by ${product.brand}`}
@@ -160,7 +161,7 @@ const ProductDetail = () => {
             <div className="eq-detail__img-wrap">
               <img
                 src={currentDisplayImage}
-                alt={`${product.name} - ${product.brand}`}
+                alt={`${product.brand} ${product.name}`}
                 className="eq-detail__img"
                 width={850}
                 height={850}
@@ -190,7 +191,7 @@ const ProductDetail = () => {
                   >
                     <img
                       src={imgUrl}
-                      alt={`${product.name} thumbnail ${idx + 1}`}
+                      alt=""
                       width={64}
                       height={64}
                       onError={(e) => {

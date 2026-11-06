@@ -20,7 +20,7 @@ const HeroSection = () => {
     <section className="hero">
       <img
         src={heroPoster}
-        alt=""
+        alt="Yellow articulated boom lift on a construction site"
         className="hero__poster"
         width={1280}
         height={720}
@@ -43,7 +43,7 @@ const HeroSection = () => {
       <div className="container hero__inner">
         <div className="hero__content">
           <h1 className="hero__title">
-            Industrial Equipment Solutions for Demanding Projects
+            Construction Equipment &amp; Infrastructure Solutions
           </h1>
           <p className="hero__desc">
             Well-maintained construction equipment on flexible daily and monthly rental,

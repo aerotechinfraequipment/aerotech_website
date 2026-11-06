@@ -11,8 +11,8 @@ const ALL = "All";
 const equipmentListSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Construction Equipment Rental Fleet",
-  "description": "Inspected, site-ready boom lifts, scissor lifts, excavators, and cranes for daily, weekly, and monthly hire across Tamil Nadu.",
+  "name": "Construction Equipment Rental",
+  "description": "Hire Genie and JLG boom lifts, rough-terrain scissor lifts, SANY excavators, and all-terrain cranes by the day or month from Sriperumbudur.",
   "url": "https://aerotechinfraequipment.com/equipment",
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -69,8 +69,8 @@ const EquipmentRental = () => {
   return (
     <>
       <SEO
-        title="Construction Equipment Rental Fleet | Boom Lifts, Cranes & Scissor Lifts"
-        description="Browse AeroTech's heavy equipment rental fleet in Sriperumbudur & Chennai. Genie & JLG boom lifts, rough terrain scissor lifts, SANY excavators and all-terrain cranes."
+        title="Boom Lifts, Cranes & Excavator Rental"
+        description="Hire Genie and JLG boom lifts, rough-terrain scissor lifts, SANY excavators, and all-terrain cranes by the day or month from Sriperumbudur."
         canonical="/equipment"
         schema={equipmentListSchema}
       />
@@ -91,8 +91,8 @@ const EquipmentRental = () => {
       <section className="page-hero page-hero--dark" aria-label="Equipment Rental">
         <div className="container">
           <SectionHeader
-            title="Our rental fleet"
-            description="Every machine is inspected, maintained and ready for productive work on your site. Daily and monthly rental plans available."
+            title="Construction Equipment Rental"
+            description="Inspected boom lifts, scissor lifts, excavators, and cranes. Daily and monthly hire from Sriperumbudur."
             theme="dark"
             as="h1"
           />

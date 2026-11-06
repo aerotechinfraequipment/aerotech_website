@@ -8,8 +8,8 @@ import SEO from "../components/seo/SEO";
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "name": "Contact AeroTech Infra Equipment",
-  "description": "Get in touch with AeroTech Infra Equipment for equipment rental quotes, industrial supply orders, or site visits in Sriperumbudur, Tamil Nadu.",
+  "name": "Contact AeroTech in Sriperumbudur",
+  "description": "Call +91 97918 90636 or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur.",
   "url": "https://aerotechinfraequipment.com/contact",
   "mainEntity": {
     "@id": "https://aerotechinfraequipment.com/#organization"
@@ -37,8 +37,8 @@ const Contact = () => {
   return (
     <>
       <SEO
-        title="Contact Us & Request Equipment Rental Quote | AeroTech Sriperumbudur"
-        description="Contact AeroTech Infra Equipment in Sriperumbudur, Tamil Nadu. Call +91 97918 90636 or submit an enquiry for daily/monthly equipment rental or industrial supply quotes."
+        title="Request a Rental Quote in Sriperumbudur"
+        description="Call +91 97918 90636 or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur."
         canonical="/contact"
         schema={contactSchema}
       />
@@ -47,7 +47,7 @@ const Contact = () => {
       <section className="contact-hero">
         <div className="container">
           <SectionHeader
-            title="Talk to our team"
+            title="Contact AeroTech in Sriperumbudur"
             description="Rental quote, product enquiry or a visit to our counter — reach us whichever way suits you."
             theme="dark"
             as="h1"

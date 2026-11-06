@@ -5,6 +5,7 @@ import Button from "../components/ui/Button";
 import EquipmentCard from "../components/ui/EquipmentCard";
 import SEO from "../components/seo/SEO";
 import NotFound from "./NotFound";
+import { clipMeta } from "../lib/meta";
 
 const EquipmentDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -81,7 +82,7 @@ const EquipmentDetail = () => {
     <>
       <SEO
         title={`${item.name} Rental (${item.brand}) | Daily & Monthly Hire`}
-        description={`Rent ${item.brand} ${item.name} in Sriperumbudur & Chennai, Tamil Nadu. ${item.description.slice(0, 150)}... Site-ready with full technical support.`}
+        description={clipMeta(`Hire the ${item.brand} ${item.name} in Sriperumbudur and Chennai. ${item.description}`)}
         canonical={`/equipment/${item.id}`}
         ogImage={item.image}
         ogImageAlt={`${item.brand} ${item.name}`}
@@ -112,7 +113,7 @@ const EquipmentDetail = () => {
             <div className="eq-detail__img-wrap">
               <img
                 src={item.image}
-                alt={`${item.brand} ${item.name} - Rental Equipment`}
+                alt={`${item.brand} ${item.name} rental machine`}
                 className="eq-detail__img"
                 width={1200}
                 height={900}

@@ -30,7 +30,7 @@ const EquipmentCard = ({ item }: EquipmentCardProps) => {
       >
         <img
           src={item.image}
-          alt={`${item.brand} ${item.name} rental equipment`}
+          alt={`${item.brand} ${item.name} rental machine`}
           width={744}
           height={1200}
           loading="lazy"

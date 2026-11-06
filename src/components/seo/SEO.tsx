@@ -12,11 +12,11 @@ export interface SEOProps {
 }
 
 const BASE_URL = "https://aerotechinfraequipment.com";
-const DEFAULT_TITLE = "Construction Equipment Rental & Industrial Products | AeroTech Infra Equipment";
+const DEFAULT_TITLE = "Construction Equipment Rental & Sales | AeroTech Infra Equipment";
 const DEFAULT_DESC =
-  "AeroTech Infra Equipment — boom lifts, scissor lifts, excavators, and cranes for daily or monthly rental, plus genuine pneumatics, power tools, steel, and industrial hardware in Sriperumbudur, Tamil Nadu.";
+  "Reliable construction equipment rental and product sales in Tamil Nadu. Hire boom lifts and cranes, or buy tools, steel, and hardware in Sriperumbudur.";
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
-const DEFAULT_OG_ALT = "AeroTech Infra Equipment";
+const DEFAULT_OG_ALT = "AeroTech share image with a yellow boom lift";
 
 function setMetaTag(selector: string, attr: "name" | "property", key: string, content: string) {
   let element = document.querySelector(selector) as HTMLMetaElement | null;
@@ -94,6 +94,7 @@ const SEO = ({
     document.title = formattedTitle;
 
     const metaDesc = description || DEFAULT_DESC;
+    setMetaTag('meta[name="title"]', "name", "title", formattedTitle);
     setMetaTag('meta[name="description"]', "name", "description", metaDesc);
     removeMetaTag('meta[name="keywords"]');
 

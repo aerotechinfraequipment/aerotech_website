@@ -10,8 +10,8 @@ import teamImg from "../assets/about-team.jpg";
 const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "name": "About AeroTech Infra Equipment Private Limited",
-  "description": "Learn about AeroTech Infra Equipment — your trusted partner for heavy construction equipment rental and industrial hardware in Sriperumbudur, Tamil Nadu.",
+  "name": "About AeroTech Infra Equipment",
+  "description": "AeroTech Infra Equipment Private Limited rents heavy machinery and sells genuine industrial supplies from Sriperumbudur to contractors across Tamil Nadu.",
   "url": "https://aerotechinfraequipment.com/about",
   "mainEntity": {
     "@id": "https://aerotechinfraequipment.com/#organization"
@@ -39,8 +39,8 @@ const About = () => {
   return (
     <>
       <SEO
-        title="About Us | AeroTech Infra Equipment Sriperumbudur"
-        description="Learn about AeroTech Infra Equipment Private Limited. Based in Sriperumbudur, Tamil Nadu, we provide heavy equipment rental and genuine industrial supplies across South India."
+        title="About Our Sriperumbudur Equipment Yard"
+        description="AeroTech Infra Equipment Private Limited rents heavy machinery and sells genuine industrial supplies from Sriperumbudur to contractors across Tamil Nadu."
         canonical="/about"
         schema={aboutSchema}
       />
@@ -49,7 +49,7 @@ const About = () => {
       <section className="about-hero">
         <div className="container">
           <SectionHeader
-            title="Equipment and supply, under one roof"
+            title="About AeroTech Infra Equipment"
             description="AeroTech Infra Equipment Private Limited brings together two essentials for any project — dependable rental machinery and a complete industrial products counter."
             theme="dark"
             as="h1"
@@ -81,7 +81,7 @@ const About = () => {
           <div className="about-who__image">
             <img
               src={companyImg}
-              alt="AeroTech equipment yard in Sriperumbudur"
+              alt="Worker grinding metal in an industrial workshop"
               loading="lazy"
             />
           </div>
@@ -134,7 +134,7 @@ const About = () => {
           <div className="about-visit__image">
             <img
               src={teamImg}
-              alt="The AeroTech team at work"
+              alt="Contractor and site engineer reviewing plans on a job site"
               loading="lazy"
             />
           </div>

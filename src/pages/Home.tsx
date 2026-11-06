@@ -17,7 +17,7 @@ const homeSchema = {
   "@id": "https://aerotechinfraequipment.com/#website",
   "url": "https://aerotechinfraequipment.com/",
   "name": "AeroTech Infra Equipment",
-  "description": "Construction equipment rental & industrial products counter in Sriperumbudur, Tamil Nadu.",
+  "description": "Reliable construction equipment rental and product sales in Tamil Nadu. Hire boom lifts and cranes, or buy tools, steel, and hardware in Sriperumbudur.",
   "publisher": {
     "@id": "https://aerotechinfraequipment.com/#organization"
   }
@@ -27,9 +27,10 @@ const Home = () => {
   return (
     <>
       <SEO
-        title="Construction Equipment Rental & Industrial Products | AeroTech Infra Equipment"
-        description="AeroTech Infra Equipment — boom lifts, scissor lifts, excavators, and cranes for daily or monthly rental, plus genuine pneumatics, power tools, steel, and industrial hardware in Sriperumbudur, Tamil Nadu."
+        title="Construction Equipment Rental & Sales"
+        description="Reliable construction equipment rental and product sales in Tamil Nadu. Hire boom lifts and cranes, or buy tools, steel, and hardware in Sriperumbudur."
         canonical="/"
+        ogImageAlt="AeroTech share image with a yellow boom lift"
         schema={homeSchema}
       />
       <HeroSection />

@@ -13,7 +13,7 @@ const PartnerDivisions = () => {
         />
         <div className="divisions__grid">
           <article className="division-card">
-            <img src={rentalImg} alt="Construction equipment ready for rental" loading="lazy" />
+            <img src={rentalImg} alt="Yellow boom lift extended over a construction site" loading="lazy" />
             <div className="division-card__overlay" />
             <div className="division-card__content">
               <p className="division-card__label">Division 01</p>
@@ -26,7 +26,7 @@ const PartnerDivisions = () => {
           </article>
 
           <article className="division-card">
-            <img src={productsImg} alt="Industrial products and hardware" loading="lazy" />
+            <img src={productsImg} alt="Shelves of hardware, tools, and industrial supplies" loading="lazy" />
             <div className="division-card__overlay" />
             <div className="division-card__content">
               <p className="division-card__label">Division 02</p>

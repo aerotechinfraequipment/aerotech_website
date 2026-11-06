@@ -9,8 +9,8 @@ import { productFilterOptions, useProducts } from "../lib/catalog";
 const productsListSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Industrial Products & Hardware Catalogue",
-  "description": "Genuine industrial tools, welding equipment, fasteners, paints, and safety equipment from ESAB, Bosch, DeWalt, Taparia, Stanley, and 3M.",
+  "name": "Industrial Products & Hardware",
+  "description": "Buy Bosch, ESAB, Taparia, Stanley, and 3M hardware in Chennai and Sriperumbudur. Power tools, welding gear, fasteners, paints, and PPE with GST invoices.",
   "url": "https://aerotechinfraequipment.com/products",
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -89,8 +89,8 @@ const Products = () => {
   return (
     <>
       <SEO
-        title="Industrial Products & Hardware Catalogue | Power Tools, Welding & Safety"
-        description="Shop genuine industrial products and hardware in Sriperumbudur & Chennai. Bosch, ESAB, Taparia, Stanley, Berger, Asian Paints, and 3M. Prompt dispatch and GST invoicing."
+        title="Industrial Products, Power Tools & Safety Gear"
+        description="Buy Bosch, ESAB, Taparia, Stanley, and 3M hardware in Chennai and Sriperumbudur. Power tools, welding gear, fasteners, paints, and PPE with GST invoices."
         canonical="/products"
         schema={productsListSchema}
       />
@@ -99,8 +99,8 @@ const Products = () => {
       <section className="page-hero page-hero--dark" aria-label="Products catalogue">
         <div className="container">
           <SectionHeader
-            title="Industrial products & hardware"
-            description="Genuine products from leading brands — available to businesses and walk-in customers. Search or filter to find what you need."
+            title="Industrial Products & Hardware"
+            description="Genuine brands for site teams and walk-in buyers. Search or filter power tools, welding gear, and safety equipment."
             theme="dark"
             as="h1"
           />

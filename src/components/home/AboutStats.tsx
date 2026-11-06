@@ -12,7 +12,7 @@ const AboutStats = () => {
     <section className="about-section">
       <div className="container about-section__grid">
         <div className="about-section__image">
-          <img src={companyImg} alt="AeroTech Infra Equipment yard and office" loading="lazy" />
+          <img src={companyImg} alt="Worker grinding metal in an industrial workshop" loading="lazy" />
         </div>
         <div className="about-section__content">
           <p className="section-header__subtitle">About AeroTech</p>

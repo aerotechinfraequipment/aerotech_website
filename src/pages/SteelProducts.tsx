@@ -18,8 +18,8 @@ const FAMILIES: { value: SteelFamily; label: string }[] = [
 const steelSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Steel Products, Roofing & Mesh Supply",
-  "description": "High-grade structural steel, square pipes, round pipes, channels, beams, angles, roofing sheets, and weld mesh supplied across Tamil Nadu.",
+  "name": "Steel Products, Roofing & Mesh",
+  "description": "Order square pipes, round pipes, channels, I-beams, angles, roofing sheets, and chain-link mesh for fabrication and site work across Tamil Nadu.",
   "url": "https://aerotechinfraequipment.com/steel-products",
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -76,8 +76,8 @@ const SteelProducts = () => {
   return (
     <>
       <SEO
-        title="Structural Steel, Pipes, Roofing & Mesh Supply | AeroTech"
-        description="Source structural steel, square & round pipes, channels, I-beams, angles, roofing sheets, and chain link mesh from AeroTech in Sriperumbudur, Tamil Nadu."
+        title="Structural Steel, Pipes, Roofing & Mesh"
+        description="Order square pipes, round pipes, channels, I-beams, angles, roofing sheets, and chain-link mesh for fabrication and site work across Tamil Nadu."
         canonical="/steel-products"
         schema={steelSchema}
       />
@@ -86,8 +86,8 @@ const SteelProducts = () => {
       <section className="page-hero page-hero--dark" aria-label="Steel products catalogue">
         <div className="container">
           <SectionHeader
-            title="Steel products, roofing & mesh"
-            description="Steel sections and construction materials for fabricators, contractors and individual buyers. From a single requirement to a full project material list."
+            title="Steel Products, Roofing & Mesh"
+            description="Sections and site materials for fabricators, contractors, and individual buyers."
             theme="dark"
             as="h1"
           />
@@ -169,7 +169,7 @@ const SteelProducts = () => {
                       src={p.imageSm}
                       srcSet={`${p.imageSm} 480w, ${p.image} 960w`}
                       sizes="(min-width: 1200px) calc((min(100vw, 1280px) - 4rem - 4.5rem) / 4), (min-width: 1024px) calc((min(100vw, 1280px) - 4rem - 2.5rem) / 3), (min-width: 768px) calc((100vw - 3rem - 2.5rem) / 3), (min-width: 640px) calc((100vw - 3rem - 0.625rem) / 2), calc((100vw - 2rem - 0.625rem) / 2)"
-                      alt={`${p.name} - ${p.familyLabel}`}
+                      alt={`${p.name}, ${p.familyLabel.toLowerCase()}`}
                       width={480}
                       height={480}
                       loading={index < 4 ? "eager" : "lazy"}

@@ -10,6 +10,7 @@ export interface Industry {
   name: string;
   slug: string;
   image: string;
+  imageAlt: string;
   description: string;
 }
 
@@ -19,6 +20,7 @@ export const industriesData: Industry[] = [
     name: "Construction",
     slug: "construction",
     image: indConstruction,
+    imageAlt: "High-rise building under construction",
     description: "Access equipment, lifting and tools for residential, commercial and industrial building projects.",
   },
   {
@@ -26,6 +28,7 @@ export const industriesData: Industry[] = [
     name: "Infrastructure",
     slug: "infrastructure",
     image: indInfrastructure,
+    imageAlt: "Highway interchange and infrastructure works",
     description: "Cranes, excavators and hardware for roads, bridges and utility projects.",
   },
   {
@@ -33,6 +36,7 @@ export const industriesData: Industry[] = [
     name: "Manufacturing",
     slug: "manufacturing",
     image: indManufacturing,
+    imageAlt: "Factory floor with automated production machinery",
     description: "Pneumatics, FRL units and power tools that keep production lines running.",
   },
   {
@@ -40,6 +44,7 @@ export const industriesData: Industry[] = [
     name: "Maintenance & Facilities",
     slug: "maintenance",
     image: indMaintenance,
+    imageAlt: "Technician repairing rooftop air-conditioning units",
     description: "Equipment and tools for building maintenance, cleaning and facility management.",
   },
   {
@@ -47,6 +52,7 @@ export const industriesData: Industry[] = [
     name: "Warehousing & Logistics",
     slug: "warehousing",
     image: indWarehousing,
+    imageAlt: "Warehouse aisle with pallet racking and a forklift",
     description: "Scissor lifts, forklifts and material handling tools for warehouses and distribution centres.",
   },
   {
@@ -54,6 +60,7 @@ export const industriesData: Industry[] = [
     name: "Engineering Services",
     slug: "engineering",
     image: indEngineering,
+    imageAlt: "Engineers reviewing technical drawings in a workshop",
     description: "Measuring instruments, welding equipment and precision tools for engineering workshops.",
   },
 ];

@@ -6,6 +6,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = join(ROOT, "dist");
 const BASE_URL = "https://aerotechinfraequipment.com";
 const SHARE_IMAGE = `${BASE_URL}/og-image.png`;
+const SHARE_ALT = "AeroTech share image with a yellow boom lift";
 const ORG_ID = `${BASE_URL}/#organization`;
 
 const PRIMARY_LINKS = [
@@ -30,8 +31,17 @@ function jsonLd(data) {
 }
 
 function formatTitle(title) {
-  if (!title) return "Construction Equipment Rental & Industrial Products | AeroTech Infra Equipment";
+  if (!title) return "Construction Equipment Rental & Sales | AeroTech Infra Equipment";
   return title.includes("AeroTech") ? title : `${title} | AeroTech Infra Equipment`;
+}
+
+function clip(text, max = 155) {
+  const clean = String(text).replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  const space = cut.lastIndexOf(" ");
+  const trimmed = (space > 40 ? cut.slice(0, space) : cut).replace(/[.,;:]+$/, "");
+  return `${trimmed}…`;
 }
 
 function absolute(path) {
@@ -227,18 +237,19 @@ function writeRoute(routePath, html) {
   writeFileSync(file, html);
 }
 
-function staticRoute(path, title, description, schemaType) {
+function staticRoute(path, title, description, schemaType, heading) {
   const formatted = formatTitle(title);
+  const pageName = heading || title.replace(/\s*\|.*$/, "");
   return {
     path,
     title: formatted,
-    heading: title.replace(/\s*\|.*$/, ""),
+    heading: pageName,
     description,
     canonical: `${BASE_URL}${path}`,
     robots: "index, follow, max-image-preview:large",
     image: SHARE_IMAGE,
-    imageAlt: formatted,
-    schema: pageSchema(schemaType, title.replace(/\s*\|.*$/, ""), description, path),
+    imageAlt: SHARE_ALT,
+    schema: pageSchema(schemaType, pageName, description, path),
     links: PRIMARY_LINKS,
   };
 }
@@ -280,39 +291,45 @@ if (catalogProducts.length < 10) {
 const routes = [
   staticRoute(
     "/",
-    "Construction Equipment Rental & Industrial Products | AeroTech Infra Equipment",
-    "AeroTech Infra Equipment — boom lifts, scissor lifts, excavators, and cranes for daily or monthly rental, plus genuine pneumatics, power tools, steel, and industrial hardware in Sriperumbudur, Tamil Nadu.",
+    "Construction Equipment Rental & Sales",
+    "Reliable construction equipment rental and product sales in Tamil Nadu. Hire boom lifts and cranes, or buy tools, steel, and hardware in Sriperumbudur.",
     "WebSite",
+    "Construction Equipment & Infrastructure Solutions",
   ),
   staticRoute(
     "/equipment",
-    "Construction Equipment Rental Fleet | Boom Lifts, Cranes & Scissor Lifts",
-    "Browse AeroTech's heavy equipment rental fleet in Sriperumbudur & Chennai. Genie & JLG boom lifts, rough terrain scissor lifts, SANY excavators and all-terrain cranes.",
+    "Boom Lifts, Cranes & Excavator Rental",
+    "Hire Genie and JLG boom lifts, rough-terrain scissor lifts, SANY excavators, and all-terrain cranes by the day or month from Sriperumbudur.",
     "CollectionPage",
+    "Construction Equipment Rental",
   ),
   staticRoute(
     "/products",
-    "Industrial Products & Hardware Catalogue | Power Tools, Welding & Safety",
-    "Shop genuine industrial products and hardware in Sriperumbudur & Chennai. Bosch, ESAB, Taparia, Stanley, Berger, Asian Paints, and 3M. Prompt dispatch and GST invoicing.",
+    "Industrial Products, Power Tools & Safety Gear",
+    "Buy Bosch, ESAB, Taparia, Stanley, and 3M hardware in Chennai and Sriperumbudur. Power tools, welding gear, fasteners, paints, and PPE with GST invoices.",
     "CollectionPage",
+    "Industrial Products & Hardware",
   ),
   staticRoute(
     "/steel-products",
-    "Structural Steel, Pipes, Roofing & Mesh Supply | AeroTech",
-    "Source structural steel, square & round pipes, channels, I-beams, angles, roofing sheets, and chain link mesh from AeroTech in Sriperumbudur, Tamil Nadu.",
+    "Structural Steel, Pipes, Roofing & Mesh",
+    "Order square pipes, round pipes, channels, I-beams, angles, roofing sheets, and chain-link mesh for fabrication and site work across Tamil Nadu.",
     "CollectionPage",
+    "Steel Products, Roofing & Mesh",
   ),
   staticRoute(
     "/about",
-    "About Us | AeroTech Infra Equipment Sriperumbudur",
-    "Learn about AeroTech Infra Equipment Private Limited. Based in Sriperumbudur, Tamil Nadu, we provide heavy equipment rental and genuine industrial supplies across South India.",
+    "About Our Sriperumbudur Equipment Yard",
+    "AeroTech Infra Equipment Private Limited rents heavy machinery and sells genuine industrial supplies from Sriperumbudur to contractors across Tamil Nadu.",
     "AboutPage",
+    "About AeroTech Infra Equipment",
   ),
   staticRoute(
     "/contact",
-    "Contact Us & Request Equipment Rental Quote | AeroTech Sriperumbudur",
-    "Contact AeroTech Infra Equipment in Sriperumbudur, Tamil Nadu. Call +91 97918 90636 or submit an enquiry for daily/monthly equipment rental or industrial supply quotes.",
+    "Request a Rental Quote in Sriperumbudur",
+    "Call +91 97918 90636 or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur.",
     "ContactPage",
+    "Contact AeroTech in Sriperumbudur",
   ),
 ];
 
@@ -322,15 +339,14 @@ routes[0].schema = {
   "@id": `${BASE_URL}/#website`,
   url: `${BASE_URL}/`,
   name: "AeroTech Infra Equipment",
-  description: "Construction equipment rental & industrial products counter in Sriperumbudur, Tamil Nadu.",
+  description: "Reliable construction equipment rental and product sales in Tamil Nadu. Hire boom lifts and cranes, or buy tools, steel, and hardware in Sriperumbudur.",
   publisher: { "@id": ORG_ID },
 };
-routes[0].heading = "Industrial Equipment Solutions for Demanding Projects";
 
 for (const item of equipments) {
   const path = `/equipment/${item.id}`;
   const title = formatTitle(`${item.name} Rental (${item.brand}) | Daily & Monthly Hire`);
-  const description = `Rent ${item.brand} ${item.name} in Sriperumbudur & Chennai, Tamil Nadu. ${item.description.slice(0, 150)}... Site-ready with full technical support.`;
+  const description = clip(`Hire the ${item.brand} ${item.name} in Sriperumbudur and Chennai. ${item.description}`);
   const imagePath = item.image || "";
   const image = imagePath ? absolute(imagePath) : SHARE_IMAGE;
   routes.push({
@@ -375,7 +391,7 @@ for (const product of catalogProducts) {
   const path = `/products/${product.slug}`;
   const blurb = product.shortDescription || String(product.overview || "").slice(0, 140);
   const title = formatTitle(`${product.name} (${product.brand}) | Buy in Sriperumbudur & Chennai`);
-  const description = `${product.name} by ${product.brand}. ${blurb} Ready stock, prompt dispatch across Tamil Nadu.`;
+  const description = clip(`${product.brand} ${product.name}. ${blurb} Available from AeroTech in Tamil Nadu.`);
   const imagePath = product.image;
   routes.push({
     path,
@@ -424,7 +440,7 @@ const notFound = render(template, {
   canonical: "",
   robots: "noindex, nofollow",
   image: SHARE_IMAGE,
-  imageAlt: "AeroTech Infra Equipment",
+  imageAlt: SHARE_ALT,
   schema: null,
   links: PRIMARY_LINKS,
   articleClass: "prerender-summary not-found",

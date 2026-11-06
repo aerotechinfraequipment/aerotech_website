@@ -7,7 +7,7 @@ interface IndustryCardProps {
 const IndustryCard = ({ item }: IndustryCardProps) => {
   return (
     <article className="industry-card">
-      <img src={item.image} alt={item.name} loading="lazy" />
+      <img src={item.image} alt={item.imageAlt} loading="lazy" />
       <div className="industry-card__overlay" />
       <div className="industry-card__content">
         <h3>{item.name}</h3>
