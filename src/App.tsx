@@ -34,19 +34,7 @@ function ScrollToTop() {
 // Accessible loading fallback
 function PageFallback() {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100dvh",
-        color: "var(--muted-foreground)",
-        fontSize: "1rem",
-        fontWeight: 600,
-      }}
-      role="status"
-      aria-live="polite"
-    >
+    <div className="page-fallback" role="status" aria-live="polite">
       <span>Loading AeroTech…</span>
     </div>
   );

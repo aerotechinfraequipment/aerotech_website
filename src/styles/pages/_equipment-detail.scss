@@ -249,6 +249,18 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--foreground);
+
+  &--start {
+    align-items: flex-start;
+
+    .eq-detail__model-dot {
+      margin-top: 0.45rem;
+    }
+
+    span {
+      font-weight: 400;
+    }
+  }
 }
 
 .eq-detail__model-dot {
@@ -291,6 +303,19 @@
   scrollbar-width: none;
 
   &::-webkit-scrollbar { display: none; }
+}
+
+.eq-detail__type {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  font-weight: 500;
+}
+
+.eq-detail__lead {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--foreground);
+  font-weight: 500;
 }
 
 .eq-detail__thumb {

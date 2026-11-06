@@ -10,9 +10,9 @@ const contactSchema = {
   "@type": "ContactPage",
   "name": "Contact AeroTech Infra Equipment",
   "description": "Get in touch with AeroTech Infra Equipment for equipment rental quotes, industrial supply orders, or site visits in Sriperumbudur, Tamil Nadu.",
-  "url": "https://aerotechinfra.com/contact",
+  "url": "https://aerotechinfraequipment.com/contact",
   "mainEntity": {
-    "@id": "https://aerotechinfra.com/#organization"
+    "@id": "https://aerotechinfraequipment.com/#organization"
   },
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -21,13 +21,13 @@ const contactSchema = {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://aerotechinfra.com/"
+        "item": "https://aerotechinfraequipment.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Contact",
-        "item": "https://aerotechinfra.com/contact"
+        "item": "https://aerotechinfraequipment.com/contact"
       }
     ]
   }

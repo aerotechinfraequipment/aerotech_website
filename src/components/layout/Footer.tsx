@@ -82,7 +82,7 @@ const Footer = () => {
               <a href="mailto:aerotech2003@gmail.com">aerotech2003@gmail.com</a>
             </li>
             <li>SF No.135/4G2, Chennai Salai, Thirumangalam, Sriperumbudur, Tamil Nadu 602 106</li>
-            <li style={{ fontSize: "0.8rem", color: "var(--steel)" }}>GSTIN: 33ABFCA6529D1ZY</li>
+            <li className="site-footer__gstin">GSTIN: 33ABFCA6529D1ZY</li>
           </ul>
         </div>
       </div>

@@ -11,7 +11,7 @@ const productsListSchema = {
   "@type": "CollectionPage",
   "name": "Industrial Products & Hardware Catalogue",
   "description": "Genuine industrial tools, welding equipment, fasteners, paints, and safety equipment from ESAB, Bosch, DeWalt, Taparia, Stanley, and 3M.",
-  "url": "https://aerotechinfra.com/products",
+  "url": "https://aerotechinfraequipment.com/products",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -19,13 +19,13 @@ const productsListSchema = {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://aerotechinfra.com/"
+        "item": "https://aerotechinfraequipment.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Industrial Products",
-        "item": "https://aerotechinfra.com/products"
+        "item": "https://aerotechinfraequipment.com/products"
       }
     ]
   }

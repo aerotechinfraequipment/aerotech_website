@@ -14,12 +14,12 @@ import SEO from "../components/seo/SEO";
 const homeSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://aerotechinfra.com/#website",
-  "url": "https://aerotechinfra.com/",
+  "@id": "https://aerotechinfraequipment.com/#website",
+  "url": "https://aerotechinfraequipment.com/",
   "name": "AeroTech Infra Equipment",
   "description": "Construction equipment rental & industrial products counter in Sriperumbudur, Tamil Nadu.",
   "publisher": {
-    "@id": "https://aerotechinfra.com/#organization"
+    "@id": "https://aerotechinfraequipment.com/#organization"
   }
 };
 

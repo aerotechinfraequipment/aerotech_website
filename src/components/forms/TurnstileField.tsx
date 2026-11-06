@@ -70,7 +70,7 @@ const TurnstileField = ({ onToken }: { onToken: (token: string) => void }) => {
     return <p>Verification is not configured.</p>;
   }
 
-  return <div ref={host} />;
+  return <div ref={host} className="turnstile-host" />;
 };
 
 export default TurnstileField;

@@ -12,9 +12,9 @@ const aboutSchema = {
   "@type": "AboutPage",
   "name": "About AeroTech Infra Equipment Private Limited",
   "description": "Learn about AeroTech Infra Equipment — your trusted partner for heavy construction equipment rental and industrial hardware in Sriperumbudur, Tamil Nadu.",
-  "url": "https://aerotechinfra.com/about",
+  "url": "https://aerotechinfraequipment.com/about",
   "mainEntity": {
-    "@id": "https://aerotechinfra.com/#organization"
+    "@id": "https://aerotechinfraequipment.com/#organization"
   },
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -23,13 +23,13 @@ const aboutSchema = {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://aerotechinfra.com/"
+        "item": "https://aerotechinfraequipment.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "About Us",
-        "item": "https://aerotechinfra.com/about"
+        "item": "https://aerotechinfraequipment.com/about"
       }
     ]
   }

@@ -11,7 +11,7 @@ export interface SEOProps {
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const BASE_URL = "https://aerotechinfra.com";
+const BASE_URL = "https://aerotechinfraequipment.com";
 const DEFAULT_TITLE = "Construction Equipment Rental & Industrial Products | AeroTech Infra Equipment";
 const DEFAULT_DESC =
   "AeroTech Infra Equipment — boom lifts, scissor lifts, excavators, and cranes for daily or monthly rental, plus genuine pneumatics, power tools, steel, and industrial hardware in Sriperumbudur, Tamil Nadu.";

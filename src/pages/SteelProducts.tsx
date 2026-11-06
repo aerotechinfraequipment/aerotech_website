@@ -20,7 +20,7 @@ const steelSchema = {
   "@type": "CollectionPage",
   "name": "Steel Products, Roofing & Mesh Supply",
   "description": "High-grade structural steel, square pipes, round pipes, channels, beams, angles, roofing sheets, and weld mesh supplied across Tamil Nadu.",
-  "url": "https://aerotechinfra.com/steel-products",
+  "url": "https://aerotechinfraequipment.com/steel-products",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -28,13 +28,13 @@ const steelSchema = {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://aerotechinfra.com/"
+        "item": "https://aerotechinfraequipment.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Steel Products",
-        "item": "https://aerotechinfra.com/steel-products"
+        "item": "https://aerotechinfraequipment.com/steel-products"
       }
     ]
   }

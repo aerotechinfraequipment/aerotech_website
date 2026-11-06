@@ -12,14 +12,14 @@ const EquipmentDetail = () => {
 
   if (status === "loading") {
     return (
-      <div className="container" style={{ padding: "6rem 0", textAlign: "center" }}>
+      <div className="container status-panel">
         <p>Loading equipment…</p>
       </div>
     );
   }
   if (status === "error") {
     return (
-      <div className="container" style={{ padding: "6rem 0", textAlign: "center" }}>
+      <div className="container status-panel">
         <p>Could not load this machine. Refresh the page to try again.</p>
       </div>
     );
@@ -37,18 +37,18 @@ const EquipmentDetail = () => {
     "@graph": [
       {
         "@type": "Service",
-        "@id": `https://aerotechinfra.com/equipment/${item.id}#service`,
+        "@id": `https://aerotechinfraequipment.com/equipment/${item.id}#service`,
         "name": item.name,
         "description": item.description,
         "serviceType": item.category_formated,
-        "image": item.image.startsWith("http") ? item.image : `https://aerotechinfra.com${item.image}`,
-        "url": `https://aerotechinfra.com/equipment/${item.id}`,
+        "image": item.image.startsWith("http") ? item.image : `https://aerotechinfraequipment.com${item.image}`,
+        "url": `https://aerotechinfraequipment.com/equipment/${item.id}`,
         "areaServed": {
           "@type": "AdministrativeArea",
           "name": "Tamil Nadu"
         },
         "provider": {
-          "@id": "https://aerotechinfra.com/#organization"
+          "@id": "https://aerotechinfraequipment.com/#organization"
         }
       },
       {
@@ -58,19 +58,19 @@ const EquipmentDetail = () => {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://aerotechinfra.com/"
+            "item": "https://aerotechinfraequipment.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Equipment Rental",
-            "item": "https://aerotechinfra.com/equipment"
+            "item": "https://aerotechinfraequipment.com/equipment"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": item.name,
-            "item": `https://aerotechinfra.com/equipment/${item.id}`
+            "item": `https://aerotechinfraequipment.com/equipment/${item.id}`
           }
         ]
       }

@@ -60,18 +60,16 @@ const ProductDetail = () => {
 
   if (loadError) {
     return (
-      <div className="container" style={{ padding: "6rem 0", textAlign: "center" }}>
-        <p style={{ fontSize: "1.2rem", color: "var(--muted-foreground)" }}>{loadError}</p>
+      <div className="container status-panel">
+        <p>{loadError}</p>
       </div>
     );
   }
 
   if (!product || product.slug !== slug) {
     return (
-      <div className="container" style={{ padding: "6rem 0", textAlign: "center" }}>
-        <p style={{ fontSize: "1.2rem", color: "var(--muted-foreground)" }}>
-          Loading product specifications…
-        </p>
+      <div className="container status-panel">
+        <p>Loading product specifications…</p>
       </div>
     );
   }
@@ -89,12 +87,12 @@ const ProductDetail = () => {
     "@graph": [
       {
         "@type": "Product",
-        "@id": `https://aerotechinfra.com/products/${product.slug}#product`,
+        "@id": `https://aerotechinfraequipment.com/products/${product.slug}#product`,
         "name": product.name,
         "description": product.shortDescription || product.overview,
         "image": currentDisplayImage.startsWith("http")
           ? currentDisplayImage
-          : `https://aerotechinfra.com${currentDisplayImage}`,
+          : `https://aerotechinfraequipment.com${currentDisplayImage}`,
         "brand": {
           "@type": "Brand",
           "name": product.brand
@@ -108,19 +106,19 @@ const ProductDetail = () => {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://aerotechinfra.com/"
+            "item": "https://aerotechinfraequipment.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industrial Products",
-            "item": "https://aerotechinfra.com/products"
+            "item": "https://aerotechinfraequipment.com/products"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": product.name,
-            "item": `https://aerotechinfra.com/products/${product.slug}`
+            "item": `https://aerotechinfraequipment.com/products/${product.slug}`
           }
         ]
       }
@@ -195,7 +193,6 @@ const ProductDetail = () => {
                       alt={`${product.name} thumbnail ${idx + 1}`}
                       width={64}
                       height={64}
-                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
                       onError={(e) => {
                         const target = e.currentTarget;
                         if (!target.src.includes("product-placeholder.png")) {
@@ -217,9 +214,7 @@ const ProductDetail = () => {
               <span className="eq-detail__sep">·</span>
               <span className="eq-detail__cat">{product.category}</span>
               <span className="eq-detail__sep">·</span>
-              <span style={{ fontSize: "0.8rem", color: "var(--muted-foreground)", fontWeight: 500 }}>
-                {product.type}
-              </span>
+              <span className="eq-detail__type">{product.type}</span>
             </div>
 
             {/* Product Name */}
@@ -236,9 +231,7 @@ const ProductDetail = () => {
             <hr className="eq-detail__divider" />
 
             {/* Short Description */}
-            <p style={{ fontSize: "1rem", lineHeight: 1.6, color: "var(--foreground)", fontWeight: 500 }}>
-              {product.shortDescription}
-            </p>
+            <p className="eq-detail__lead">{product.shortDescription}</p>
 
             {/* Key Features */}
             {product.keyFeatures && product.keyFeatures.length > 0 && (
@@ -246,9 +239,9 @@ const ProductDetail = () => {
                 <h2 className="eq-detail__section-title">Key Technical Highlights</h2>
                 <ul className="eq-detail__model-list">
                   {product.keyFeatures.map((feat, idx) => (
-                    <li key={idx} className="eq-detail__model-item" style={{ alignItems: "flex-start" }}>
-                      <span className="eq-detail__model-dot" style={{ marginTop: "0.45rem" }} />
-                      <span style={{ fontWeight: 400, color: "var(--foreground)" }}>{feat}</span>
+                    <li key={idx} className="eq-detail__model-item eq-detail__model-item--start">
+                      <span className="eq-detail__model-dot" />
+                      <span>{feat}</span>
                     </li>
                   ))}
                 </ul>

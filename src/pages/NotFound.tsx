@@ -11,7 +11,8 @@ const NotFound = () => {
       />
       <section className="not-found" aria-labelledby="not-found-title">
         <div className="container">
-          <h1 id="not-found-title">Page not found</h1>
+          <p className="not-found__code">404</p>
+          <h1 id="not-found-title">Page Not Found</h1>
           <p>That address does not match a page on this site.</p>
           <nav aria-label="Helpful links">
             <Link to="/">Home</Link>

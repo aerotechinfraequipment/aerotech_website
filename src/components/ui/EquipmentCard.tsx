@@ -56,7 +56,6 @@ const EquipmentCard = ({ item }: EquipmentCardProps) => {
           <Link
             to={detailPath}
             onClick={(e) => e.stopPropagation()}
-            style={{ color: "inherit", textDecoration: "none" }}
           >
             {item.name}
           </Link>

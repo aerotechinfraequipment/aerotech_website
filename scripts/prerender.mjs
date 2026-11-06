@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = join(ROOT, "dist");
-const BASE_URL = "https://aerotechinfra.com";
+const BASE_URL = "https://aerotechinfraequipment.com";
 const SHARE_IMAGE = `${BASE_URL}/og-image.png`;
 const ORG_ID = `${BASE_URL}/#organization`;
 
@@ -153,11 +153,37 @@ function injectSchema(html, schema) {
   return without.replace("</head>", `    ${tag}\n  </head>`);
 }
 
-function summaryHtml(heading, text, links) {
+function summaryHtml(heading, text, links, articleClass) {
   const nav = links
     .map(([href, label]) => `<a href="${esc(href)}">${esc(label)}</a>`)
     .join(" ");
-  return `<div id="root"><main id="main-content"><article class="prerender-summary"><h1>${esc(heading)}</h1><p>${esc(text)}</p><nav aria-label="Primary">${nav}</nav></article></main></div>`;
+  const className = articleClass || "prerender-summary";
+  return `<div id="root"><main id="main-content"><article class="${className}"><h1>${esc(heading)}</h1><p>${esc(text)}</p><nav aria-label="Helpful links">${nav}</nav></article></main></div>`;
+}
+
+function writeSitemap(routes) {
+  const today = new Date().toISOString().slice(0, 10);
+  const meta = {
+    "/": ["daily", "1.0"],
+    "/equipment": ["weekly", "0.9"],
+    "/products": ["weekly", "0.9"],
+    "/steel-products": ["weekly", "0.8"],
+    "/about": ["monthly", "0.7"],
+    "/contact": ["monthly", "0.8"],
+  };
+  const urls = routes
+    .map((route) => {
+      const [freq, priority] = meta[route.path] || ["weekly", "0.8"];
+      const loc = route.path === "/" ? `${BASE_URL}/` : `${BASE_URL}${route.path}`;
+      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+    })
+    .join("\n");
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+  if (xml.includes("https://aerotechinfra.com/")) {
+    throw new Error("Sitemap still contains the non-resolving domain");
+  }
+  writeFileSync(join(DIST, "sitemap.xml"), xml);
+  writeFileSync(join(ROOT, "public", "sitemap.xml"), xml);
 }
 
 function render(template, route) {
@@ -169,7 +195,9 @@ function render(template, route) {
   html = setMeta(html, "property", "og:type", "website");
   html = setMeta(html, "property", "og:title", route.title);
   html = setMeta(html, "property", "og:description", route.description);
-  html = setMeta(html, "property", "og:url", route.canonical || `${BASE_URL}/`);
+  html = route.canonical
+    ? setMeta(html, "property", "og:url", route.canonical)
+    : removeMeta(html, "property", "og:url");
   html = setMeta(html, "property", "og:image", route.image);
   html = setMeta(html, "property", "og:image:alt", route.imageAlt);
   if (route.image === SHARE_IMAGE) {
@@ -181,10 +209,12 @@ function render(template, route) {
   }
   html = setMeta(html, "name", "twitter:title", route.title);
   html = setMeta(html, "name", "twitter:description", route.description);
-  html = setMeta(html, "name", "twitter:url", route.canonical || `${BASE_URL}/`);
+  html = route.canonical
+    ? setMeta(html, "name", "twitter:url", route.canonical)
+    : removeMeta(html, "name", "twitter:url");
   html = setMeta(html, "name", "twitter:image", route.image);
   html = injectSchema(html, route.schema);
-  const body = summaryHtml(route.heading, route.description, route.links);
+  const body = summaryHtml(route.heading, route.description, route.links, route.articleClass);
   if (!/<div id="root">\s*<\/div>/.test(html)) {
     throw new Error("Built index.html is missing <div id=\"root\"></div>");
   }
@@ -388,8 +418,8 @@ for (const route of routes) {
 }
 
 const notFound = render(template, {
-  title: "Page not found | AeroTech Infra Equipment",
-  heading: "Page not found",
+  title: "Page Not Found | AeroTech Infra Equipment",
+  heading: "404 — Page Not Found",
   description: "That address does not match a page on the AeroTech Infra Equipment site.",
   canonical: "",
   robots: "noindex, nofollow",
@@ -397,8 +427,10 @@ const notFound = render(template, {
   imageAlt: "AeroTech Infra Equipment",
   schema: null,
   links: PRIMARY_LINKS,
+  articleClass: "prerender-summary not-found",
 });
 writeFileSync(join(DIST, "404.html"), notFound);
+writeSitemap(routes);
 
 const sampleProduct = catalogProducts[0].slug;
 const sampleEquipment = equipments[0].id;

@@ -13,7 +13,7 @@ const equipmentListSchema = {
   "@type": "CollectionPage",
   "name": "Construction Equipment Rental Fleet",
   "description": "Inspected, site-ready boom lifts, scissor lifts, excavators, and cranes for daily, weekly, and monthly hire across Tamil Nadu.",
-  "url": "https://aerotechinfra.com/equipment",
+  "url": "https://aerotechinfraequipment.com/equipment",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -21,13 +21,13 @@ const equipmentListSchema = {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://aerotechinfra.com/"
+        "item": "https://aerotechinfraequipment.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Equipment Rental",
-        "item": "https://aerotechinfra.com/equipment"
+        "item": "https://aerotechinfraequipment.com/equipment"
       }
     ]
   }
