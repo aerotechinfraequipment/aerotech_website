@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import "../styles/pages/_equipment-detail.scss";
-import { equipments } from "../data/equipment/list";
+import { useEquipmentDetail } from "../lib/catalog";
 import Button from "../components/ui/Button";
 import EquipmentCard from "../components/ui/EquipmentCard";
 import SEO from "../components/seo/SEO";
@@ -8,15 +8,25 @@ import NotFound from "./NotFound";
 
 const EquipmentDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const item = equipments.find((e) => e.id === id);
+  const { item, similar, status } = useEquipmentDetail(id);
 
-  // 404 fallback — redirect to equipment list
+  if (status === "loading") {
+    return (
+      <div className="container" style={{ padding: "6rem 0", textAlign: "center" }}>
+        <p>Loading equipment…</p>
+      </div>
+    );
+  }
+  if (status === "error") {
+    return (
+      <div className="container" style={{ padding: "6rem 0", textAlign: "center" }}>
+        <p>Could not load this machine. Refresh the page to try again.</p>
+      </div>
+    );
+  }
   if (!item) return <NotFound />;
 
   const isAvailable = item.status === "available";
-  const similar = equipments
-    .filter((e) => e.id !== item.id && e.category === item.category)
-    .slice(0, 4);
 
   const whatsappMsg = encodeURIComponent(
     `Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and rental pricing.`

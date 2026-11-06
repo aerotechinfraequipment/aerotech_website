@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import type { Equipment } from "../../data/equipment/list";
+import type { Equipment } from "../../lib/catalog";
 
 interface EquipmentCardProps {
   item: Equipment;

@@ -2,147 +2,11 @@ import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../styles/pages/_products-page.scss";
 import SectionHeader from "../components/ui/SectionHeader";
-import Button from "../components/ui/Button";
+import ItemEnquiry from "../components/forms/ItemEnquiry";
 import SEO from "../components/seo/SEO";
+import { useSteel } from "../lib/catalog";
 
-// ── Images ──────────────────────────────────────────────────
-import squarePipeImg from "../assets/steel/square-pipe-960.webp";
-import squarePipeSm from "../assets/steel/square-pipe-480.webp";
-import roundPipeImg from "../assets/steel/round-pipe-960.webp";
-import roundPipeSm from "../assets/steel/round-pipe-480.webp";
-import channelImg from "../assets/steel/channel-960.webp";
-import channelSm from "../assets/steel/channel-480.webp";
-import iBeamImg from "../assets/steel/i-beam-960.webp";
-import iBeamSm from "../assets/steel/i-beam-480.webp";
-import flatBarImg from "../assets/steel/flat-bar-960.webp";
-import flatBarSm from "../assets/steel/flat-bar-480.webp";
-import angleImg from "../assets/steel/angle-960.webp";
-import angleSm from "../assets/steel/angle-480.webp";
-import roofingImg from "../assets/steel/roofing-960.webp";
-import roofingSm from "../assets/steel/roofing-480.webp";
-import weldMeshImg from "../assets/steel/weld-mesh-960.webp";
-import weldMeshSm from "../assets/steel/weld-mesh-480.webp";
-import chainLinkImg from "../assets/steel/chain-link-960.webp";
-import chainLinkSm from "../assets/steel/chain-link-480.webp";
-import squareBarImg from "../assets/steel/square-bar-960.webp";
-import squareBarSm from "../assets/steel/square-bar-480.webp";
-
-// ── Data ─────────────────────────────────────────────────────
 type SteelFamily = "all" | "pipes-tubes" | "structural" | "roofing-mesh";
-
-interface SteelProduct {
-  id: string;
-  name: string;
-  family: Exclude<SteelFamily, "all">;
-  familyLabel: string;
-  description: string;
-  image: string;
-  imageSm: string;
-  waMsg: string;
-}
-
-const STEEL_PRODUCTS: SteelProduct[] = [
-  {
-    id: "square-pipe",
-    name: "Square Pipe (SHS)",
-    family: "pipes-tubes",
-    familyLabel: "Pipes & Tubes",
-    description: "Square hollow sections for fabrication and structural frameworks.",
-    image: squarePipeImg,
-    imageSm: squarePipeSm,
-    waMsg: "Square Pipe (SHS)",
-  },
-  {
-    id: "round-pipe",
-    name: "Round Pipe",
-    family: "pipes-tubes",
-    familyLabel: "Pipes & Tubes",
-    description: "Round steel pipes for fabrication and general construction requirements.",
-    image: roundPipeImg,
-    imageSm: roundPipeSm,
-    waMsg: "Round Pipe",
-  },
-  {
-    id: "channel",
-    name: "Channel",
-    family: "structural",
-    familyLabel: "Structural Sections",
-    description: "Open channel sections for frames, supports and steel fabrication.",
-    image: channelImg,
-    imageSm: channelSm,
-    waMsg: "Channel",
-  },
-  {
-    id: "i-beam",
-    name: "I-Beam",
-    family: "structural",
-    familyLabel: "Structural Sections",
-    description: "I-profile steel sections for structural construction and fabrication.",
-    image: iBeamImg,
-    imageSm: iBeamSm,
-    waMsg: "I-Beam",
-  },
-  {
-    id: "flat-bar",
-    name: "Flat Bar",
-    family: "structural",
-    familyLabel: "Structural Sections",
-    description: "Flat steel sections for versatile workshop and site fabrication.",
-    image: flatBarImg,
-    imageSm: flatBarSm,
-    waMsg: "Flat Bar",
-  },
-  {
-    id: "angle",
-    name: "Angle",
-    family: "structural",
-    familyLabel: "Structural Sections",
-    description: "L-shaped steel angles for framing, bracing and fabrication.",
-    image: angleImg,
-    imageSm: angleSm,
-    waMsg: "Angle",
-  },
-  {
-    id: "square-bar",
-    name: "Square Bar",
-    family: "structural",
-    familyLabel: "Structural Sections",
-    description: "Solid square steel bars for general fabrication and metalworking.",
-    image: squareBarImg,
-    imageSm: squareBarSm,
-    waMsg: "Square Bar",
-  },
-  {
-    id: "roofing-sheet",
-    name: "Roofing Sheet",
-    family: "roofing-mesh",
-    familyLabel: "Roofing & Mesh",
-    description: "Profiled roofing sheets for commercial, industrial and residential projects.",
-    image: roofingImg,
-    imageSm: roofingSm,
-    waMsg: "Roofing Sheet",
-  },
-  {
-    id: "weld-mesh",
-    name: "Weld Mesh",
-    family: "roofing-mesh",
-    familyLabel: "Roofing & Mesh",
-    description: "Welded wire mesh for enclosures, partitions and fencing applications.",
-    image: weldMeshImg,
-    imageSm: weldMeshSm,
-    waMsg: "Weld Mesh",
-  },
-  {
-    id: "chain-link-mesh",
-    name: "Chain Link Mesh",
-    family: "roofing-mesh",
-    familyLabel: "Roofing & Mesh",
-    description: "Diamond-pattern chain link mesh for perimeter fencing and enclosures.",
-    image: chainLinkImg,
-    imageSm: chainLinkSm,
-    waMsg: "Chain Link Mesh",
-  },
-];
 
 const FAMILIES: { value: SteelFamily; label: string }[] = [
   { value: "all", label: "All Products" },
@@ -150,14 +14,6 @@ const FAMILIES: { value: SteelFamily; label: string }[] = [
   { value: "structural", label: "Structural Sections" },
   { value: "roofing-mesh", label: "Roofing & Mesh" },
 ];
-
-const WA_BASE = "https://wa.me/919791890636?text=";
-
-function waLink(product: string) {
-  return `${WA_BASE}${encodeURIComponent(
-    `Hello AeroTech, I am interested in ${product}. Please share price and availability.`
-  )}`;
-}
 
 const steelSchema = {
   "@context": "https://schema.org",
@@ -186,6 +42,8 @@ const steelSchema = {
 
 // ── Component ─────────────────────────────────────────────────
 const SteelProducts = () => {
+  const { data, error, loading } = useSteel();
+  const steelProducts = useMemo(() => data ?? [], [data]);
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("q") ?? "";
   const familyParam = searchParams.get("family") ?? "all";
@@ -201,7 +59,7 @@ const SteelProducts = () => {
   };
 
   const filtered = useMemo(() => {
-    return STEEL_PRODUCTS.filter((p) => {
+    return steelProducts.filter((p) => {
       const matchSearch =
         !search ||
         p.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -209,7 +67,7 @@ const SteelProducts = () => {
       const matchFamily = family === "all" || p.family === family;
       return matchSearch && matchFamily;
     });
-  }, [search, family]);
+  }, [steelProducts, search, family]);
 
   const hasFilters = search || family !== "all";
 
@@ -294,7 +152,15 @@ const SteelProducts = () => {
           )}
 
           {/* 3-column product grid */}
-          {filtered.length > 0 ? (
+          {loading ? (
+            <div className="products-page__empty">
+              <p>Loading steel products…</p>
+            </div>
+          ) : error ? (
+            <div className="products-page__empty">
+              <p>{error}</p>
+            </div>
+          ) : filtered.length > 0 ? (
             <div className="catalogue-grid">
               {filtered.map((p, index) => (
                 <article key={p.id} className="product-card">
@@ -320,9 +186,14 @@ const SteelProducts = () => {
                     <h3 className="product-card__name">{p.name}</h3>
                     <p className="product-card__excerpt">{p.description}</p>
                     <div className="product-card__actions">
-                      <Button variant="dark" href={waLink(p.waMsg)} external>
-                        Enquire Now
-                      </Button>
+                      <ItemEnquiry
+                        type="steel"
+                        itemId={p.id}
+                        itemName={p.name}
+                        whatsappText={`Hello AeroTech, I am interested in ${p.name}. Please share price and availability.`}
+                        label="Enquire Now"
+                        variant="dark"
+                      />
                     </div>
                   </div>
                 </article>

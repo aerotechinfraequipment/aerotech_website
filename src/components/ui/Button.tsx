@@ -12,6 +12,7 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit";
   fullWidth?: boolean;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
@@ -44,6 +45,7 @@ const Button = ({
   className = "",
   type = "button",
   fullWidth = false,
+  disabled = false,
   onClick,
 }: ButtonProps) => {
   const cls = `${variantClasses[variant]}${fullWidth ? " btn--full" : ""} ${className}`.trim();
@@ -74,7 +76,7 @@ const Button = ({
   }
 
   return (
-    <button type={type} className={cls} onClick={onClick}>
+    <button type={type} className={cls} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

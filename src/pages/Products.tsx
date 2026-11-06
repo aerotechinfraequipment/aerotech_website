@@ -4,12 +4,7 @@ import "../styles/pages/_products-page.scss";
 import SectionHeader from "../components/ui/SectionHeader";
 import ProductCard from "../components/ui/ProductCard";
 import SEO from "../components/seo/SEO";
-import {
-  productsData,
-  productCategories,
-  productBrands,
-  productTypes,
-} from "../data/products";
+import { productFilterOptions, useProducts } from "../lib/catalog";
 
 const productsListSchema = {
   "@context": "https://schema.org",
@@ -37,6 +32,12 @@ const productsListSchema = {
 };
 
 const Products = () => {
+  const { data, error, loading } = useProducts();
+  const productsData = useMemo(() => data ?? [], [data]);
+  const { categories: productCategories, brands: productBrands, types: productTypes } = useMemo(
+    () => productFilterOptions(productsData),
+    [productsData],
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("q") ?? "";
   const category = searchParams.get("category") ?? "";
@@ -62,7 +63,7 @@ const Products = () => {
       const matchType = !type || p.type === type;
       return matchSearch && matchCategory && matchBrand && matchType;
     });
-  }, [search, category, brand, type]);
+  }, [productsData, search, category, brand, type]);
 
   const hasFilters = search || category || brand || type;
 
@@ -205,8 +206,15 @@ const Products = () => {
             </div>
           )}
 
-          {/* Product grid */}
-          {filtered.length > 0 ? (
+          {loading ? (
+            <div className="products-page__empty">
+              <p>Loading products…</p>
+            </div>
+          ) : error ? (
+            <div className="products-page__empty">
+              <p>{error}</p>
+            </div>
+          ) : filtered.length > 0 ? (
             <div className="catalogue-grid">
               {filtered.map((item) => (
                 <ProductCard key={item.id} item={item} />

@@ -4,7 +4,7 @@ import "../styles/pages/_equipment-page.scss";
 import SectionHeader from "../components/ui/SectionHeader";
 import EquipmentCard from "../components/ui/EquipmentCard";
 import SEO from "../components/seo/SEO";
-import { equipments } from "../data/equipment/list";
+import { useEquipmentList } from "../lib/catalog";
 
 const ALL = "All";
 
@@ -34,6 +34,8 @@ const equipmentListSchema = {
 };
 
 const EquipmentRental = () => {
+  const { data, error, loading } = useEquipmentList();
+  const equipments = useMemo(() => data ?? [], [data]);
   const [searchParams, setSearchParams] = useSearchParams();
   const activeBrand = searchParams.get("brand") || ALL;
   const activeCategory = searchParams.get("category") || ALL;
@@ -49,12 +51,12 @@ const EquipmentRental = () => {
   const brands = useMemo(() => {
     const set = new Set(equipments.map((e) => e.brand));
     return [ALL, ...Array.from(set).sort()];
-  }, []);
+  }, [equipments]);
 
   const categories = useMemo(() => {
     const set = new Set(equipments.map((e) => e.category_formated));
     return [ALL, ...Array.from(set).sort()];
-  }, []);
+  }, [equipments]);
 
   const filtered = useMemo(() => {
     return equipments.filter((e) => {
@@ -62,7 +64,7 @@ const EquipmentRental = () => {
       const catMatch = activeCategory === ALL || e.category_formated === activeCategory;
       return brandMatch && catMatch;
     });
-  }, [activeBrand, activeCategory]);
+  }, [equipments, activeBrand, activeCategory]);
 
   return (
     <>
@@ -140,13 +142,17 @@ const EquipmentRental = () => {
             </div>
           </div>
 
-          {/* Result count */}
-          <p className="eq-result-count">
-            Showing <strong>{filtered.length}</strong> machine{filtered.length !== 1 ? "s" : ""}
-          </p>
+          {!loading && !error && (
+            <p className="eq-result-count">
+              Showing <strong>{filtered.length}</strong> machine{filtered.length !== 1 ? "s" : ""}
+            </p>
+          )}
 
-          {/* Equipment grid */}
-          {filtered.length > 0 ? (
+          {loading ? (
+            <p className="equipment-page__empty">Loading equipment…</p>
+          ) : error ? (
+            <p className="equipment-page__empty">{error}</p>
+          ) : filtered.length > 0 ? (
             <div className="catalogue-grid">
               {filtered.map((item) => (
                 <EquipmentCard key={item.id} item={item} />

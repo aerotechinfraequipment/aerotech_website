@@ -5,32 +5,49 @@ import Button from "../components/ui/Button";
 import ProductCard from "../components/ui/ProductCard";
 import SEO from "../components/seo/SEO";
 import NotFound from "./NotFound";
-import { productsData } from "../data/products";
-import { getProductDetail, isValidProductSlug } from "../data/products/index";
-import type { ProductDetail as ProductDetailType } from "../data/products/index";
+import ItemEnquiry from "../components/forms/ItemEnquiry";
+import { getProduct, isValidProductSlug, listProducts } from "../lib/catalog";
+import type { Product, ProductDetailData } from "../lib/catalog";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [product, setProduct] = useState<ProductDetailType | null>(null);
+  const [product, setProduct] = useState<ProductDetailData | null>(null);
+  const [similar, setSimilar] = useState<Product[]>([]);
   const [missingSlug, setMissingSlug] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState("");
   const [activeImage, setActiveImage] = useState<string>("");
+  const [requestedSlug, setRequestedSlug] = useState(slug);
   const slugValid = Boolean(slug && isValidProductSlug(slug));
+
+  if (slug !== requestedSlug) {
+    setRequestedSlug(slug);
+    setProduct(null);
+    setSimilar([]);
+    setMissingSlug(null);
+    setLoadError("");
+    setActiveImage("");
+  }
 
   useEffect(() => {
     if (!slug || !isValidProductSlug(slug)) return;
     let ignore = false;
 
-    getProductDetail(slug).then((data) => {
-      if (ignore) return;
-      if (!data) {
-        setMissingSlug(slug);
-        setProduct(null);
-        return;
-      }
-      setMissingSlug(null);
-      setProduct(data);
-      setActiveImage(data.image || data.thumbnail || `/images/products/${slug}.jpg`);
-    });
+    Promise.all([getProduct(slug), listProducts()])
+      .then(([data, products]) => {
+        if (ignore) return;
+        if (!data) {
+          setMissingSlug(slug);
+          setProduct(null);
+          return;
+        }
+        setMissingSlug(null);
+        setProduct(data);
+        setSimilar(products.filter((item) => item.slug !== data.slug && item.category === data.category).slice(0, 4));
+        setActiveImage(data.image || data.thumbnail || `/images/products/${slug}.jpg`);
+      })
+      .catch(() => {
+        if (!ignore) setLoadError("Could not load this product. Refresh the page to try again.");
+      });
 
     return () => {
       ignore = true;
@@ -39,6 +56,14 @@ const ProductDetail = () => {
 
   if (!slugValid || missingSlug === slug) {
     return <NotFound />;
+  }
+
+  if (loadError) {
+    return (
+      <div className="container" style={{ padding: "6rem 0", textAlign: "center" }}>
+        <p style={{ fontSize: "1.2rem", color: "var(--muted-foreground)" }}>{loadError}</p>
+      </div>
+    );
   }
 
   if (!product || product.slug !== slug) {
@@ -57,13 +82,7 @@ const ProductDetail = () => {
     product.thumbnail ||
     `/images/products/${product.slug}.jpg`;
 
-  const similar = productsData
-    .filter((item) => item.slug !== product.slug && item.category === product.category)
-    .slice(0, 4);
-
-  const whatsappMsg = encodeURIComponent(
-    `Hello AeroTech, I am interested in ${product.name} (Brand: ${product.brand}). Please share pricing, availability, and technical documentation.`
-  );
+  const whatsappText = `Hello AeroTech, I am interested in ${product.name} (Brand: ${product.brand}). Please share pricing, availability, and technical documentation.`;
 
   const productSchema = {
     "@context": "https://schema.org",
@@ -154,9 +173,9 @@ const ProductDetail = () => {
                   }
                 }}
               />
-              <span className="eq-detail__badge eq-detail__badge--available">
+              <span className={`eq-detail__badge ${product.inStock ? "eq-detail__badge--available" : "eq-detail__badge--rented"}`}>
                 <span className="eq-detail__badge-dot" />
-                In Stock &amp; Ready for Dispatch
+                {product.inStock ? "In Stock & Ready for Dispatch" : "Check availability"}
               </span>
             </div>
 
@@ -293,13 +312,14 @@ const ProductDetail = () => {
 
             {/* Call To Actions */}
             <div className="eq-detail__ctas">
-              <Button
+              <ItemEnquiry
+                type="product"
+                itemId={product.id}
+                itemName={product.name}
+                whatsappText={whatsappText}
+                label="Enquire on WhatsApp"
                 variant="accent"
-                href={`https://wa.me/919791890636?text=${whatsappMsg}`}
-                external
-              >
-                Enquire on WhatsApp
-              </Button>
+              />
               <Button variant="dark" href="tel:+919791890636">
                 Call: +91 97918 90636
               </Button>

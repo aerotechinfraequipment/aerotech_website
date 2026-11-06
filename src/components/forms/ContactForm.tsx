@@ -1,7 +1,14 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Button from "../ui/Button";
+import TurnstileField from "./TurnstileField";
+import { openWhatsApp, submitEnquiry } from "../../lib/enquiry";
 
 const ContactForm = () => {
+  const location = useLocation();
+  const [token, setToken] = useState("");
+  const [widgetKey, setWidgetKey] = useState(0);
+  const [sending, setSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -17,8 +24,9 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (sending) return;
     setErrorMessage("");
 
     const trimmedName = formData.name.trim();
@@ -49,50 +57,54 @@ const ContactForm = () => {
       }
     }
 
-    const text = encodeURIComponent(
-      `Hello AeroTech,\n*Name:* ${trimmedName}\n*Phone:* ${trimmedPhone}${
-        trimmedEmail ? `\n*Email:* ${trimmedEmail}` : ""
-      }${
-        formData.subject.trim() ? `\n*Subject:* ${formData.subject.trim()}` : ""
-      }\n*Message:* ${trimmedMessage}`
-    );
+    if (!token) {
+      setErrorMessage("Complete the check before sending.");
+      setStatus("error");
+      return;
+    }
 
-    setStatus("success");
-    window.open(`https://wa.me/919791890636?text=${text}`, "_blank", "noopener,noreferrer");
+    const text = `Hello AeroTech,\n*Name:* ${trimmedName}\n*Phone:* ${trimmedPhone}${
+      trimmedEmail ? `\n*Email:* ${trimmedEmail}` : ""
+    }${
+      formData.subject.trim() ? `\n*Subject:* ${formData.subject.trim()}` : ""
+    }\n*Message:* ${trimmedMessage}`;
+
+    setSending(true);
+    try {
+      await submitEnquiry({
+        type: "contact",
+        name: trimmedName,
+        phone: trimmedPhone,
+        email: trimmedEmail,
+        item_name: formData.subject.trim(),
+        message: trimmedMessage,
+        source_page: location.pathname,
+        turnstileToken: token,
+      });
+      setStatus("success");
+      setToken("");
+      setWidgetKey((key) => key + 1);
+      openWhatsApp(text);
+    } catch (error) {
+      setToken("");
+      setWidgetKey((key) => key + 1);
+      setErrorMessage(error instanceof Error ? error.message : "Could not save enquiry");
+      setStatus("error");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
     <form className="quote-form" onSubmit={handleSubmit} noValidate>
       {status === "success" && (
-        <div
-          style={{
-            padding: "0.85rem 1rem",
-            background: "rgba(16, 185, 129, 0.1)",
-            border: "1px solid #10b981",
-            borderRadius: "0.375rem",
-            color: "#10b981",
-            fontSize: "0.875rem",
-            fontWeight: 600,
-          }}
-        >
-          ✓ Thank you! Opening WhatsApp to send your enquiry directly to our team.
+        <div className="form-alert form-alert--success">
+          Enquiry saved. Opening WhatsApp to send it to our team.
         </div>
       )}
 
       {status === "error" && errorMessage && (
-        <div
-          style={{
-            padding: "0.85rem 1rem",
-            background: "rgba(239, 68, 68, 0.1)",
-            border: "1px solid #ef4444",
-            borderRadius: "0.375rem",
-            color: "#ef4444",
-            fontSize: "0.875rem",
-            fontWeight: 600,
-          }}
-        >
-          {errorMessage}
-        </div>
+        <div className="form-alert form-alert--error">{errorMessage}</div>
       )}
 
       <div className="quote-form__row">
@@ -166,9 +178,11 @@ const ContactForm = () => {
         />
       </div>
 
+      <TurnstileField key={widgetKey} onToken={setToken} />
+
       <div className="quote-form__field quote-form__field--full">
-        <Button type="submit" variant="accent">
-          Send Message via WhatsApp
+        <Button type="submit" variant="accent" disabled={sending}>
+          {sending ? "Sending…" : "Send Message via WhatsApp"}
         </Button>
       </div>
     </form>

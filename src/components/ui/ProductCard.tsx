@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import type { Product } from "../../data/products";
+import type { Product } from "../../lib/catalog";
 
 interface ProductCardProps {
   item: Product;
