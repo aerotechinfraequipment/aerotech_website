@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
@@ -12,6 +13,11 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       </main>
 
       <Footer />
+      <nav className="mobile-dock" aria-label="Quick actions">
+        <a className="mobile-dock__call" href="tel:+919791890636">Call</a>
+        <a className="mobile-dock__wa" href="https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <Link className="mobile-dock__quote" to="/contact#quote">Get a quote</Link>
+      </nav>
       <a
         className="wa-fab"
         href="https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20have%20an%20enquiry."

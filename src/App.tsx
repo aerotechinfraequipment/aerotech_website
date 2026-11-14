@@ -12,6 +12,8 @@ const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const SteelProducts = lazy(() => import("./pages/SteelProducts"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Blogs = lazy(() => import("./pages/Blogs"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 
 // Automatically scroll to top on route change
 function ScrollToTop() {
@@ -54,6 +56,8 @@ function App() {
             <Route path="/products/:slug" element={<ProductDetail />} />
             <Route path="/steel-products" element={<SteelProducts />} />
             <Route path="/about" element={<About />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
             {/* Catch-all fallback */}
             <Route path="*" element={<NotFound />} />

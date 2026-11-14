@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo/logo.webp";
+import logo from "../../assets/logo/logo-mark.png";
 
 const Footer = () => {
   return (
@@ -64,6 +64,7 @@ const Footer = () => {
           <h3 className="site-footer__heading">Company</h3>
           <ul className="site-footer__links">
             <li><Link to="/about">About AeroTech</Link></li>
+            {/* <li><Link to="/blogs">Blogs</Link></li> */}
             <li><Link to="/equipment">Rental Services</Link></li>
             <li><Link to="/products">Product Sales</Link></li>
             <li><Link to="/contact">Contact &amp; Enquiry</Link></li>

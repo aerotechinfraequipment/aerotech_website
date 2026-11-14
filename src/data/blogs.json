@@ -1,0 +1,292 @@
+[
+  {
+    "slug": "big-construction-site",
+    "title": "How a Big Construction Site Works",
+    "menuLabel": "Big construction sites",
+    "summary": "A big site runs many jobs at once. See how cranes, trucks and crews share the ground without blocking each other.",
+    "image": "/images/blogs/big-construction-site.jpeg",
+    "imageAlt": "Aerial view of a large construction site with tower cranes, excavators and buildings going up",
+    "width": 1024,
+    "height": 1024,
+    "date": "2026-11-14",
+    "sections": [
+      {
+        "id": "what-you-see",
+        "heading": "What you see from above",
+        "paragraphs": [
+          "A big site looks messy from the ground. From above, it makes more sense. Cranes stand over the buildings. Trucks follow dirt roads. Some blocks are already tall. Others are still open ground.",
+          "That mix is normal. A site is not one job. It is many small jobs happening on the same day."
+        ]
+      },
+      {
+        "id": "why-a-plan-matters",
+        "heading": "Why a plan matters",
+        "paragraphs": [
+          "If every truck arrives at the same gate at the same time, the site stops. If a crane is booked for the wrong day, the steel sits on the ground. A simple plan says which machine works where, and when it should leave.",
+          "The plan also keeps people safe. Walking paths and machine paths should not be the same path."
+        ]
+      },
+      {
+        "id": "how-machines-share-space",
+        "heading": "How machines share the ground",
+        "paragraphs": [
+          "Each machine has one main job. They only work well if they are not in each other's way."
+        ],
+        "points": [
+          "Tower cranes lift steel, shutters and concrete to the upper floors.",
+          "Excavators dig foundations and load trucks.",
+          "Dump trucks carry soil out and bring stone in.",
+          "Boom lifts raise workers to the outside of a building when a ladder is not safe enough."
+        ]
+      },
+      {
+        "id": "a-good-day",
+        "heading": "A good day on site",
+        "paragraphs": [
+          "Morning often starts with a short talk. The team checks the weather, the deliveries and the hazards. Then machines move to their spots.",
+          "By evening, one part of the site should look different from the morning. That is a good day. If nothing moved, the plan needs a second look."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "roads-and-highways",
+    "title": "How Roads and Highways Are Built",
+    "menuLabel": "Roads and highways",
+    "summary": "A highway is built in layers. Learn how crews shape the ground, lay the surface, and join ramps so traffic can cross safely.",
+    "image": "/images/blogs/roads-and-highways.jpeg",
+    "imageAlt": "Aerial view of a highway interchange with looping ramps and overpasses",
+    "width": 971,
+    "height": 971,
+    "date": "2026-11-14",
+    "sections": [
+      {
+        "id": "start-with-the-ground",
+        "heading": "Start with the ground",
+        "paragraphs": [
+          "A road is only as good as the ground under it. Crews first mark the path. Then they clear trees, rocks and old structures.",
+          "Soft soil is taken out or packed hard. If this step is skipped, the road sinks after the rains."
+        ]
+      },
+      {
+        "id": "build-in-layers",
+        "heading": "Build the road in layers",
+        "paragraphs": [
+          "A highway is not one sheet of tar. It is built in layers. Each layer is pressed flat before the next one goes on."
+        ],
+        "points": [
+          "A strong earth base comes first.",
+          "Stone goes on top of that base.",
+          "Asphalt or concrete is the top layer that vehicles drive on.",
+          "Drains at the side carry rain away so water does not sit under the road."
+        ]
+      },
+      {
+        "id": "why-ramps-spread-out",
+        "heading": "Why the ramps spread out",
+        "paragraphs": [
+          "An interchange is a place where roads cross without a traffic light. It looks wide because the turns must be gentle. A vehicle at speed cannot take a sharp corner.",
+          "Ramps rise slowly so drivers can go over or under another road without stopping. That is why you see loops and bridges, not a simple crossroad."
+        ]
+      },
+      {
+        "id": "machines-on-a-road-job",
+        "heading": "Machines on a road job",
+        "paragraphs": [
+          "Excavators shape the slopes. Dump trucks move soil. Compactors press each layer flat. Cranes place the beams where one road crosses another.",
+          "The job moves in stretches. One stretch is paved while the next stretch is still being dug."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "building-bridges",
+    "title": "How Bridges Are Built",
+    "menuLabel": "Bridges",
+    "summary": "Bridge piers hold the road above a river. Here is how posts, beams and the deck fit together, in plain words.",
+    "image": "/images/blogs/building-bridges.jpeg",
+    "imageAlt": "Concrete bridge piers standing in the water during construction",
+    "width": 1169,
+    "height": 1280,
+    "date": "2026-11-14",
+    "sections": [
+      {
+        "id": "what-the-piers-do",
+        "heading": "What the piers do",
+        "paragraphs": [
+          "The tall concrete posts in the water are called piers. They carry the weight of the bridge down into firm ground.",
+          "Without them, the road above would have nothing to sit on."
+        ]
+      },
+      {
+        "id": "three-main-parts",
+        "heading": "The three main parts",
+        "paragraphs": [
+          "A simple bridge has three parts. If you can name them, the rest of the job is easier to follow."
+        ],
+        "points": [
+          "Piers go down into the ground or the river bed.",
+          "Beams sit across the piers and span the gap.",
+          "The deck is the flat surface that people and vehicles use.",
+          "Railings, drains and joints come last. They keep water off the deck and keep people on it."
+        ]
+      },
+      {
+        "id": "why-water-is-harder",
+        "heading": "Why water makes it harder",
+        "paragraphs": [
+          "Workers cannot stand in deep water. Crews use barges or temporary platforms. Concrete must stay in its form until it is strong.",
+          "Wind and current can shift that form if it is not held tight. This work is slower than building on dry land. Slow is safer here."
+        ]
+      },
+      {
+        "id": "keep-the-line-straight",
+        "heading": "Keep the line straight",
+        "paragraphs": [
+          "Each pier must line up with the next. A small lean at the bottom becomes a big gap at the top.",
+          "Surveyors check the line again and again before the next piece is added. That check is not extra work. It is the work."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "railway-and-metro",
+    "title": "How Railway and Metro Lines Are Built",
+    "menuLabel": "Railway and metro",
+    "summary": "Trains need a flat, strong path. See how rails, stone beds and signals keep a new railway or metro line steady.",
+    "image": "/images/blogs/railway-and-metro.jpeg",
+    "imageAlt": "Railway tracks, a station platform and trains at a rail yard",
+    "width": 1024,
+    "height": 1024,
+    "date": "2026-11-14",
+    "sections": [
+      {
+        "id": "what-a-track-needs",
+        "heading": "What a track needs",
+        "paragraphs": [
+          "A train is heavy, and it cannot steer around a bump. The path must be straight, level and strong.",
+          "The shiny rails are only the top. Under them are sleepers. Under the sleepers is a bed of stone."
+        ]
+      },
+      {
+        "id": "stone-under-the-rails",
+        "heading": "The stone under the rails",
+        "paragraphs": [
+          "That stone bed is called ballast. It does three simple jobs. It spreads the weight of the train. It lets rain drain away. It holds the sleepers in place.",
+          "If the stone shifts, the ride becomes rough and the track can move. Crews check and top up the stone after the line opens, not only while it is being built."
+        ]
+      },
+      {
+        "id": "working-near-live-trains",
+        "heading": "Working near live trains",
+        "paragraphs": [
+          "New work often sits beside tracks that are still in use. Crews cannot share a live line with a passing train.",
+          "They work in a closed section, or at night, and they leave the line clear before the first train. Tools and machines must be off the track. This rule is not flexible."
+        ]
+      },
+      {
+        "id": "metro-and-railway",
+        "heading": "Metro and railway",
+        "paragraphs": [
+          "A metro usually serves a city. It may run above a road, on the ground, or underground. A railway connects towns and can carry people and goods.",
+          "The idea is the same for both: a firm bed, true rails, and signals that tell the driver when it is safe to move."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "building-floor-by-floor",
+    "title": "How Buildings Rise, Floor by Floor",
+    "menuLabel": "Buildings, floor by floor",
+    "summary": "A building grows one floor at a time. Follow a concrete pour from the foundation slab to the top, step by step.",
+    "image": "/images/blogs/building-floor-by-floor.jpeg",
+    "imageAlt": "Construction workers pouring wet concrete on an upper floor of a building",
+    "width": 1024,
+    "height": 1024,
+    "date": "2026-11-14",
+    "sections": [
+      {
+        "id": "one-floor-at-a-time",
+        "heading": "One floor at a time",
+        "paragraphs": [
+          "A building does not appear in one pour. Crews finish the foundation, raise the columns, then pour a slab.",
+          "That slab is the ceiling of the floor below and the floor of the room above. Then they repeat, one level at a time."
+        ]
+      },
+      {
+        "id": "keep-the-pour-moving",
+        "heading": "Keep the pour moving",
+        "paragraphs": [
+          "Wet concrete starts to harden soon after it leaves the mixer. If one part sets before the next part joins it, a weak line can form.",
+          "That is why the team works together. The hose keeps moving. People spread and level the concrete before it stiffens. A pause in the middle of a slab is a problem, not a break."
+        ]
+      },
+      {
+        "id": "protect-the-open-edge",
+        "heading": "Protect the open edge",
+        "paragraphs": [
+          "The open edge of a high floor is the dangerous part. Helmets, harnesses and guard rails are basic, not extra.",
+          "A boom lift or a proper scaffold gives a safe place to work on the outside face. Climbing an unfinished edge is not a shortcut worth taking."
+        ]
+      },
+      {
+        "id": "after-the-frame",
+        "heading": "After the frame is up",
+        "paragraphs": [
+          "Once the frame is up, the building is still not finished. Walls, windows, pipes, wires and paint come next.",
+          "The structure is the skeleton. The later trades make it a place people can use."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "heavy-machines-on-site",
+    "title": "Why Heavy Machines Matter on Site",
+    "menuLabel": "Heavy machines",
+    "summary": "Excavators, trucks and cranes do the heavy work. Learn what each machine does, and how to pick the right size.",
+    "image": "/images/blogs/heavy-machines-on-site.jpeg",
+    "imageAlt": "Yellow excavators and dump trucks working together on open ground",
+    "width": 1024,
+    "height": 1024,
+    "date": "2026-11-14",
+    "sections": [
+      {
+        "id": "what-each-machine-does",
+        "heading": "What each machine does",
+        "paragraphs": [
+          "People are strong, but they cannot dig a foundation or move a hill of soil by hand. Machines do the heavy work so the crew can finish on time and stay safer."
+        ],
+        "points": [
+          "An excavator digs, loads and breaks hard ground.",
+          "A dump truck carries that soil away and brings stone back.",
+          "A crane lifts beams and other parts that people should not carry.",
+          "A boom lift or scissor lift raises a worker to a high spot on a stable platform."
+        ]
+      },
+      {
+        "id": "pick-the-right-size",
+        "heading": "Pick the right size",
+        "paragraphs": [
+          "A machine that is too small works all day and still falls behind. A machine that is too big may not pass the site gate, or it may sink on soft ground.",
+          "Match the size to the hole, the load and the space you have. Bigger is not always better."
+        ]
+      },
+      {
+        "id": "rent-for-the-days",
+        "heading": "Rent for the days you need",
+        "paragraphs": [
+          "Many projects need a large machine for weeks, not for years. Renting means you pay for the days you use it. You also skip storage and most repair worries after the job ends.",
+          "Buying makes sense only if that machine will stay busy."
+        ]
+      },
+      {
+        "id": "say-what-the-job-needs",
+        "heading": "Say what the job needs",
+        "paragraphs": [
+          "A clear request gets the right machine faster than a vague one. Tell the yard three things: the job, the ground, and the height you need to reach.",
+          "AeroTech keeps access, lifting and earthmoving equipment ready for daily and monthly hire from Sriperumbudur."
+        ]
+      }
+    ]
+  }
+]

@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import Button from "../ui/Button";
 import logo from "../../assets/logo/logo.webp"
+// import { blogs } from "../../data/blogs";
 
-const navLinks = [
+const navLinks: { label: string; to: string; children?: { label: string; to: string }[] }[] = [
   { label: "Home", to: "/" },
   { label: "Equipment Rental", to: "/equipment" },
   { label: "Products", to: "/products" },
   { label: "Steel Products", to: "/steel-products" },
+  // {
+  //   label: "Blogs",
+  //   to: "/blogs",
+  //   children: blogs.map((blog) => ({ label: blog.menuLabel, to: `/blogs/${blog.slug}` })),
+  // },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
@@ -41,14 +47,36 @@ const Header = () => {
         {/* Desktop Nav */}
         <nav className="site-header__nav" aria-label="Main navigation">
           {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === "/"}
-              className={({ isActive }) => `site-header__nav-link${isActive ? " is-active" : ""}`}
-            >
-              {link.label}
-            </NavLink>
+            <div key={link.to} className={`site-header__nav-item${link.children ? " has-menu" : ""}`}>
+              <NavLink
+                to={link.to}
+                end={link.to === "/"}
+                className={({ isActive }) => `site-header__nav-link${isActive ? " is-active" : ""}`}
+              >
+                {link.label}
+                {link.children && (
+                  <svg className="site-header__chevron" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  </svg>
+                )}
+              </NavLink>
+              {link.children && (
+                <div className="site-header__submenu">
+                  <ul aria-label={`${link.label} topics`}>
+                    {link.children.map((child) => (
+                      <li key={child.to}>
+                        <NavLink
+                          to={child.to}
+                          className={({ isActive }) => `site-header__submenu-link${isActive ? " is-active" : ""}`}
+                        >
+                          {child.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -81,15 +109,30 @@ const Header = () => {
         <div className="site-header__mobile-menu" id="mobile-nav">
           <nav>
             {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === "/"}
-                className={({ isActive }) => `site-header__mobile-link${isActive ? " is-active" : ""}`}
-                onClick={() => setMenuPath(null)}
-              >
-                {link.label}
-              </NavLink>
+              <div key={link.to} className="site-header__mobile-group">
+                <NavLink
+                  to={link.to}
+                  end={link.to === "/"}
+                  className={({ isActive }) => `site-header__mobile-link${isActive ? " is-active" : ""}`}
+                  onClick={() => setMenuPath(null)}
+                >
+                  {link.label}
+                </NavLink>
+                {link.children && (
+                  <div className="site-header__mobile-sub">
+                    {link.children.map((child) => (
+                      <NavLink
+                        key={child.to}
+                        to={child.to}
+                        className={({ isActive }) => `site-header__mobile-sublink${isActive ? " is-active" : ""}`}
+                        onClick={() => setMenuPath(null)}
+                      >
+                        {child.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <Button variant="accent" to="/contact#quote" fullWidth>Get a Quote</Button>
           </nav>

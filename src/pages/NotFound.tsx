@@ -19,6 +19,7 @@ const NotFound = () => {
             <Link to="/equipment">Equipment rental</Link>
             <Link to="/products">Products</Link>
             <Link to="/steel-products">Steel products</Link>
+            <Link to="/blogs">Blogs</Link>
             <Link to="/contact">Contact</Link>
           </nav>
         </div>

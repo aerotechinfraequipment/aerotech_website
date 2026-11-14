@@ -15,6 +15,7 @@ const PRIMARY_LINKS = [
   ["/products", "Industrial products"],
   ["/steel-products", "Steel products"],
   ["/about", "About"],
+  ["/blogs", "Blogs"],
   ["/contact", "Contact"],
 ];
 
@@ -179,6 +180,7 @@ function writeSitemap(routes) {
     "/products": ["weekly", "0.9"],
     "/steel-products": ["weekly", "0.8"],
     "/about": ["monthly", "0.7"],
+    "/blogs": ["weekly", "0.7"],
     "/contact": ["monthly", "0.8"],
   };
   const urls = routes
@@ -224,7 +226,7 @@ function render(template, route) {
     : removeMeta(html, "name", "twitter:url");
   html = setMeta(html, "name", "twitter:image", route.image);
   html = injectSchema(html, route.schema);
-  const body = summaryHtml(route.heading, route.description, route.links, route.articleClass);
+  const body = route.body || summaryHtml(route.heading, route.description, route.links, route.articleClass);
   if (!/<div id="root">\s*<\/div>/.test(html)) {
     throw new Error("Built index.html is missing <div id=\"root\"></div>");
   }
@@ -332,6 +334,66 @@ const routes = [
     "Contact AeroTech in Sriperumbudur",
   ),
 ];
+
+const blogs = JSON.parse(readFileSync(join(ROOT, "src/data/blogs.json"), "utf8"));
+routes.push(
+  staticRoute(
+    "/blogs",
+    "Simple Guides to Construction Sites",
+    "Plain-language guides to roads, bridges, railways, buildings and the machines that build them.",
+    "Blog",
+    "Blogs",
+  ),
+);
+for (const blog of blogs) {
+  const path = `/blogs/${blog.slug}`;
+  const sections = blog.sections
+    .map((section) => {
+      const paras = section.paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join("");
+      const points = section.points
+        ? `<ul>${section.points.map((point) => `<li>${esc(point)}</li>`).join("")}</ul>`
+        : "";
+      return `<section id="${esc(section.id)}"><h2>${esc(section.heading)}</h2>${paras}${points}</section>`;
+    })
+    .join("");
+  const topicLinks = [
+    ["/", "Home"],
+    ["/blogs", "Blogs"],
+    ...blogs.map((item) => [`/blogs/${item.slug}`, item.menuLabel]),
+  ];
+  const image = absolute(blog.image);
+  routes.push({
+    path,
+    title: formatTitle(blog.title),
+    heading: blog.title,
+    description: clip(blog.summary),
+    canonical: `${BASE_URL}${path}`,
+    robots: "index, follow, max-image-preview:large",
+    image,
+    imageAlt: blog.imageAlt,
+    links: topicLinks,
+    body: `<div id="root"><main id="main-content"><article class="prerender-summary"><h1>${esc(blog.title)}</h1><img src="${esc(blog.image)}" alt="${esc(blog.imageAlt)}"><p>${esc(blog.summary)}</p>${sections}<nav aria-label="Blog topics">${topicLinks.map(([href, label]) => `<a href="${esc(href)}">${esc(label)}</a>`).join(" ")}</nav></article></main></div>`,
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          headline: blog.title,
+          description: blog.summary,
+          image,
+          datePublished: blog.date,
+          url: `${BASE_URL}${path}`,
+          author: { "@id": ORG_ID },
+        },
+        breadcrumb([
+          { name: "Home", path: "/" },
+          { name: "Blogs", path: "/blogs" },
+          { name: blog.title, path },
+        ]),
+      ],
+    },
+  });
+}
 
 routes[0].schema = {
   "@context": "https://schema.org",
