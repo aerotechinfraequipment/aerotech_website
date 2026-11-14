@@ -26,7 +26,7 @@ const ContactSection = () => {
             </li>
             <li>
               <span className="contact-section__dot" aria-hidden="true" />
-              Serving Chennai, Kanchipuram, Sriperumbudur, Oragadam and nearby areas
+              Open {SITE.hoursDisplay}
             </li>
           </ul>
           <Button

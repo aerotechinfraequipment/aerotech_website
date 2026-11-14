@@ -84,6 +84,7 @@ const Footer = () => {
               <a href={mailHref}>{SITE.email}</a>
             </li>
             <li>{SITE.address}</li>
+            <li>{SITE.hoursDisplay}</li>
             <li className="site-footer__gstin">GSTIN: {SITE.gstin}</li>
           </ul>
         </div>

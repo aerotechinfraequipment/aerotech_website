@@ -154,6 +154,8 @@ const About = () => {
               <a href={mailHref} className="font-bold">
                 {SITE.email}
               </a>
+              <br />
+              Hours: {SITE.hoursDisplay}
             </p>
             <Button to="/contact" variant="accent">Contact Us</Button>
           </div>

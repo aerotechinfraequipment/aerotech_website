@@ -84,6 +84,12 @@ const Contact = () => {
             </div>
 
             <div className="contact-info-card">
+              <h2>Store hours</h2>
+              <p className="contact-info-card__text">{SITE.hoursDisplay}</p>
+              <p className="contact-info-card__text--small">Closed on Sunday</p>
+            </div>
+
+            <div className="contact-info-card">
               <h2>Office</h2>
               <p className="contact-info-card__text">
                 {SITE.address}

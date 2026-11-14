@@ -8,6 +8,9 @@ export const SITE = {
   address: contact.address,
   gstin: contact.gstin,
   serviceAreas: contact.serviceAreas,
+  hoursDisplay: contact.hoursDisplay,
+  hoursOpen: contact.hoursOpen,
+  hoursClose: contact.hoursClose,
 } as const;
 
 export const telHref = `tel:${SITE.phoneTel}`;

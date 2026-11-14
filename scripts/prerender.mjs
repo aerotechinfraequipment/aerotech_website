@@ -240,6 +240,12 @@ function syncBusinessSchema(contact) {
   const schema = JSON.parse(readFileSync(file, "utf8"));
   schema.telephone = contact.phoneTel;
   schema.email = contact.email;
+  if (Array.isArray(schema.openingHoursSpecification)) {
+    for (const spec of schema.openingHoursSpecification) {
+      spec.opens = contact.hoursOpen;
+      spec.closes = contact.hoursClose;
+    }
+  }
   writeFileSync(file, `${JSON.stringify(schema, null, 2)}\n`);
 }
 

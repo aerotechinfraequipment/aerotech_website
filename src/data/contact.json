@@ -5,5 +5,8 @@
   "email": "aerotech2003@gmail.com",
   "address": "SF No.135/4G2, Chennai Salai, Thirumangalam, Sriperumbudur, Kanchipuram (D.T) – 602 106, Tamil Nadu",
   "gstin": "33ABFCA6529D1ZY",
-  "serviceAreas": "Chennai · Kanchipuram · Sriperumbudur · Oragadam · Ranipet · Vellore · Chengalpattu · Tamil Nadu"
+  "serviceAreas": "Chennai · Kanchipuram · Sriperumbudur · Oragadam · Ranipet · Vellore · Chengalpattu · Tamil Nadu",
+  "hoursDisplay": "Mon – Sat, 8:30am – 7:00pm",
+  "hoursOpen": "08:30",
+  "hoursClose": "19:00"
 }
