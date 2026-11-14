@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import SectionHeader from "../ui/SectionHeader";
 import BrandCard from "../ui/BrandCard";
 import { brandsData } from "../../data/brands";
@@ -16,9 +15,6 @@ const Brands = () => {
             <BrandCard key={item.id} item={item} />
           ))}
         </div>
-        {/* <div className="brands-section__cta">
-          <Link to="/brands" className="section-header__link">See all brands →</Link>
-        </div> */}
       </div>
     </section>
   );

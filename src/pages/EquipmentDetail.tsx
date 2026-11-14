@@ -6,6 +6,7 @@ import EquipmentCard from "../components/ui/EquipmentCard";
 import SEO from "../components/seo/SEO";
 import NotFound from "./NotFound";
 import { clipMeta } from "../lib/meta";
+import { telHref, whatsappHref } from "../lib/site";
 
 const EquipmentDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,9 +30,7 @@ const EquipmentDetail = () => {
 
   const isAvailable = item.status === "available";
 
-  const whatsappMsg = encodeURIComponent(
-    `Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and rental pricing.`
-  );
+  const whatsappMsg = `Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and rental pricing.`;
 
   const equipmentSchema = {
     "@context": "https://schema.org",
@@ -180,12 +179,12 @@ const EquipmentDetail = () => {
             <div className="eq-detail__ctas">
               <Button
                 variant="accent"
-                href={`https://wa.me/919791890636?text=${whatsappMsg}`}
+                href={whatsappHref(whatsappMsg)}
                 external
               >
                 Get Quote on WhatsApp
               </Button>
-              <Button variant="dark" href="tel:+919791890636">
+              <Button variant="dark" href={telHref}>
                 Call Us
               </Button>
             </div>

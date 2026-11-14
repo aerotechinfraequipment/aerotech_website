@@ -7,20 +7,13 @@
   background: var(--ink);
 }
 
-.hero__poster,
-.hero__bg {
+.hero__poster {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.55;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__bg {
-    display: none;
-  }
 }
 
 .hero__gradient {
@@ -475,11 +468,6 @@
 
     &:hover { text-decoration: underline; }
   }
-}
-
-.brands-section__cta {
-  margin-top: 2rem;
-  text-align: center;
 }
 
 /* ═══════════════════════════════════════════════

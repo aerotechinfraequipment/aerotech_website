@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Button from "../ui/Button";
 import TurnstileField from "./TurnstileField";
 import { openWhatsApp, submitEnquiry } from "../../lib/enquiry";
+import { SITE } from "../../lib/site";
 
 const ContactForm = () => {
   const location = useLocation();
@@ -131,7 +132,7 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             maxLength={20}
-            placeholder="97918 90636"
+            placeholder={SITE.phoneDisplay}
             autoComplete="tel"
           />
         </div>

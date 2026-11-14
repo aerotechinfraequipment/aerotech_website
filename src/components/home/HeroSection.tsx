@@ -1,21 +1,7 @@
-// import { useEffect, useState } from "react";
-// import heroBgVideo from "../../assets/hero_bg.mp4";
 import heroPoster from "../../assets/hero-poster.jpg";
 import Button from "../ui/Button";
 
 const HeroSection = () => {
-  // const [playVideo, setPlayVideo] = useState(
-  //   () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  // );
-  //
-  // useEffect(() => {
-  //   const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-  //   const update = () => setPlayVideo(!media.matches);
-  //   update();
-  //   media.addEventListener("change", update);
-  //   return () => media.removeEventListener("change", update);
-  // }, []);
-
   return (
     <section className="hero">
       <img
@@ -26,18 +12,6 @@ const HeroSection = () => {
         height={720}
         fetchPriority="high"
       />
-      {/*
-      <video
-        autoPlay={playVideo}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={heroPoster}
-        src={playVideo ? heroBgVideo : undefined}
-        className="hero__bg"
-      />
-      */}
       <div className="hero__gradient" />
 
       <div className="container hero__inner">

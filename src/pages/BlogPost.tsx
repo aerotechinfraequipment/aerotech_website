@@ -4,16 +4,18 @@ import Button from "../components/ui/Button";
 import SEO from "../components/seo/SEO";
 import NotFound from "./NotFound";
 import BlogTopicMenu from "../components/blog/BlogTopicMenu";
-import { blogs, getBlog } from "../data/blogs";
+import { useBlog } from "../lib/catalog";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const post = getBlog(slug);
+  const { item: post, list, status } = useBlog(slug);
 
+  if (status === "loading") return <p className="container">Loading…</p>;
+  if (status === "error") return <p className="container">Could not load this topic. Refresh the page to try again.</p>;
   if (!post) return <NotFound />;
 
-  const index = blogs.findIndex((item) => item.slug === post.slug);
-  const next = blogs[(index + 1) % blogs.length];
+  const index = list.findIndex((item) => item.slug === post.slug);
+  const next = list[(index + 1) % list.length];
   const postUrl = `https://aerotechinfraequipment.com/blogs/${post.slug}`;
 
   const postSchema = {
@@ -57,11 +59,15 @@ const BlogPost = () => {
   return (
     <>
       <SEO
-        title={post.title}
-        description={post.summary}
+        title={post.seoTitle || post.title}
+        description={post.seoDescription || post.summary}
         canonical={`/blogs/${post.slug}`}
         ogImage={post.image}
         ogImageAlt={post.imageAlt}
+        ogTitle={post.ogTitle || undefined}
+        ogDescription={post.ogDescription || undefined}
+        ogType="article"
+        keywords={post.keywords}
         schema={postSchema}
       />
 

@@ -2,24 +2,31 @@ import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import Button from "../ui/Button";
 import logo from "../../assets/logo/logo.webp"
-// import { blogs } from "../../data/blogs";
+import { useBlogs } from "../../lib/catalog";
 
-const navLinks: { label: string; to: string; children?: { label: string; to: string }[] }[] = [
+const baseLinks: { label: string; to: string }[] = [
   { label: "Home", to: "/" },
   { label: "Equipment Rental", to: "/equipment" },
   { label: "Products", to: "/products" },
   { label: "Steel Products", to: "/steel-products" },
-  // {
-  //   label: "Blogs",
-  //   to: "/blogs",
-  //   children: blogs.map((blog) => ({ label: blog.menuLabel, to: `/blogs/${blog.slug}` })),
-  // },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
 ];
 
 const Header = () => {
   const { pathname } = useLocation();
+  const { data } = useBlogs();
+  const topics = data ?? [];
+  const navLinks: { label: string; to: string; children?: { label: string; to: string }[] }[] = [
+    ...baseLinks,
+    {
+      label: "Blogs",
+      to: "/blogs",
+      ...(topics.length
+        ? { children: topics.map((blog) => ({ label: blog.menuLabel, to: `/blogs/${blog.slug}` })) }
+        : {}),
+    },
+    { label: "About", to: "/about" },
+    { label: "Contact", to: "/contact" },
+  ];
   const [menuPath, setMenuPath] = useState<string | null>(null);
   const mobileOpen = menuPath === pathname;
 

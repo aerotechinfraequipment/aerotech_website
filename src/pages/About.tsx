@@ -2,6 +2,7 @@ import "../styles/pages/_about-page.scss";
 import SectionHeader from "../components/ui/SectionHeader";
 import Button from "../components/ui/Button";
 import SEO from "../components/seo/SEO";
+import { SITE, mailHref, telHref } from "../lib/site";
 
 // Images
 import companyImg from "../assets/company.jpg";
@@ -141,17 +142,17 @@ const About = () => {
           <div className="about-visit__content">
             <h2>Visit us or get in touch</h2>
             <p>
-              SF No.135/4G2, Chennai Salai, Thirumangalam, Sriperumbudur, Kanchipuram (D.T) – 602 106, Tamil Nadu
+              {SITE.address}
             </p>
             <p>
               Phone &amp; WhatsApp:{" "}
-              <a href="tel:+919791890636" className="font-bold">
-                97918 90636
+              <a href={telHref} className="font-bold">
+                {SITE.phoneDisplay}
               </a>
               <br />
               Email:{" "}
-              <a href="mailto:aerotech2003@gmail.com" className="font-bold">
-                aerotech2003@gmail.com
+              <a href={mailHref} className="font-bold">
+                {SITE.email}
               </a>
             </p>
             <Button to="/contact" variant="accent">Contact Us</Button>

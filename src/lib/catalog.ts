@@ -358,6 +358,129 @@ export function useSteel() {
   return useCatalog(listSteel);
 }
 
+export type PublicBlogSection = {
+  id: string;
+  heading: string;
+  paragraphs: string[];
+  points?: string[];
+};
+
+export type PublicBlog = {
+  slug: string;
+  title: string;
+  menuLabel: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+  width: number;
+  height: number;
+  date: string;
+  seoTitle: string;
+  seoDescription: string;
+  keywords: string[];
+  ogTitle: string;
+  ogDescription: string;
+  sections: PublicBlogSection[];
+};
+
+type BlogRow = {
+  slug: string;
+  menu_label: string;
+  title: string;
+  summary: string;
+  image_url: string | null;
+  image_alt: string;
+  image_width: number | null;
+  image_height: number | null;
+  published_on: string | null;
+  seo_title: string;
+  seo_description: string;
+  seo_keywords: string[] | null;
+  og_title: string;
+  og_description: string;
+  sections: PublicBlogSection[] | null;
+};
+
+const BLOG_SLUG = /^[a-z0-9-]+$/;
+
+function mapBlog(row: BlogRow): PublicBlog {
+  return {
+    slug: row.slug,
+    title: row.title,
+    menuLabel: row.menu_label,
+    summary: row.summary,
+    image: row.image_url || "",
+    imageAlt: row.image_alt,
+    width: row.image_width || 1200,
+    height: row.image_height || 800,
+    date: row.published_on || "",
+    seoTitle: row.seo_title,
+    seoDescription: row.seo_description,
+    keywords: row.seo_keywords ?? [],
+    ogTitle: row.og_title,
+    ogDescription: row.og_description,
+    sections: row.sections ?? [],
+  };
+}
+
+export async function listBlogs(): Promise<PublicBlog[]> {
+  const rows = await rest<BlogRow[]>(
+    "blogs?select=*&status=eq.published&archived_at=is.null&order=sort_order.asc",
+  );
+  return rows.map(mapBlog);
+}
+
+export async function getBlog(slug: string): Promise<PublicBlog | null> {
+  if (!BLOG_SLUG.test(slug)) return null;
+  const rows = await rest<BlogRow[]>(
+    `blogs?select=*&slug=eq.${slug}&status=eq.published&archived_at=is.null&limit=1`,
+  );
+  return rows[0] ? mapBlog(rows[0]) : null;
+}
+
+export function useBlogs() {
+  return useCatalog(listBlogs);
+}
+
+export function useBlog(slug: string | undefined) {
+  const [item, setItem] = useState<PublicBlog | null>(null);
+  const [list, setList] = useState<PublicBlog[]>([]);
+  const [status, setStatus] = useState<"loading" | "missing" | "error" | "ready">(slug ? "loading" : "missing");
+  const [requested, setRequested] = useState(slug);
+
+  if (slug !== requested) {
+    setRequested(slug);
+    setItem(null);
+    setList([]);
+    setStatus(slug ? "loading" : "missing");
+  }
+
+  useEffect(() => {
+    if (!slug) return;
+    let ignore = false;
+    Promise.all([getBlog(slug), listBlogs()])
+      .then(([row, all]) => {
+        if (ignore) return;
+        setList(all);
+        if (!row) {
+          setItem(null);
+          setStatus("missing");
+          return;
+        }
+        setItem(row);
+        setStatus("ready");
+      })
+      .catch(() => {
+        if (!ignore) setStatus("error");
+      });
+    return () => {
+      ignore = true;
+    };
+  }, [slug]);
+
+  return { item, list, status };
+}
+
 export function useEquipmentDetail(id: string | undefined) {
   const [item, setItem] = useState<Equipment | null>(null);
   const [similar, setSimilar] = useState<Equipment[]>([]);

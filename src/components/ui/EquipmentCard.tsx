@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import type { Equipment } from "../../lib/catalog";
+import { whatsappHref } from "../../lib/site";
 
 interface EquipmentCardProps {
   item: Equipment;
@@ -85,9 +86,7 @@ const EquipmentCard = ({ item }: EquipmentCardProps) => {
               <span className="label-short">Details</span>
             </Link>
             <a
-              href={`https://wa.me/919791890636?text=${encodeURIComponent(
-                `Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and pricing.`
-              )}`}
+              href={whatsappHref(`Hello AeroTech, I am interested in renting the ${item.name}. Please share availability and pricing.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="eq-card__btn eq-card__btn--quote"

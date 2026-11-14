@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo-mark.png";
+import { SITE, mailHref, telHref, whatsappHref } from "../../lib/site";
 
 const Footer = () => {
   return (
@@ -21,7 +22,7 @@ const Footer = () => {
           </p>
           <div className="site-footer__social">
             <a
-              href="https://wa.me/919791890636"
+              href={whatsappHref()}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -64,7 +65,7 @@ const Footer = () => {
           <h3 className="site-footer__heading">Company</h3>
           <ul className="site-footer__links">
             <li><Link to="/about">About AeroTech</Link></li>
-            {/* <li><Link to="/blogs">Blogs</Link></li> */}
+            <li><Link to="/blogs">Blogs</Link></li>
             <li><Link to="/equipment">Rental Services</Link></li>
             <li><Link to="/products">Product Sales</Link></li>
             <li><Link to="/contact">Contact &amp; Enquiry</Link></li>
@@ -77,13 +78,13 @@ const Footer = () => {
           <h3 className="site-footer__heading">Get In Touch</h3>
           <ul className="site-footer__contact">
             <li>
-              <a href="tel:+919791890636">97918 90636</a>
+              <a href={telHref}>{SITE.phoneDisplay}</a>
             </li>
             <li>
-              <a href="mailto:aerotech2003@gmail.com">aerotech2003@gmail.com</a>
+              <a href={mailHref}>{SITE.email}</a>
             </li>
-            <li>SF No.135/4G2, Chennai Salai, Thirumangalam, Sriperumbudur, Tamil Nadu 602 106</li>
-            <li className="site-footer__gstin">GSTIN: 33ABFCA6529D1ZY</li>
+            <li>{SITE.address}</li>
+            <li className="site-footer__gstin">GSTIN: {SITE.gstin}</li>
           </ul>
         </div>
       </div>

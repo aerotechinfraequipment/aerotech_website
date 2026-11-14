@@ -4,12 +4,13 @@ import Button from "../components/ui/Button";
 import ContactForm from "../components/forms/ContactForm";
 import QuoteForm from "../components/forms/QuoteForm";
 import SEO from "../components/seo/SEO";
+import { SITE, mailHref, telHref, whatsappHref } from "../lib/site";
 
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "Contact AeroTech in Sriperumbudur",
-  "description": "Call +91 97918 90636 or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur.",
+  "description": `Call ${SITE.phoneDisplay} or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur.`,
   "url": "https://aerotechinfraequipment.com/contact",
   "mainEntity": {
     "@id": "https://aerotechinfraequipment.com/#organization"
@@ -38,7 +39,7 @@ const Contact = () => {
     <>
       <SEO
         title="Request a Rental Quote in Sriperumbudur"
-        description="Call +91 97918 90636 or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur."
+        description={`Call ${SITE.phoneDisplay} or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur.`}
         canonical="/contact"
         schema={contactSchema}
       />
@@ -62,11 +63,11 @@ const Contact = () => {
           <div className="contact-sidebar">
             <div className="contact-info-card">
               <h2>Phone &amp; WhatsApp</h2>
-              <p>97918 90636</p>
+              <p>{SITE.phoneDisplay}</p>
               <div className="contact-info-card__actions">
-                <Button href="tel:+919791890636" variant="dark">Call Now</Button>
+                <Button href={telHref} variant="dark">Call Now</Button>
                 <Button
-                  href="https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20have%20an%20enquiry."
+                  href={whatsappHref("Hello AeroTech, I have an enquiry.")}
                   variant="whatsapp"
                   external
                 >
@@ -77,25 +78,25 @@ const Contact = () => {
 
             <div className="contact-info-card">
               <h2>Email</h2>
-              <a href="mailto:aerotech2003@gmail.com" className="contact-info-card__link">
-                aerotech2003@gmail.com
+              <a href={mailHref} className="contact-info-card__link">
+                {SITE.email}
               </a>
             </div>
 
             <div className="contact-info-card">
               <h2>Office</h2>
               <p className="contact-info-card__text">
-                SF No.135/4G2, Chennai Salai, Thirumangalam, Sriperumbudur, Kanchipuram (D.T) – 602 106, Tamil Nadu
+                {SITE.address}
               </p>
               <p className="contact-info-card__text--small">
-                GSTIN: 33ABFCA6529D1ZY
+                GSTIN: {SITE.gstin}
               </p>
             </div>
 
             <div className="contact-info-card">
               <h2>Service Areas</h2>
               <p className="contact-info-card__text">
-                Chennai · Kanchipuram · Sriperumbudur · Oragadam · Ranipet · Vellore · Chengalpattu · Tamil Nadu
+                {SITE.serviceAreas}
               </p>
             </div>
           </div>

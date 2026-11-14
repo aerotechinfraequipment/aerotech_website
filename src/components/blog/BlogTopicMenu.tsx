@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { blogs } from "../../data/blogs";
+import { useBlogs } from "../../lib/catalog";
 
 const BlogTopicMenu = () => {
+  const { data } = useBlogs();
+  const blogs = data ?? [];
   return (
     <nav className="blog-topics" aria-label="Blog topics">
       <div className="container blog-topics__inner">

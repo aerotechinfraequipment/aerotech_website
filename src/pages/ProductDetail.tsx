@@ -8,6 +8,7 @@ import NotFound from "./NotFound";
 import ItemEnquiry from "../components/forms/ItemEnquiry";
 import { getProduct, isValidProductSlug, listProducts } from "../lib/catalog";
 import { clipMeta } from "../lib/meta";
+import { SITE, telHref } from "../lib/site";
 import type { Product, ProductDetailData } from "../lib/catalog";
 
 const ProductDetail = () => {
@@ -314,8 +315,8 @@ const ProductDetail = () => {
                 label="Enquire on WhatsApp"
                 variant="accent"
               />
-              <Button variant="dark" href="tel:+919791890636">
-                Call: +91 97918 90636
+              <Button variant="dark" href={telHref}>
+                Call: {SITE.phoneDisplay}
               </Button>
               {product.sourceUrl && (
                 <Button variant="outline-dark" href={product.sourceUrl} external>

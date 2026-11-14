@@ -3,7 +3,7 @@ import "../styles/pages/_blogs.scss";
 import SectionHeader from "../components/ui/SectionHeader";
 import SEO from "../components/seo/SEO";
 import BlogTopicMenu from "../components/blog/BlogTopicMenu";
-import { blogs } from "../data/blogs";
+import { useBlogs } from "../lib/catalog";
 
 const blogsSchema = {
   "@context": "https://schema.org",
@@ -32,6 +32,8 @@ const blogsSchema = {
 };
 
 const Blogs = () => {
+  const { data, error, loading } = useBlogs();
+  const blogs = data ?? [];
   return (
     <>
       <SEO
@@ -56,6 +58,8 @@ const Blogs = () => {
 
       <section className="blogs-page" aria-label="Blog topics">
         <div className="container">
+          {loading ? <p>Loading topics…</p> : null}
+          {error ? <p>{error}</p> : null}
           <ul className="blog-grid">
             {blogs.map((blog) => (
               <li key={blog.slug}>

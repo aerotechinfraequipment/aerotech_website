@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "919791890636";
+import { whatsappHref } from "./site";
 
 export type EnquiryType = "rental" | "product" | "steel" | "contact";
 
@@ -21,11 +21,7 @@ export type EnquiryInput = {
 };
 
 export function openWhatsApp(text: string) {
-  window.open(
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
-    "_blank",
-    "noopener,noreferrer",
-  );
+  window.open(whatsappHref(text), "_blank", "noopener,noreferrer");
 }
 
 export async function submitEnquiry(input: EnquiryInput): Promise<string> {

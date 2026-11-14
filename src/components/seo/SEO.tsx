@@ -7,6 +7,10 @@ export interface SEOProps {
   canonical?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  keywords?: string[];
   noindex?: boolean;
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
@@ -79,6 +83,10 @@ const SEO = ({
   canonical,
   ogImage,
   ogImageAlt,
+  ogTitle,
+  ogDescription,
+  ogType = "website",
+  keywords,
   noindex = false,
   schema,
 }: SEOProps) => {
@@ -96,7 +104,11 @@ const SEO = ({
     const metaDesc = description || DEFAULT_DESC;
     setMetaTag('meta[name="title"]', "name", "title", formattedTitle);
     setMetaTag('meta[name="description"]', "name", "description", metaDesc);
-    removeMetaTag('meta[name="keywords"]');
+    if (keywords && keywords.length > 0) {
+      setMetaTag('meta[name="keywords"]', "name", "keywords", keywords.join(", "));
+    } else {
+      removeMetaTag('meta[name="keywords"]');
+    }
 
     const robots = noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large";
     setMetaTag('meta[name="robots"]', "name", "robots", robots);
@@ -111,10 +123,12 @@ const SEO = ({
     const finalOgImage = ogImage ? toAbsoluteAsset(ogImage) : DEFAULT_OG_IMAGE;
     const imageAlt = ogImageAlt || formattedTitle || DEFAULT_OG_ALT;
 
-    setMetaTag('meta[property="og:title"]', "property", "og:title", formattedTitle);
-    setMetaTag('meta[property="og:description"]', "property", "og:description", metaDesc);
+    const shareTitle = ogTitle?.trim() || formattedTitle;
+    const shareDescription = ogDescription?.trim() || metaDesc;
+    setMetaTag('meta[property="og:title"]', "property", "og:title", shareTitle);
+    setMetaTag('meta[property="og:description"]', "property", "og:description", shareDescription);
     setMetaTag('meta[property="og:url"]', "property", "og:url", canonicalUrl);
-    setMetaTag('meta[property="og:type"]', "property", "og:type", "website");
+    setMetaTag('meta[property="og:type"]', "property", "og:type", ogType);
     setMetaTag('meta[property="og:image"]', "property", "og:image", finalOgImage);
     setMetaTag('meta[property="og:image:alt"]', "property", "og:image:alt", imageAlt);
 
@@ -126,8 +140,8 @@ const SEO = ({
       removeMetaTag('meta[property="og:image:height"]');
     }
 
-    setMetaTag('meta[name="twitter:title"]', "name", "twitter:title", formattedTitle);
-    setMetaTag('meta[name="twitter:description"]', "name", "twitter:description", metaDesc);
+    setMetaTag('meta[name="twitter:title"]', "name", "twitter:title", shareTitle);
+    setMetaTag('meta[name="twitter:description"]', "name", "twitter:description", shareDescription);
     setMetaTag('meta[name="twitter:url"]', "name", "twitter:url", canonicalUrl);
     setMetaTag('meta[name="twitter:image"]', "name", "twitter:image", finalOgImage);
 
@@ -136,7 +150,7 @@ const SEO = ({
     return () => {
       document.getElementById(SCHEMA_SCRIPT_ID)?.remove();
     };
-  }, [title, description, canonical, ogImage, ogImageAlt, noindex, schemaJson, pathname]);
+  }, [title, description, canonical, ogImage, ogImageAlt, ogTitle, ogDescription, ogType, keywords, noindex, schemaJson, pathname]);
 
   return null;
 };

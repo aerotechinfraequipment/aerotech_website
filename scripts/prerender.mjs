@@ -172,32 +172,6 @@ function summaryHtml(heading, text, links, articleClass) {
   return `<div id="root"><main id="main-content"><article class="${className}"><h1>${esc(heading)}</h1><p>${esc(text)}</p><nav aria-label="Helpful links">${nav}</nav></article></main></div>`;
 }
 
-function writeSitemap(routes) {
-  const today = new Date().toISOString().slice(0, 10);
-  const meta = {
-    "/": ["daily", "1.0"],
-    "/equipment": ["weekly", "0.9"],
-    "/products": ["weekly", "0.9"],
-    "/steel-products": ["weekly", "0.8"],
-    "/about": ["monthly", "0.7"],
-    "/blogs": ["weekly", "0.7"],
-    "/contact": ["monthly", "0.8"],
-  };
-  const urls = routes
-    .map((route) => {
-      const [freq, priority] = meta[route.path] || ["weekly", "0.8"];
-      const loc = route.path === "/" ? `${BASE_URL}/` : `${BASE_URL}${route.path}`;
-      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
-    })
-    .join("\n");
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
-  if (xml.includes("https://aerotechinfra.com/")) {
-    throw new Error("Sitemap still contains the non-resolving domain");
-  }
-  writeFileSync(join(DIST, "sitemap.xml"), xml);
-  writeFileSync(join(ROOT, "public", "sitemap.xml"), xml);
-}
-
 function render(template, route) {
   let html = setTitle(template, route.title);
   html = setMeta(html, "name", "description", route.description);
@@ -256,8 +230,22 @@ function staticRoute(path, title, description, schemaType, heading) {
   };
 }
 
+function loadContact() {
+  return JSON.parse(readFileSync(join(ROOT, "src/data/contact.json"), "utf8"));
+}
+
+function syncBusinessSchema(contact) {
+  const file = join(DIST, "schema", "local-business.json");
+  if (!existsSync(file)) return;
+  const schema = JSON.parse(readFileSync(file, "utf8"));
+  schema.telephone = contact.phoneTel;
+  schema.email = contact.email;
+  writeFileSync(file, `${JSON.stringify(schema, null, 2)}\n`);
+}
+
 async function main() {
 loadLocalEnv();
+const contact = loadContact();
 const template = readFileSync(join(DIST, "index.html"), "utf8");
 const equipmentRows = await rest(
   "equipment?select=id,name,brand,category_label,description,image_url&archived_at=is.null&order=sort_order",
@@ -329,13 +317,35 @@ const routes = [
   staticRoute(
     "/contact",
     "Request a Rental Quote in Sriperumbudur",
-    "Call +91 97918 90636 or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur.",
+    `Call ${contact.phoneDisplay} or send an enquiry for equipment hire and industrial supply quotes. Visit the office on Chennai Salai, Sriperumbudur.`,
     "ContactPage",
     "Contact AeroTech in Sriperumbudur",
   ),
 ];
 
-const blogs = JSON.parse(readFileSync(join(ROOT, "src/data/blogs.json"), "utf8"));
+let blogs;
+try {
+  const rows = await rest("blogs?select=*&status=eq.published&archived_at=is.null&order=sort_order.asc");
+  if (!rows.length) throw new Error("No published blogs yet");
+  blogs = rows.map((row) => ({
+    slug: row.slug,
+    title: row.title,
+    seoTitle: row.seo_title || "",
+    heading: row.title,
+    menuLabel: row.menu_label,
+    summary: row.summary,
+    seoDescription: row.seo_description || "",
+    image: row.image_url || "",
+    imageAlt: row.image_alt || row.title,
+    date: row.published_on || String(row.updated_at || "").slice(0, 10),
+    keywords: row.seo_keywords || [],
+    ogTitle: row.og_title || "",
+    ogDescription: row.og_description || "",
+    sections: Array.isArray(row.sections) ? row.sections : [],
+  }));
+} catch {
+  blogs = JSON.parse(readFileSync(join(ROOT, "src/data/blogs.json"), "utf8"));
+}
 routes.push(
   staticRoute(
     "/blogs",
@@ -364,21 +374,21 @@ for (const blog of blogs) {
   const image = absolute(blog.image);
   routes.push({
     path,
-    title: formatTitle(blog.title),
-    heading: blog.title,
-    description: clip(blog.summary),
+    title: formatTitle(blog.seoTitle || blog.heading || blog.title),
+    heading: blog.heading || blog.title,
+    description: clip(blog.seoDescription || blog.summary),
     canonical: `${BASE_URL}${path}`,
     robots: "index, follow, max-image-preview:large",
     image,
     imageAlt: blog.imageAlt,
     links: topicLinks,
-    body: `<div id="root"><main id="main-content"><article class="prerender-summary"><h1>${esc(blog.title)}</h1><img src="${esc(blog.image)}" alt="${esc(blog.imageAlt)}"><p>${esc(blog.summary)}</p>${sections}<nav aria-label="Blog topics">${topicLinks.map(([href, label]) => `<a href="${esc(href)}">${esc(label)}</a>`).join(" ")}</nav></article></main></div>`,
+    body: `<div id="root"><main id="main-content"><article class="prerender-summary"><h1>${esc(blog.heading || blog.title)}</h1><img src="${esc(blog.image)}" alt="${esc(blog.imageAlt)}"><p>${esc(blog.summary)}</p>${sections}<nav aria-label="Blog topics">${topicLinks.map(([href, label]) => `<a href="${esc(href)}">${esc(label)}</a>`).join(" ")}</nav></article></main></div>`,
     schema: {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "BlogPosting",
-          headline: blog.title,
+          headline: blog.heading || blog.title,
           description: blog.summary,
           image,
           datePublished: blog.date,
@@ -507,8 +517,9 @@ const notFound = render(template, {
   links: PRIMARY_LINKS,
   articleClass: "prerender-summary not-found",
 });
-writeFileSync(join(DIST, "404.html"), notFound);
-writeSitemap(routes);
+  writeFileSync(join(DIST, "404.html"), notFound);
+  syncBusinessSchema(contact);
+
 
 const sampleProduct = catalogProducts[0].slug;
 const sampleEquipment = equipments[0].id;

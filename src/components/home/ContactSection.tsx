@@ -1,5 +1,6 @@
 import SectionHeader from "../ui/SectionHeader";
 import Button from "../ui/Button";
+import { SITE, mailHref, telHref, whatsappHref } from "../../lib/site";
 
 const ContactSection = () => {
   return (
@@ -16,12 +17,12 @@ const ContactSection = () => {
             <li>
               <span className="contact-section__dot" aria-hidden="true" />
               Call or WhatsApp us directly at{" "}
-              <a href="tel:+919791890636" className="contact-section__highlight">97918 90636</a>
+              <a href={telHref} className="contact-section__highlight">{SITE.phoneDisplay}</a>
             </li>
             <li>
               <span className="contact-section__dot" aria-hidden="true" />
               Email{" "}
-              <a href="mailto:aerotech2003@gmail.com" className="contact-section__highlight">aerotech2003@gmail.com</a>
+              <a href={mailHref} className="contact-section__highlight">{SITE.email}</a>
             </li>
             <li>
               <span className="contact-section__dot" aria-hidden="true" />
@@ -30,7 +31,7 @@ const ContactSection = () => {
           </ul>
           <Button
             variant="whatsapp"
-            href="https://wa.me/919791890636?text=Hello%20AeroTech%2C%20I%20would%20like%20to%20request%20a%20rental%20quote."
+            href={whatsappHref("Hello AeroTech, I would like to request a rental quote.")}
             external
           >
             Chat on WhatsApp
@@ -53,7 +54,7 @@ const ContactSection = () => {
             <div className="quote-form__row">
               <div className="quote-form__field">
                 <label htmlFor="q-phone">Phone *</label>
-                <input id="q-phone" name="phone" type="tel" required placeholder="97918 90636" />
+                <input id="q-phone" name="phone" type="tel" required placeholder={SITE.phoneDisplay} />
               </div>
               <div className="quote-form__field">
                 <label htmlFor="q-email">Email</label>
